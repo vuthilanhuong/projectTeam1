@@ -35,6 +35,9 @@ function appRouterConfig($stateProvider, $urlRouterProvider) {
 };
 
 app.controller('indexCtrl',function($scope,$http){
+	if(localStorage.admin === undefined){
+		window.location.href = "pages/auth/login.html";
+	};
 	var secret = JSON.parse(localStorage.admin);
 	console.log(secret.userID);
 	console.log(secret.token);
