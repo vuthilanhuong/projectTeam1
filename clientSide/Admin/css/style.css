@@ -1,0 +1,19 @@
+
+
+.preview{
+	position: relative;
+}
+
+.img-circle{
+	height: 50px !important;
+}
+
+.close{
+	position: absolute;
+	top: 1px;
+	right: 6px;
+	font-size: 40px;
+}
+
+
+ 
