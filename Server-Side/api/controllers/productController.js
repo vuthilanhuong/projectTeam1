@@ -5,12 +5,15 @@ require('mongoose-pagination');
 exports.get_list = function(req, resp){
 	console.log('i am getting list product.');
 	var page = Number(req.query.page);
-	var limit = 10;
-	Product.find({status:1}).paginate(page, limit, function(err, result, total) {
+	var limit = Number(req.query.limit);
+	Product.find({status:1})
+	.paginate(page, limit, function(err, result, total) {
+    	
+    	console.log('chao huong');
     	console.log('total: ', total, 'result: ', result);
     	var responseData = {
     		'listProduct': result,
-    		'total': total
+    		'totalPage': Math.ceil(total/limit)
     	};
     	resp.send(responseData);
   	});

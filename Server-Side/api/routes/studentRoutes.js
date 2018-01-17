@@ -40,6 +40,7 @@ module.exports = function(app){
 	app.route('/_api/v1/products')
 		.post(productController.add)
 		.get(productController.get_list);
+		
 	app.route('/_api/v1/products/:id')
 		.get(productController.get_detail)
 		.put(productController.update)
