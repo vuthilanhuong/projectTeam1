@@ -1,0 +1,112 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Quản lý sản phẩm
+		<small>Tạo mới sản phẩm</small>
+	</h1>
+</section>
+<div class="content">
+	<div class="row">
+		<form ng-submit="save()" class="form-horizontal">
+			<div class="box">
+				<div class="box-header">
+				</div>
+				<!-- /.box-header -->          
+				<div class="">				
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Tên sản phẩm</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="data.ProductName" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Giá</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="data.Price" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Loại sản phẩm:</label>
+						<div class="col-sm-3">
+							<select ng-init="data.ProductType = ProductType[0]" class="form-control" ng-model="data.ProductType" ng-options="option for option in ProductType">
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Hãng:</label>
+						<div class="col-sm-3">
+							<select ng-init="data.Brand = Brand[0]" class="form-control" ng-model="data.Brand" ng-options="option for option in Brand">
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Kích cỡ:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="data.Size" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Màu sắc</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="data.Color" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Mô tả</label>
+						<div class="col-sm-3">
+							<textarea class="form-control" rows="5" ng-model="data.Discribe" required></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Tình trạng:</label>
+						<div class="col-sm-3">
+							<select ng-init="data.Availability = Availability[0]" class="form-control" ng-model="data.Availability" ng-options="option for option in Availability">
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Ảnh 1</label>
+						<div class="col-sm-3">
+				        	<label class="btn btn-primary btn-file">
+	                            Choose File <input type="file" accept=".jpg, .jpeg, .png" id="fileUpload1" name="file" ng-model='uploadfile' onchange="angular.element(this).scope().uploading1()" required style="display: none;">
+	                        </label>
+				        </div>
+					</div>
+					<div class="preview form-group" ng-show="Picture1Show">
+						<label class="col-sm-3 control-label">&nbsp;</label>
+						<div class="col-sm-3">
+				        	<img src="{{Picture1}}" class="img-responsive" >
+				        </div>
+				    </div>
+					
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Ảnh 2</label>
+						<div class="col-sm-3">
+				        	<label class="btn btn-primary btn-file">
+	                            Choose File <input type="file" accept=".jpg, .jpeg, .png" id="fileUpload2" name="file" ng-model='upfile' onchange="angular.element(this).scope().uploading2()" required style="display: none;">
+	                        </label>
+				        </div>
+					</div>
+					<div class="preview form-group" ng-show="Picture2Show">
+						<label class="col-sm-3 control-label">&nbsp;</label>
+						<div class="col-sm-3">
+				        	<img src="{{Picture2}}" class="img-responsive">
+				        </div>
+				    </div>					
+				</div>
+				<!-- /.box-body -->
+				<div class="box-footer">  
+					<div class="col-sm-2 col-sm-push-4">
+						<button type="submit" class="btn btn-success">Xong</button>
+						<a ui-sref="Product({ pageID:1})" type="button" class="btn btn-default">Quay Lại</a>
+					</div>            
+				</div>
+			</div>
+			<!-- /.box -->        
+		</form>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /.content -->
+

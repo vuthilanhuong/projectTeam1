@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/login.css">  
+</head>
+<body ng-app="myApp" ng-controller="loginCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" id="block">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-lock"></span> Login</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" ng-submit="submitForm()">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                                User Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" ng-model="sendData.userName" placeholder="User Name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                                Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" ng-model="sendData.password" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="form-group last">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-success btn-sm">
+                                    Sign in</button>
+                                 <button type="reset" class="btn btn-default btn-sm">
+                                Reset</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="panel-footer">
+                        Not Registred? <a href="register.html">Register here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src = "../../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src = "../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src = "../../js/adminlte.min.js"></script>
+    <script type="text/javascript" src = "../../js/angular.min.js"></script>
+    <script type="text/javascript" src = "../../js/sweetalert.min.js"></script>
+    <script type="text/javascript" src = "../../js/login.js"></script>
+</body>

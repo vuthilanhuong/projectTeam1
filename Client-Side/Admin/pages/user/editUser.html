@@ -1,0 +1,130 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		User Manager
+		<small>Edit User</small>
+	</h1>
+</section>
+<div class="content" ng-controller="editUserCtrl" ng-init="loadFix()">
+	<div class="row">
+		<div class="box">
+            <form class="form-horizontal" ng-submit="submitFix()" name="myForm" novalidate>
+    			<div class="box-header">
+    				<h3 class="box-title">Login</h3>
+    			</div>
+    			<!-- /.box-header -->          
+    			<div class="box-body">
+                    <div class="col-md-push-2 col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                                Full Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" ng-model="detail_user.fullName" placeholder="Full Name" required name="fullName" minlength="4">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="myForm.fullName.$invalid && myForm.fullName.$dirty">
+                            <label class="col-sm-3 control-label">
+                                    &nbsp;</label>
+                            <div class="col-sm-9">
+                                <p class="msgError" ng-show="myForm.fullName.$error.minlength">Full name requires 4 or more characters</p>
+                                <p class="msgError" ng-show="myForm.fullName.$error.required">Full name is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                                User Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" ng-model="detail_user.userName" placeholder="User Name" required name="userName" ng-blur="userError()" ng-change="resetUser()" minlength="4" maxlength="12">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="myForm.userName.$invalid && myForm.userName.$dirty|| checkUser">
+                            <label class="col-sm-3 control-label">
+                                    &nbsp;</label>
+                            <div class="col-sm-9">
+                                <p class="msgError" ng-show="myForm.userName.$error.minlength || myForm.userName.$error.maxlength">User name requires between 4 and 12 characters</p>
+                                <p class="msgError" ng-show="myForm.userName.$error.required">User name is required</p>
+                                <p class="msgError" ng-show="checkUser">User name already exists</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                                Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" ng-model="detail_user.email" placeholder="Email" required name="email" minlength="6" ng-blur="emailError()" ng-change="resetEmail()">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="myForm.email.$invalid && myForm.email.$dirty || checkEmail">
+                            <label class="col-sm-3 control-label">
+                                    &nbsp;</label>
+                            <div class="col-sm-9">
+                                <p class="msgError" ng-show="myForm.email.$error.minlength">Email requires 6 or more characters</p>
+                                <p class="msgError" ng-show="checkEmail">Email already exists</p>
+                                <p class="msgError" ng-show="myForm.email.$error.email">Invalid Email</p>
+                                <p class="msgError" ng-show="myForm.email.$error.required">Email is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                                Birth Day</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" ng-model="detail_user.birthDay" name="birthDay" required ng-change="birthDayError()">
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="checkBirthDay">
+                            <label class="col-sm-3 control-label">
+                                    &nbsp;</label>
+                            <div class="col-sm-9">
+                                <p class="msgError">Invalid birthday</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                                Gender</label>
+                            <div class="col-sm-3">
+                                <select ng-init="detail_user.gender = gender[0]" ng-model="detail_user.gender" ng-options="option.name for option in gender" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">
+                                Avatar</label>
+                            <div class="col-sm-9">
+                                <label class="btn btn-primary btn-file">
+                                    Choose File <input type="file" id="fileUpload" name="file" ng-model='fileUpload' onchange="angular.element(this).scope().uploading()" style="display: none;">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-show="myForm.file.$invalid && myForm.file.$dirty || uploadErr">
+                            <label class="col-sm-3 control-label">
+                                    &nbsp;</label>
+                            <div class="col-sm-9" >
+                                <p class="msgError" ng-show="uploadErr" >You can't upload more than 1 image</p>
+                                <p class="msgError" ng-show="myForm.file.$error.required">Avatar is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-hide="previewShow">
+                            <label class="col-sm-3 control-label">
+                                Preview Avatar</label>
+                            <div class="preview col-sm-3">
+                                <img class="img-responsive" src="{{detail_user.avatarUrl}}">
+                            </div>
+                        </div>	
+                    </div>			
+    			</div>
+    			<!-- /.box-body -->
+    			<div class="box-footer">  
+    				<div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-success btn-sm" ng-disabled="myForm.user.$invalid || checkUser || myForm.email.$invalid || checkEmail || myForm.fullName.$invalid || myForm.password.$invalid || myForm.confirm.$invalid || checkConfirm || myForm.birthDay.$invalid|| checkBirthDay">
+                            Sign in</button>
+                         <button type="reset" ng-click="resetForm()" class="btn btn-default btn-sm">
+                        Reset</button>
+                    </div>             
+    			</div>
+            </form>
+		</div>
+		<!-- /.box -->        
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /.content -->
+
