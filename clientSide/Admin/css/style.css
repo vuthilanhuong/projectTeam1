@@ -1,0 +1,29 @@
+.navbar-custom-menu .navbar-nav .user-menu{
+	padding-right: 50px;
+}
+
+.user .dropdown-toggle{
+	background-color: #337ab780;
+}
+
+.msgError{
+  color: red;
+}
+
+.preview{
+	position: relative;
+}
+
+.img-circle{
+	height: 50px !important;
+}
+
+.close{
+	position: absolute;
+	top: 1px;
+	right: 6px;
+	font-size: 40px;
+}
+
+
+ 
