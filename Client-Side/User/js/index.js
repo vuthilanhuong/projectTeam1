@@ -31,9 +31,11 @@ function loadProduct(page, limit){
 				content +=	'<div class="product-image-wrapper">';
 				content +=		'<div class="single-products">';
 				content +=			'<div class="productinfo text-center">';
-				content +=				'<img title="'+ '" src="'+ listProduct[i].Picture1 +'" alt="" />';
-				content +=				'<h2>'+ listProduct[i].Price + '</h2>';
-				content +=				'<p>'+ listProduct[i].ProductName + '</p>';
+				content +=				'<a href="product-details.html?id='+id+'">';
+				content +=					'<img title="'+ '" src="'+ listProduct[i].Picture1 +'" alt="" />';
+				content +=					'<h2>'+ listProduct[i].Price + '</h2>';
+				content +=					'<p>'+ listProduct[i].ProductName + '</p>';
+				content +=				'</a>';
 				content +=				'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>';
 				content +=			'</div>';
 				content +=		'</div>';
