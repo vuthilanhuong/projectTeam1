@@ -1,6 +1,7 @@
+//1. Phần chính
 var PRODUCT_API_URL = "http://localhost:3000/_api/v1/products";
 var DEFAUL_PAGE = 1;
-var DEFAUL_LIMIT = 4;
+var DEFAUL_LIMIT = 6;
 
 $(document).ready(function(){	
 	var page = Number(getUrlParameter('page'));
@@ -14,6 +15,7 @@ $(document).ready(function(){
 	loadProduct(page, limit);
 });
 
+//2. Hàm hiển thị sản phẩm theo page và limit
 function loadProduct(page, limit){
 	$.ajax({
 		url: PRODUCT_API_URL + '?page=' + page + '&limit=' + limit,
@@ -28,9 +30,11 @@ function loadProduct(page, limit){
 						content +=	'<div class="product-image-wrapper">';
 						content +=		'<div class="single-products">';
 						content +=			'<div class="productinfo text-center">';
-						content +=				'<img src="images/home/product1.jpg" alt="" />';
+						content +=				'<img src="'+listProduct[i].Picture1+'" alt="" />';
 						content +=				'<h2>'+listProduct[i].Price+'</h2>';
 						content +=				'<p>'+listProduct[i].ProductName+'</p>';
+						content +=				'<button><a href="product-details.html"> Chi Tiết</button>';
+						// content +=				'<button><a href="product-detail.html'+'#'+id +'"> Chi Tiết</button>';
 						content +=				'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>';
 						content +=			'</div>';
 						content +=		'</div>';
@@ -71,8 +75,12 @@ function loadProduct(page, limit){
 	});
 }
 
+// 3. Hàm bắt sự kiện onclick từng sản phầm, và chuyển sang trang chi tiết của sản phẩm đó
+function showProductDetail(id){
+	alert(id);
+};
 
-// Lấy tham số truyền lên trong url theo tên.
+// 4. Hàm Lấy tham số truyền lên trong url theo tên.
 function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),  	
         sURLVariables = sPageURL.split('&'),
