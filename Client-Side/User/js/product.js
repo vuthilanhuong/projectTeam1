@@ -1,11 +1,23 @@
 $(document).ready(function() {
     loadProduct();
-    $('#pagination-demo').twbsPagination({
-        totalPages: 8,
-        visiblePages: 5,
-        startPage: 1	
-	});
 });
+
+function paging(total,page,query){
+   $('#pagination-demo').twbsPagination({
+	    totalPages: Math.ceil(total/12),
+	    visiblePages: 4,
+	    startPage: page,
+	    initiateStartPageClick:false,
+	    prev:'&lt;',
+	    next:'&gt;',
+	    first: '<<',
+        last: '>>',
+	    onPageClick: function (event, currentPage) {
+	      	window.location.href = 'product.html?page='+currentPage+query
+	      	console.log(currentPage)
+		}		
+	});
+};
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -21,7 +33,11 @@ function loadProduct(){
 	var Brand = getParameterByName('Brand');
 	var ProductType = getParameterByName('ProductType');
 	var search = getParameterByName('search');
+	var page = getParameterByName('page');
 	var query ='';
+	if(page == null){
+		page = 1
+	};
 	if(Brand !== null){
 		query = '&Brand='+Brand
 	}else if(ProductType !== null){
@@ -32,7 +48,7 @@ function loadProduct(){
 		query = ''
 	};
 	$.ajax({
-		url: "http://localhost:3000/_api/v1/products?page=1&limit=12"+query,
+		url: "http://localhost:3000/_api/v1/products?page="+page+"&limit=12"+query,
 		type: 'GET',				
 		success: function(response){
 			var content = '';
@@ -57,7 +73,7 @@ function loadProduct(){
 				content +=	'</div>';
 			};
    			$('#list_items').html(content);
-   			
+   			paging(response.total,page,query)
 		},
 		error: function(response, message){
 			var content = '';

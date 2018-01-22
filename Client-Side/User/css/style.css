@@ -27,9 +27,18 @@ h2{
 }
 
 .glyphicon-search{
+	height: 18px;
+}
+
+#glyphicon-search{
 	height: 20px;
 }
 
 footer{
 	margin-top: 30px;
+}
+
+#slider-carousel .carousel-inner .col-sm-6 img{
+	width: 484px;
+	height: 441px;
 }
