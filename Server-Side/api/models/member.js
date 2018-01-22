@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 
-module.exports  = mongoose.model('member', {   
+ var memberSchema =  new mongoose.Schema ({   
 	fullName: {
 		type: String,
 		trim: true,
@@ -51,3 +52,6 @@ module.exports  = mongoose.model('member', {
 		default: 1
 	}
 });
+
+memberSchema.plugin(mongoosePaginate);
+module.exports  = mongoose.model('member',memberSchema)

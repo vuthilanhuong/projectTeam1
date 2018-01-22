@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
+var mongoosePaginate = require('mongoose-paginate');
 
-module.exports  = mongoose.model('product', {   
-	ProductName:{
+var productSchema =  new mongoose.Schema ({
+    ProductName:{
 		type: String,
 		require: true,
 		unique: true,
@@ -55,4 +56,9 @@ module.exports  = mongoose.model('product', {
 		type :Number,
 		default: 1
 	}
-});
+  });
+
+productSchema.index({ProductName: 'text'});
+productSchema.plugin(mongoosePaginate);
+
+module.exports  = mongoose.model('product',productSchema);

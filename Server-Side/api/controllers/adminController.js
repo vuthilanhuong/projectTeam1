@@ -2,18 +2,25 @@ var mongoose = require('mongoose');
 var Admin = require('../models/admin');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
+var mongoosePaginate = require('mongoose-paginate');
 
 exports.get_list = function(req, resp){
 	var page = Number(req.query.page);
 	var limit = 10;
-	Admin.find({status:1}).paginate(page, limit, function(err, result, total) {
-    	console.log('total: ', total, 'result: ', result);
-    	var responseData = {
-    		'listAdmin': result,
-    		'total': total
-    	};
-    	resp.send(responseData);
-  	});
+	if (page==0){
+		page=1
+	};
+  	Admin.paginate({status:1}, { page: page, limit: limit }, function(err, result) {
+		if (err){
+			resp.send(err)
+		}else{
+			var responseData = {
+				'listAdmin': result.docs,
+				'total': result.total
+			};
+			resp.send(responseData);
+		}
+	});
 };
 
 exports.add = function(req, resp){
