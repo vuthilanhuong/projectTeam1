@@ -11,3 +11,25 @@ h2{
 	height: 70px;
 	padding: 5px;
 }
+
+.view-product img{
+	width: 360px;
+	height: 300px;
+}
+
+.product-information{
+	padding-top: 20px;
+}
+
+.pagination{
+	display: block;
+	clear: both;
+}
+
+.glyphicon-search{
+	height: 20px;
+}
+
+footer{
+	margin-top: 30px;
+}

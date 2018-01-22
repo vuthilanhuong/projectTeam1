@@ -18,9 +18,9 @@ function loadProduct(){
 				content +=		'<div class="product-image-wrapper">';
 				content +=			'<div class="single-products">';
 				content +=					'<div class="productinfo text-center">';
-				content +=						'<img src="'+product[i].Picture1+'" alt="">';
+				content +=						'<a href="product-details.html?id='+product[i]._id+'"><img src="'+product[i].Picture1+'" alt=""></a>';
 				content +=						'<h2>'+product[i].Price+' VNĐ</h2>';
-				content +=						'<p>'+product[i].ProductName+'</p>';
+				content +=						'<a href="product-details.html?id='+product[i]._id+'"><p>'+product[i].ProductName+'</p></a>';
 				content +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				content +=					'</div>';
 				content +=			'</div>';
@@ -39,9 +39,9 @@ function loadProduct(){
 				contentItem1 +=		'<div class="product-image-wrapper">';
 				contentItem1 +=			'<div class="single-products">';
 				contentItem1 +=					'<div class="productinfo text-center">';
-				contentItem1 +=						'<img src="'+product[i].Picture1+'" alt="">';
+				contentItem1 +=						'<a href="product-details.html?id='+product[i]._id+'"><img src="'+product[i].Picture1+'" alt=""></a>';
 				contentItem1 +=						'<h2>'+product[i].Price+' VNĐ</h2>';
-				contentItem1 +=						'<p>'+product[i].ProductName+'</p>';
+				contentItem1 +=						'<a href="product-details.html?id='+product[i]._id+'"><p>'+product[i].ProductName+'</p></a>';
 				contentItem1 +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				contentItem1 +=					'</div>';
 				contentItem1 +=			'</div>';
@@ -60,9 +60,9 @@ function loadProduct(){
 				contentItem2 +=		'<div class="product-image-wrapper">';
 				contentItem2 +=			'<div class="single-products">';
 				contentItem2 +=					'<div class="productinfo text-center">';
-				contentItem2 +=						'<img src="'+product[i].Picture1+'" alt="">';
+				contentItem2 +=						'<a href="product-details.html?id='+product[i]._id+'"><img src="'+product[i].Picture1+'" alt=""></a>';
 				contentItem2 +=						'<h2>'+product[i].Price+' VNĐ</h2>';
-				contentItem2 +=						'<p>'+product[i].ProductName+'</p>';
+				contentItem2 +=						'<a href="product-details.html?id='+product[i]._id+'"><p>'+product[i].ProductName+'</p></a>';
 				contentItem2 +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				contentItem2 +=					'</div>';
 				contentItem2 +=			'</div>';
