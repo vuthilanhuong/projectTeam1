@@ -21,7 +21,7 @@ function loadProduct(){
 			var content = '';
 			content += '<div class="col-sm-5">';
 			content +=		'<div class="view-product">';
-			content +=			'<img src="images/product-details/1.jpg" alt="">';
+			content +=			'<img src="'+response.Picture1+'" alt="">';
 			content +=		'</div>';
 			content +=		'<div id="similar-product" class="carousel slide" data-ride="carousel">';
 			content +=		   '<div class="carousel">';
@@ -40,13 +40,12 @@ function loadProduct(){
 			content +=	'</div>';
 			content +=	'<div class="col-sm-7">';
 			content +=		'<div class="product-information">';
-			content +=			'<img src="images/product-details/new.jpg" class="newarrival" alt="">';
-			content +=			'<h2>Anne Klein Sleeveless Colorblock Scuba</h2>';
+			content +=			'<h1>'+response.ProductName+'</h1>';
 			content +=			'<span>';
 			content +=				'<span>'+response.Price+' VND</span>';
 			content +=			'</span>';
-			content +=			'<p><label>Quantity:</label>';
-			content +=			'<input type="text" value="3">';
+			content +=			'<p><label>Số Lượng:</label>';
+			content +=			'<input type="text" value="1" style="width:60px;">';
 			content +=			'<button type="button" class="btn btn-fefault cart">';
 			content +=				'<i class="fa fa-shopping-cart"></i>';
 			content +=				' Cho vào giỏ';
@@ -60,6 +59,60 @@ function loadProduct(){
 			content +=		'</div>';
 			content +=	'</div>';
    			$('#product_details').html(content);
+		},
+		error: function(response, message){
+			alert('Có lỗi xảy ra. ' + message);
+		}
+	});
+
+	$.ajax({
+		url: "http://localhost:3000/_api/v1/products?page=1&limit=6",
+		type: 'GET',				
+		success: function(response){
+			var contentItem1 = '';
+			var contentItem2 = '';
+			var product = response.listProduct;
+			for (var i = 0; i < 3; i++) {
+				contentItem1 +=	'<div class="col-sm-4">';
+				contentItem1 +=		'<div class="product-image-wrapper">';
+				contentItem1 +=			'<div class="single-products">';
+				contentItem1 +=					'<div class="productinfo text-center">';
+				contentItem1 +=						'<a href="product-details.html?id='+product[i]._id+'"><img src="'+product[i].Picture1+'" alt=""></a>';
+				contentItem1 +=						'<h2>'+product[i].Price+' VNĐ</h2>';
+				contentItem1 +=						'<a href="product-details.html?id='+product[i]._id+'"><p>'+product[i].ProductName+'</p></a>';
+				contentItem1 +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+				contentItem1 +=					'</div>';
+				contentItem1 +=			'</div>';
+				contentItem1 +=			'<div class="choose">';
+				contentItem1 +=				'<ul class="nav nav-pills nav-justified">';
+				contentItem1 +=					'<li><a href="#"><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
+				contentItem1 +=				'</ul>';
+				contentItem1 +=			'</div>';
+				contentItem1 +=		'</div>';
+				contentItem1 +=	'</div>';
+			};
+			$('.col-sm-9 .carousel-inner .item:first-child').html(contentItem1);
+
+			for (var i = 3; i < 6; i++) {
+				contentItem2 +=	'<div class="col-sm-4">';
+				contentItem2 +=		'<div class="product-image-wrapper">';
+				contentItem2 +=			'<div class="single-products">';
+				contentItem2 +=					'<div class="productinfo text-center">';
+				contentItem2 +=						'<a href="product-details.html?id='+product[i]._id+'"><img src="'+product[i].Picture1+'" alt=""></a>';
+				contentItem2 +=						'<h2>'+product[i].Price+' VNĐ</h2>';
+				contentItem2 +=						'<a href="product-details.html?id='+product[i]._id+'"><p>'+product[i].ProductName+'</p></a>';
+				contentItem2 +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+				contentItem2 +=					'</div>';
+				contentItem2 +=			'</div>';
+				contentItem2 +=			'<div class="choose">';
+				contentItem2 +=				'<ul class="nav nav-pills nav-justified">';
+				contentItem2 +=					'<li><a href="#"><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
+				contentItem2 +=				'</ul>';
+				contentItem2 +=			'</div>';
+				contentItem2 +=		'</div>';
+				contentItem2 +=	'</div>';
+			};
+			$('.col-sm-9 .carousel-inner .item:last-child').html(contentItem2);
 		},
 		error: function(response, message){
 			alert('Có lỗi xảy ra. ' + message);

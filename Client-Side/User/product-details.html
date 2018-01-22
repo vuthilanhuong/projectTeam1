@@ -87,15 +87,24 @@
 								 
 								
                                 <li><a href="contact-us.html">So Sánh</a></li>
-                                <li><a href="contact-us.html">Thông Tin</a></li> 					
-								<li><a href="contact-us.html">Liên Lạc Với Chúng Tôi</a></li>
+                                <li><a href="contact-us.html">Giới Thiệu</a></li> 					
+								<li><a href="contact-us.html">Liên Hệ</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Tìm kiếm">
-						</div>
+						<form  onsubmit="return false">
+							<div class=" pull-right">
+								<div class="input-group">
+								    <input type="text" class="form-control" id="search" placeholder="Tìm kiếm">
+								    <div class="input-group-btn">
+								      <button class="btn btn-default" type="submit" id="submit">
+								        <i class="glyphicon glyphicon-search"></i>
+								      </button>
+								    </div>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -111,11 +120,11 @@
 							<h2>Loại Kính</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
-									<li><a href="#">Kính Mát Nam</a></li>
-									<li><a href="#">Kính Mát Nữ</a></li>
-									<li><a href="#">Kính Thể Thao</a></li>
-									<li><a href="#">Kính Áp Tròng</a></li>
-									<li><a href="#">Kính Mát Trẻ Em</a></li>
+									<li><a href="product.html?ProductType=kinh-mat-nam">Kính Mát Nam</a></li>
+									<li><a href="product.html?ProductType=kinh-mat-nu">Kính Mát Nữ</a></li>
+									<li><a href="product.html?ProductType=kinh-the-thao">Kính Thể Thao</a></li>
+									<li><a href="product.html?ProductType=kinh-ap-trong">Kính Áp Tròng</a></li>
+									<li><a href="product.html?ProductType=kinh-mat-tre-em">Kính Mát Trẻ Em</a></li>
 								</ul>
 							</div>
 						</div><!--/category-products-->			
@@ -123,21 +132,14 @@
 							<h2>Hãng</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
-									<li><a href="#">Ray-Ban</a></li>
-									<li><a href="#">Oakley</a></li>
-									<li><a href="#">Dolce &amp; Gabbana</a></li>
-									<li><a href="#">Burberry</a></li>
-									<li><a href="#">Versace</a></li>
+									<li><a href="product.html?Brand=Ray-Ban">Ray-Ban</a></li>
+									<li><a href="product.html?Brand=Oakley">Oakley</a></li>
+									<li><a href="product.html?Brand=Dolce-And-Gabbana">Dolce &amp; Gabbana</a></li>
+									<li><a href="product.html?Brand=Burberry">Burberry</a></li>
+									<li><a href="product.html?Brand=Versace">Versace</a></li>
 								</ul>
 							</div>
 						</div><!--/brands_products-->	
-						
-						<!--/price-range-->
-						
-						<div class="shipping text-center"><!--shipping-->
-							<img src="images/home/shipping.jpg" alt="">
-						</div><!--/shipping-->
-						
 					</div>
 				</div>
 				
@@ -148,86 +150,12 @@
 					<!--/category-tab-->
 					
 					<div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">recommended items</h2>
+						<h2 class="title text-center">Sản Phẩm Bán Chạy</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-								<div class="item">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend1.jpg" alt="">
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend2.jpg" alt="">
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend3.jpg" alt="">
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item active">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend1.jpg" alt="">
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend2.jpg" alt="">
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/home/recommend3.jpg" alt="">
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<div class="item"></div>
+								<div class="item active"></div>
 							</div>
 							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
 								<i class="fa fa-angle-left"></i>
