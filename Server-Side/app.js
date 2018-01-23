@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
 
 
 
-var studentRoutes = require('./api/routes/studentRoutes');
+var studentRoutes = require('./api/routes/apiRoutes');
 studentRoutes(app);
 
 app.listen('3000',function(){
