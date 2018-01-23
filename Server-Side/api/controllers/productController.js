@@ -19,15 +19,15 @@ exports.get_list = function(req, resp){
 			ProductType:ProductType
 		};
 		if (ProductType =='kinh-the-thao') {
-			ProductType = 'Kính Thể Thao'
+			query.ProductType = 'Kính Thể Thao'
 		} else if (ProductType == 'kinh-mat-tre-em'){
-			ProductType = 'Kính Mát Trẻ Em'
+			query.ProductType = 'Kính Mát Trẻ Em'
 		} else if (ProductType == 'kinh-mat-nam'){
-			ProductType = 'Kính Mát Nam'
+			query.ProductType = 'Kính Mát Nam'
 		} else if (ProductType == 'kinh-mat-nu'){
-			ProductType = 'Kính Mát Nữ'
+			query.ProductType = 'Kính Mát Nữ'
 		} else if (ProductType == 'kinh-ap-trong'){
-			ProductType = 'Kính Áp Tròng'
+			query.ProductType = 'Kính Áp Tròng'
 		}else{
 			query = {};
 		}
@@ -37,7 +37,7 @@ exports.get_list = function(req, resp){
 			Brand:Brand
 		};
 		if (Brand == 'Dolce-And-Gabbana')  {
-			Brand = 'Dolce & Gabbana'
+			query.Brand = 'Dolce & Gabbana'
 		}
 	} else if (ProductType === undefined && Brand === undefined) {
 		query = {$text:{$search:search}}
