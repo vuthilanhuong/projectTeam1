@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 // var MongoClient = require('mongodb').MongoClient;
 // const http = require('http');
 
-mongoose.connect('mongodb://localhost/demoProject', { useMongoClient: true });
+mongoose.connect('mongodb://sangbeo:123456@ds127536.mlab.com:27536/eyeonic', { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 // app.use(path());
@@ -46,10 +46,8 @@ app.use(function(req, res, next) {
   }
 });
 
-
-
-var studentRoutes = require('./api/routes/apiRoutes');
-studentRoutes(app);
+var apiRoutes = require('./api/routes/apiRoutes');
+apiRoutes(app);
 
 app.listen('3000',function(){
 	console.log('Start at port 3000');
