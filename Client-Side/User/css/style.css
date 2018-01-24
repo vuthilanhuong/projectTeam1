@@ -42,3 +42,39 @@ footer{
 	width: 484px;
 	height: 441px;
 }
+
+.priceTable{
+	color: #FE980F;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.imgTable{
+	width: 200px;
+	height: 150px;
+}
+
+#tableCompare{
+	display: block;
+    margin-bottom: 185px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+td.titleCompare{
+	font-weight: bold;
+	line-height: 45px !important;
+}
+
+.ProductName{
+	font-size: 22px;
+}
+
+.fa-times{
+	color: red;
+}
+
+.active{
+	color: #FE980F !important;
+}

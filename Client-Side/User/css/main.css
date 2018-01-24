@@ -880,11 +880,12 @@ h2.title {
   font-size: 14px;
   font-weight: 400;
   color: #696763;
+  height: 40px;
 }
 
 .productinfo img{
   width: 100%;
-  height: 154px;
+  height: 155px;
 }
 
 .productinfo{

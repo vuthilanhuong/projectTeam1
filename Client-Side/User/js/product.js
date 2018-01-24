@@ -13,8 +13,8 @@ function paging(total,page,query){
 	    first: '<<',
         last: '>>',
 	    onPageClick: function (event, currentPage) {
-	      	window.location.href = 'product.html?page='+currentPage+query
-	      	console.log(currentPage)
+	    	location.hash = '?page='+currentPage+query;
+	      	loadProduct();
 		}		
 	});
 };
@@ -29,6 +29,11 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 };
 
+function formatPrice(price){
+	var result = price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+	return result;
+};
+
 function loadProduct(){
 	var Brand = getParameterByName('Brand');
 	var ProductType = getParameterByName('ProductType');
@@ -39,9 +44,13 @@ function loadProduct(){
 		page = 1
 	};
 	if(Brand !== null){
-		query = '&Brand='+Brand
+		query = '&Brand='+Brand;
+		$('#'+Brand).addClass("active");
+		$('#'+ProductType).removeClass("active");
 	}else if(ProductType !== null){
 		query = '&ProductType='+ProductType
+		$('#'+ProductType).addClass("active");
+		$('#'+Brand).removeClass("active");
 	}else if(search !== null){
 		query = '&search='+search
 	}else{
@@ -59,14 +68,14 @@ function loadProduct(){
 				content +=			'<div class="single-products">';
 				content +=					'<div class="productinfo text-center">';
 				content +=						'<a href="product-details.html?id='+product[i]._id+'"><img src="'+product[i].Picture1+'" alt=""></a>';
-				content +=						'<h2>'+product[i].Price+' VNĐ</h2>';
+				content +=						'<h2>'+formatPrice(product[i].Price)+' VNĐ</h2>';
 				content +=						'<a href="product-details.html?id='+product[i]._id+'"><p>'+product[i].ProductName+'</p></a>';
 				content +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				content +=					'</div>';
 				content +=			'</div>';
 				content +=			'<div class="choose">';
 				content +=				'<ul class="nav nav-pills nav-justified">';
-				content +=					'<li><a href="#"><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
+				content +=					'<li><a href="javascript:void(0)" onclick=\'compare('+JSON.stringify(product[i])+')\'><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
 				content +=				'</ul>';
 				content +=			'</div>';
 				content +=		'</div>';

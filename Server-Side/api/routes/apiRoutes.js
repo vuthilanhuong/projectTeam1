@@ -13,7 +13,7 @@ module.exports = function(app){
 		.get(memberController.get_detail)
 		.put(memberController.update)
 		.delete(memberController.delete);
-		
+
 	app.route('/_api/v1/login')
 		.post(memberController.login);
 	app.route('/_api/v1/getUser/:id')
@@ -54,7 +54,9 @@ module.exports = function(app){
 	// 	.get(orderController.get_detail)
 	// 	.put(orderController.update)
 	// 	.delete(orderController.delete);
+
 //cast
 	// app.route('/_api/v1/shopping-cart')
 	// 	.post(shoppingCartController.saveCart);
+
 };
