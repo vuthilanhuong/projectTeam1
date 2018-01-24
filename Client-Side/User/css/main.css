@@ -1429,7 +1429,6 @@ h2.title {
 #form {
   display: block;
   margin-bottom: 185px;
-  margin-top: 185px;
   overflow: hidden;
 }
 
@@ -1462,7 +1461,7 @@ h2.title {
   margin-bottom: 10px;
   outline: medium none;
   padding-left: 10px;
-  width: 100%;
+  width: 60%;
 }
 
 .login-form form span{
@@ -1923,7 +1922,7 @@ h2.title {
 
 .order-message textarea {
   font-size: 12px;
-  height: 335px;
+  height: 300px;
   margin-bottom: 20px;
   padding: 15px 20px;
 }
