@@ -85,7 +85,7 @@ function loadProduct(){
 				contentItem1 +=			'</div>';
 				contentItem1 +=			'<div class="choose">';
 				contentItem1 +=				'<ul class="nav nav-pills nav-justified">';
-				contentItem1 +=					'<li><a href="#"><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
+				contentItem1 +=					'<li><a href="javascript:void(0)" onclick=\'compare('+JSON.stringify(product[i])+')\'><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
 				contentItem1 +=				'</ul>';
 				contentItem1 +=			'</div>';
 				contentItem1 +=		'</div>';
@@ -106,7 +106,7 @@ function loadProduct(){
 				contentItem2 +=			'</div>';
 				contentItem2 +=			'<div class="choose">';
 				contentItem2 +=				'<ul class="nav nav-pills nav-justified">';
-				contentItem2 +=					'<li><a href="#"><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
+				contentItem2 +=					'<li><a href="javascript:void(0)" onclick=\'compare('+JSON.stringify(product[i])+')\'><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
 				contentItem2 +=				'</ul>';
 				contentItem2 +=			'</div>';
 				contentItem2 +=		'</div>';
