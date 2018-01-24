@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Đăng Nhập</title>
+    <title>Đăng ký</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -70,8 +70,8 @@
 				</div>
 			</div>
 		</div><!--/header-middle-->
-		<!-- <div class="header-bottom">
-			<div class="container">
+		<!-- <div class="header-bottom"><!--header-bottom-->
+			<!-- <div class="container">
 				<div class="row">
 					<div class="col-sm-9">
 						<div class="navbar-header">
@@ -108,7 +108,7 @@
 					</div>
 				</div>
 			</div>
-		</div> -->
+		</div> --><!--/header-bottom--> 
 	</header><!--/header-->
 	
 	<section id="form"><!--form-->
@@ -116,27 +116,85 @@
 			<div class="row">
 				<div class="col-sm-9 col-sm-offset-2">
 					<div class="signup-form"><!--sign up form-->
-						<h2>Đăng Nhập Tài Khoản</h2>
-							<form class="form-horizontal" action="#" style="margin-top: 70px" >
+						<h2>Đăng Ký Người Dùng</h2>
+							<form class="form-horizontal" action="#">
+								<div class="form-group">
+							      <label class="control-label col-sm-2" for="email">Tên đầy đủ :</label>
+							      <div class="col-sm-10">
+							        <input type="text" class="form-control" id="email" placeholder="Mời nhập tên" name="email">
+							        <p style="color: red">*  Tên đầy đủ phải dài hơn 4 ký tự</p>
+							        <p style="color: red">*  Tên đầy đủ không được bỏ trống</p>
+							      </div>
+							    </div>
 							    <div class="form-group">
 							      <label class="control-label col-sm-2" for="email">Tài khoản:</label>
 							      <div class="col-sm-10">
 							        <input type="text" class="form-control" id="email" placeholder="Mời nhập tài khoàn" name="email">
+							        <p style="color: red">*  TNhậphoản phải dài hơn 4 và nhỏ hơn 15 ký tự</p>
+							        <p style="color: red">*  Tài khoản đã tồn tại</p>
+							        <p style="color: red">*  Tài khoản không được bỏ trống</p>
 							      </div>
 							    </div>
 							    <div class="form-group">
 							      <label class="control-label col-sm-2" for="email">Mật khẩu:</label>
 							      <div class="col-sm-10">
 							        <input type="password" class="form-control" id="email" placeholder="Mời nhập mật khẩu" name="email">
-							        <ins style="color: blue"><a href="register.html">Bạn chưa có tài khoản ?</a></ins><br>
+							        <p style="color: red">*  Tài khoản phải dài hơn 6 và nhỏ hơn 18 ký tự</p>
+							        <p style="color: red">*  Mật khẩu không được bỏ trống</p>
+							      </div>
+							    </div>
+							    <div class="form-group">
+							      <label class="control-label col-sm-2" for="email">Xác nhận mật khẩu:</label>
+							      <div class="col-sm-10">
+							        <input type="password" class="form-control" id="email" placeholder="Nhập lại mật khẩu" name="email">
+							        <p style="color: red">*  Mật khẩu các nhận không khớp</p>
+							        <p style="color: red">*  Mật khẩu xác nhận không được bỏ trống</p>
+							      </div>
+							    </div>
+							    <div class="form-group">
+							      <label class="control-label col-sm-2" for="pwd">email:</label>
+							      <div class="col-sm-10">          
+							        <input type="email" class="form-control" id="pwd" placeholder="Mời nhập email" name="pwd">
+							        <p style="color: red">*  Email phải dài hơn 6 ký tự</p>
+							        <p style="color: red">*  Email đã tồn tại</p>
+							        <p style="color: red">*  Email không được bỏ trống</p>
+							      </div>
+							    </div>
+							    <div class="form-group">
+							      <label class="control-label col-sm-2" for="pwd">Ngày sinh:</label>
+							      <div class="col-sm-10">          
+							        <input type="date" class="form-control" id="pwd" placeholder="Mời nhập ngày sinh" name="pwd">
+							        <p style="color: red">*  Ngày sinh không hợp lệ</p>
+							        <p style="color: red">*  Ngày sinh không được bỏ trống</p>
+							      </div>
+							    </div>
+							    <div class="form-group">
+										<label class="control-label col-sm-2" for="pwd">Giới tính</label>
+										<div class="col-sm-10">
+											<div class="container">
+											  <form>
+											    <label class="radio-inline">
+											    <input type="radio" name="optradio" value="1" checked>Nam
+												</label>
+												<label class="radio-inline">
+											    <input type="radio" name="optradio" value="0">Nữ
+												</label>
+											  </form>
+											</div>
+								</div>
+								<div class="form-group">
+							      <label class="control-label col-sm-2" for="pwd">Ảnh đại diện:</label>
+							      <div class="col-sm-10">          
+							        <input type="file" class="form-control" id="pwd" placeholder="Nhập ảnh đại diện" name="pwd">
+							        <p style="color: red">*  Ảnh đại diện không được bỏ trống</p>
 							      </div>
 							    </div>
 							    <div class="form-group">
 							      <div class="col-sm-offset-2 col-sm-10">
-							        <button type="submit" class="btn btn-default">Đăng Nhập</button>
+							        <button type="submit" class="btn btn-default">Đăng Ký</button>
 							      </div>
 							    </div>
-							</form>
+							  </form>
 					</div>
 				</div>
 			</div>
@@ -145,7 +203,7 @@
 	
 	
 	<footer id="footer"><!--Footer-->
-		<div class="footer-bottom" style="margin-top: 20%">
+		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
 					<p class="pull-left">Copyright © 2018 Aptech-FPT.</p>
