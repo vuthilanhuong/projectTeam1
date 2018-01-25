@@ -1,8 +1,7 @@
 var memberController = require('../controllers/memberController');
 var adminController = require('../controllers/adminController');
 var productController = require('../controllers/productController');
-// var shoppingCartController = require('../controllers/shoppingCartController');
-
+// var orderController = require('../controllers/orderController');
 
 module.exports = function(app){
 //member
@@ -13,7 +12,6 @@ module.exports = function(app){
 		.get(memberController.get_detail)
 		.put(memberController.update)
 		.delete(memberController.delete);
-
 	app.route('/_api/v1/login')
 		.post(memberController.login);
 	app.route('/_api/v1/getUser/:id')
@@ -42,7 +40,6 @@ module.exports = function(app){
 	app.route('/_api/v1/products')
 		.post(productController.add)
 		.get(productController.get_list);
-
 	app.route('/_api/v1/products/:id')
 		.get(productController.get_detail)
 		.put(productController.update)
@@ -54,9 +51,4 @@ module.exports = function(app){
 	// 	.get(orderController.get_detail)
 	// 	.put(orderController.update)
 	// 	.delete(orderController.delete);
-
-//cast
-	// app.route('/_api/v1/shopping-cart')
-	// 	.post(shoppingCartController.saveCart);
-
 };

@@ -46,8 +46,10 @@ app.use(function(req, res, next) {
   }
 });
 
-var apiRoutes = require('./api/routes/apiRoutes');
-apiRoutes(app);
+
+
+var studentRoutes = require('./api/routes/apiRoutes');
+studentRoutes(app);
 
 app.listen('3000',function(){
 	console.log('Start at port 3000');
