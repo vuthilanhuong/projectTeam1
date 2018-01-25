@@ -1,0 +1,159 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+	<h1>
+		Quản Lý Admin
+		<small>Tạo mới Admin</small>
+	</h1>
+</div>
+<div class="content" ng-controller="addAdminCtrl">
+	<div class="row">
+		<div class="box">
+			<form class="form-horizontal" ng-submit="submitForm()" name="myForm" novalidate>
+				<div class="box-header">
+    				<h3 class="box-title">Tạo mới Admin</h3>
+    			</div>             
+				<div class="box-body">	
+					<div class="col-md-push-2 col-md-6">
+		                <div class="form-group">
+		                    <label class="col-sm-3 control-label">
+		                        Tên Đầy Đủ</label>
+		                    <div class="col-sm-9">
+		                        <input type="text" class="form-control" ng-model="sendData.fullName" placeholder="Tên đầy đủ" required name="fullName" minlength="4">
+		                    </div>
+		                </div>
+		                <div class="form-group" ng-show="myForm.fullName.$invalid && myForm.fullName.$dirty">
+		                    <label class="col-sm-3 control-label">
+		                            &nbsp;</label>
+		                    <div class="col-sm-9">
+		                        <p class="msgError" ng-show="myForm.fullName.$error.minlength">Tên phải có từ 4 ký tự trở lên</p>
+		                        <p class="msgError" ng-show="myForm.fullName.$error.required">Không được để trống dòng này</p>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label class="col-sm-3 control-label">
+		                        Tài Khoản</label>
+		                    <div class="col-sm-9">
+		                        <input type="text" class="form-control" ng-model="sendData.userName" placeholder="Tài khoản" required name="userName" ng-blur="userError()" ng-change="resetUser()" minlength="4" maxlength="15">
+		                    </div>
+		                </div>
+		                <div class="form-group" ng-show="myForm.userName.$invalid && myForm.userName.$dirty|| checkUser">
+		                    <label class="col-sm-3 control-label">
+		                            &nbsp;</label>
+		                    <div class="col-sm-9">
+		                        <p class="msgError" ng-show="myForm.userName.$error.minlength || myForm.userName.$error.maxlength">Tài khoản phải từ 4 đến 15 ký tự</p>
+		                        <p class="msgError" ng-show="myForm.userName.$error.required">Không được để trống dòng này</p>
+		                        <p class="msgError" ng-show="checkUser">Tài khoản đã tồn tại</p>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label class="col-sm-3 control-label">
+		                        Mật Khẩu</label>
+		                    <div class="col-sm-9">
+		                        <input type="password" class="form-control" ng-model="sendData.password" placeholder="Mật khẩu" required ng-change="passwordError()" name="password" minlength="6" maxlength="18">
+		                    </div>
+		                </div>
+		                <div class="form-group" ng-show="myForm.password.$invalid && myForm.password.$dirty">
+		                    <label class="col-sm-3 control-label">
+		                            &nbsp;</label>
+		                    <div class="col-sm-9">
+		                        <p class="msgError" ng-show="myForm.password.$error.minlength || myForm.password.$error.maxlength">Mật khẩu phải từ 6-18 ký tự</p>
+		                        <p class="msgError" ng-show="myForm.password.$error.required">Không được để trống dòng này</p>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label class="col-sm-3 control-label">
+		                        Xác Nhận Mật Khẩu</label>
+		                    <div class="col-sm-9">
+		                        <input type="password" class="form-control" ng-model="confirmPassword" placeholder="Nhập lại mật khẩu" required name="confirm" ng-change="resetConfirm()" ng-blur="confirmError()">
+		                    </div>
+		                </div>
+		                <div class="form-group" ng-show="myForm.confirm.$invalid && myForm.confirm.$dirty || checkConfirm">
+		                    <label class="col-sm-3 control-label">
+		                            &nbsp;</label>
+		                    <div class="col-sm-9">
+		                        <p class="msgError" ng-show="myForm.confirm.$error.required">Không được để trống dòng này</p>
+		                        <p class="msgError" ng-show="checkConfirm">Mật khẩu không khớp</p>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label class="col-sm-3 control-label">
+		                        Email</label>
+		                    <div class="col-sm-9">
+		                        <input type="email" class="form-control" ng-model="sendData.email" placeholder="Email" required name="email" minlength="6" ng-blur="emailError()" ng-change="resetEmail()">
+		                    </div>
+		                </div>
+		                <div class="form-group" ng-show="myForm.email.$invalid && myForm.email.$dirty || checkEmail">
+		                    <label class="col-sm-3 control-label">
+		                            &nbsp;</label>
+		                    <div class="col-sm-9">
+		                        <p class="msgError" ng-show="myForm.email.$error.minlength">Email phải có 6 ký tự trở lên</p>
+		                        <p class="msgError" ng-show="checkEmail">Email đã tồn tại</p>
+		                        <p class="msgError" ng-show="myForm.email.$error.email">Email không hợp lệ</p>
+		                        <p class="msgError" ng-show="myForm.email.$error.required">Không được để trống dòng này</p>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label class="col-sm-3 control-label">
+		                        Ngày Sinh</label>
+		                    <div class="col-sm-9">
+		                        <input type="date" class="form-control" ng-model="sendData.birthDay" name="birthDay" required ng-change="birthDayError()">
+		                    </div>
+		                </div>
+		                <div class="form-group" ng-show="checkBirthDay">
+		                    <label class="col-sm-3 control-label">
+		                            &nbsp;</label>
+		                    <div class="col-sm-9">
+		                        <p class="msgError">Ngày sinh không hợp lệ</p>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label class="col-sm-3 control-label">
+		                        Giới Tính</label>
+		                    <div class="col-sm-3">
+		                        <select ng-init="sendData.gender = gender[0]" ng-model="sendData.gender" ng-options="option.name for option in gender" class="form-control">
+		                        </select>
+		                    </div>
+		                </div>
+		                <div class="form-group">
+		                    <label class="col-sm-3 control-label">
+		                        Ảnh Đại Diện</label>
+		                    <div class="col-sm-9">
+		                        <label class="btn btn-primary btn-file">
+		                            Chọn Ảnh <input type="file" id="fileUpload" name="file" ng-model='fileUpload' onchange="angular.element(this).scope().uploading()" required style="display: none;">
+		                        </label>
+		                    </div>
+		                </div>
+		                <div class="form-group" ng-show="myForm.file.$invalid && myForm.file.$dirty || uploadErr">
+		                    <label class="col-sm-3 control-label">
+		                            &nbsp;</label>
+		                    <div class="col-sm-9" >
+		                        <p class="msgError" ng-show="uploadErr" >Bạn không thể tải lên nhiều hơn 1 ảnh</p>
+		                        <p class="msgError" ng-show="myForm.file.$error.required">Không được để trống ảnh đại diện</p>
+		                    </div>
+		                </div>
+		                <div class="form-group" ng-hide="previewShow">
+		                    <label class="col-sm-3 control-label">
+		                        Xem Trước Ảnh</label>
+		                    <div class="preview col-sm-3">
+		                        <img class="img-responsive" src="{{img}}">
+		                    </div>
+		                </div>     
+		            </div>  				
+				</div>
+				<!-- /.box-body -->
+				<div class="box-footer">  
+					<div class="col-sm-offset-4 col-sm-8">
+	                    <button type="submit" class="btn btn-success btn-sm" ng-disabled="myForm.userName.$pristine && myForm.user.$invalid || checkUser || myForm.email.$pristine && myForm.email.$invalid || checkEmail || myForm.fullName.$invalid && myForm.fullName.$pristine || myForm.password.$invalid && myForm.password.$pristine || myForm.confirm.$invalid && myForm.confirm.$pristine || checkConfirm || myForm.birthDay.$invalid && myForm.birthDay.$pristine || checkBirthDay || previewShow">
+	                        Hoàn Thành</button>
+	                     <button type="reset" ng-click="resetForm()" class="btn btn-default btn-sm">
+	                    Làm Lại</button>
+	                </div>             
+				</div>
+			</form>
+		</div>
+		<!-- /.box -->        
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /.content -->
+
