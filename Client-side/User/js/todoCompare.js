@@ -8,6 +8,17 @@ function formatPrice(price){
 };
 
 function loadCompare(){
+    var productArray = [];
+    productArray = JSON.parse(localStorage.compare);
+    if(productArray.length == 0){
+		var content = '';
+			content +=  '<div class="text-center">';
+			content +=  '<h2>Lỗi!</h2>';
+			content +=  '<br>';
+			content +=  '<h4>Chưa có sản phẩm</h4>';
+			content +=  '</div>';
+    	$('#tableCompare .row .col-md-10').html(content);
+    }
 	var productImg ='<td class="titleCompare">Ảnh</td>';
 	var productName ='<th class="text-center">Tên Sản Phẩm</th>';
 	var productPrice ='<td class="titleCompare">Giá</td>';
@@ -16,8 +27,6 @@ function loadCompare(){
 	var productSize ='<td class="titleCompare">Kích Thước</td>';
 	var productColor ='<td class="titleCompare">Màu Sắc</td>';
 	var productDiscribe = '<td class="titleCompare">Mô Tả</td>';
-    var productArray = [];
-    productArray = JSON.parse(localStorage.compare);
     for (var i = 0; i < productArray.length; i++) {
 		productName += '<th class="text-center ProductName" style="position:relative;">'+productArray[i].ProductName+'<a class="remove" onclick="deleteProduct(\''+productArray[i]._id+'\')" href="javascript:void(0)"><i class="fa fa-times" aria-hidden="true"></i></a></th>';
     	productImg += '<td><img src="'+productArray[i].Picture1+'" class="imgTable"></td>';
