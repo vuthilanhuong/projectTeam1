@@ -1,0 +1,113 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Quản lý sản phẩm
+		<small>Sửa sản phẩm</small>
+	</h1>
+</section>
+<div class="content" ng-init="loadFix()">
+	<div class="row">
+		<form ng-submit="submitFix(detail_Product)" class="form-horizontal col-xs-12">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">Sửa sản phẩm</h3>
+				</div>
+				<!-- /.box-header -->          
+				<div class="box-body">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Tên sản phẩm</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="detail_Product.ProductName" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Giá</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="detail_Product.Price" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Loại sản phẩm:</label>
+						<div class="col-sm-3">
+							<select class="form-control" ng-model="detail_Product.ProductType" ng-options="option for option in ProductType">
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Hãng:</label>
+						<div class="col-sm-3">
+							<select class="form-control" ng-model="detail_Product.Brand" ng-options="option for option in Brand">
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Kích cỡ:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="detail_Product.Size" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Màu sắc</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="detail_Product.Color" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Mô tả</label>
+						<div class="col-sm-3">
+							<textarea class="form-control" rows="5" ng-model="detail_Product.Discribe" required></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Tình trạng:</label>
+						<div class="col-sm-3">
+							<select ng-init="detail_Product.Availability = Availability[0]" class="form-control" ng-model="detail_Product.Availability" ng-options="option for option in Availability">
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Ảnh 1</label>
+						<div class="col-sm-3">
+				        	<label class="btn btn-primary btn-file">
+	                            Choose File <input type="file" accept=".jpg, .jpeg, .png" id="fileUpload1" name="file" ng-model='uploadfile' onchange="angular.element(this).scope().uploading1()" style="display: none;">
+	                        </label>
+				        </div>
+					</div>
+					<div class="preview form-group">
+						<label class="col-sm-3 control-label">&nbsp;</label>
+						<div class="col-sm-3">
+				        	<img src="{{detail_Product.Picture1}}" class="img-responsive" >
+				        </div>
+				    </div>
+					
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Ảnh 2</label>
+						<div class="col-sm-3">
+				        	<label class="btn btn-primary btn-file">
+	                            Choose File <input type="file" accept=".jpg, .jpeg, .png" id="fileUpload2" name="file" ng-model='upfile' onchange="angular.element(this).scope().uploading2()" style="display: none;">
+	                        </label>
+				        </div>
+					</div>
+					<div class="preview form-group">
+						<label class="col-sm-3 control-label">&nbsp;</label>
+						<div class="col-sm-3">
+				        	<img src="{{detail_Product.Picture2}}" class="img-responsive">
+				        </div>
+				    </div>					
+				</div>
+				<!-- /.box-body -->
+				<div class="box-footer">
+					<div class="col-md-3 col-md-push-4">
+						<button type="submit" class="btn btn-success">Xong</button>
+						<a ui-sref="Product({pageID:1})" class="btn btn-default">Quay lại</a>    
+					</div>           
+				</div>
+			</div>
+			<!-- /.box -->        
+		</form>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /.content -->
+
