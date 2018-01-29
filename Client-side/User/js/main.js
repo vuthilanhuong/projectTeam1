@@ -123,7 +123,7 @@ function addCart(product){
 	items = JSON.parse(localStorage.cart);
 	for (var i = 0; i < items.length; i++) {
 		if(items[i]._id == product._id){
-			items[i].quantity = items[i].quantity + 1;
+			items[i].quantity = Number(Number(items[i].quantity) + 1);
 			localStorage.cart = JSON.stringify(items);
 			$.notify({
 				icon: 'fa fa-check',
