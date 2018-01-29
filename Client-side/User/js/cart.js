@@ -1,12 +1,12 @@
 $(document).ready(function() {
     cart();
 });
-
+//fomat định dạng VND
 function formatPrice(price){
 	var result = price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
 	return result;
 };
-
+//Hàm chính 
 function cart(){
 	var items = [];
 	if (localStorage.cart === undefined) {
@@ -54,7 +54,7 @@ function cart(){
 			content += 	'</tr>';
 			totalCart = totalCart + totalPrice; 
 		};
-		contentTotalPrice +=	'<tr>';
+		contentTotalPrice +=	'<tr id="totalCartPrice">';
 		contentTotalPrice +=		'<td colspan="3">&nbsp;</td>';
 		contentTotalPrice +=		'<td colspan="3">';
 		contentTotalPrice +=			'<table class="table table-condensed total-result">';
@@ -95,6 +95,7 @@ function cart(){
 				$(this).val(1);
 				quantityCart = 1;
 				$(this).parent().parent().parent().children('.cart_total').html('<p class="cart_total_price">'+formatPrice(priceProduct)+' VNĐ</p>');
+				cart();
 			}else if(jQuery.type(Number($(this).val())) !== "number"){
 				$.notify({
 					icon: 'fa fa-warning',
@@ -109,8 +110,10 @@ function cart(){
 				});
 				$(this).val(1);
 				$(this).parent().parent().parent().children('.cart_total').html('<p class="cart_total_price">'+formatPrice(priceProduct)+' VNĐ</p>');
+				cart();
 			}else{
 				$(this).parent().parent().parent().children('.cart_total').html('<p class="cart_total_price">'+formatPrice(Math.ceil(priceProduct*quantityCart))+' VNĐ</p>');
+				cart();
 			};
 			for (var i = 0; i < items.length; i++) {
 				if (items[i]._id == id) {
@@ -138,8 +141,10 @@ function cart(){
 				});
 				$(this).parent().children('.cart_quantity_input').val(1);
 				$(this).parent().parent().parent().children('.cart_total').html('<p class="cart_total_price">'+formatPrice(priceProduct)+' VNĐ</p>');
+				cart();
 			}else{
 				$(this).parent().parent().parent().children('.cart_total').html('<p class="cart_total_price">'+formatPrice(Math.ceil(priceProduct*quantityCart))+' VNĐ</p>');
+				cart();
 			};
 			for (var i = 0; i < items.length; i++) {
 				if (items[i]._id == id) {
