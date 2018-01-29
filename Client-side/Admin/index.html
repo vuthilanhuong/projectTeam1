@@ -128,7 +128,19 @@
 							<li><a ui-sref="Admin({ pageID:1})"><i class="fa fa-circle-o"></i> Danh Sách Admin</a></li>
 							<li><a ui-sref="AddAdmin"><i class="fa fa-circle-o"></i> Tạo Admin</a></li>
 						</ul>
-					</li>            
+					</li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fa fa-user"></i> <span>Quản Lí Order</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-left pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a ui-sref="Order({ orderID:1})"><i class="fa fa-circle-o"></i> Danh Sách Order</a></li>
+							<li><a ui-sref="OrderDetail({ orderDetailID:1})"><i class="fa fa-circle-o"></i> Danh Sách Order Chi Tiết</a></li>
+						</ul>
+					</li>                     
 				</ul>
 			</section>
 			<!-- /.sidebar -->

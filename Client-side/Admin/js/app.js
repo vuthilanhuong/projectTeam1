@@ -41,6 +41,14 @@ function appRouterConfig($stateProvider, $urlRouterProvider) {
 				url: '/admin/:userID/edit',
 				templateUrl: 'pages/admin/editAdmin.html',
 				controller: 'editAdminCtrl'
+			}).state('Order', {
+				url: '/order/:orderID',
+				templateUrl: 'pages/order/order.html',
+				controller: 'orderCtrl'
+			}).state('OrderDetail', {
+				url: '/orderDetail/:orderDetailID',
+				templateUrl: 'pages/order/order_detail.html',
+				controller: 'orderDetailCtrl'
 			});
 	
 		$urlRouterProvider.otherwise('/product/page/1'); 
@@ -79,6 +87,18 @@ app.controller('indexCtrl',function($scope,$http){
 });
 
 app.controller('productCtrl',function($scope,$stateParams,$http){
+	$scope.ProductType = [
+		{name:"Kính Thể Thao",type:"&ProductType=kinh-the-thao"},
+		{name:"Kính Áp Tròng",type:"&ProductType=kinh-ap-trong"},
+		{name:"Kính Mát Nữ",type:"&ProductType=kinh-mat-nu"},
+		{name:"Kính Mát Nam",type:"&ProductType=kinh-mat-nam"},
+		{name:"Kính Trẻ Em",type:"&ProductType=kinh-mat-tre-em"}];
+	$scope.Brand = [
+		{name:"Ray-Ban",type:"&Brand=Ray-Ban"},
+		{name:"Oakley",type:"&Brand=Oakley"},
+		{name:"Dolce & Gabbana",type:"&Brand=Dolce-And-Gabbana"},
+		{name:"Burberry",type:"&Brand=Burberry"},
+		{name:"Versace",type:"&Brand=Versace"}];
 	var idxPage = $stateParams.pageID;
 	$scope.loadProduct = function() {
 	    $http({
@@ -438,8 +458,7 @@ app.controller("addUserCtrl",function($scope,$http){
 
 	$scope.birthDayError = function(){
 		var today = new Date();
-		var condition = today.setFullYear(today.getFullYear()-3)
-
+		var condition = today.setFullYear(today.getFullYear()-3);
 		if ($scope.sendData.birthDay < condition) {
 			$scope.checkBirthDay = false;
 		}else{
@@ -563,7 +582,6 @@ app.controller("addAdminCtrl",function($scope,$http){
 
 	$scope.submitForm = function(){
 		var data = $scope.sendData;
-			data.birthDay = $scope.birthDay;
 			data.gender = data.gender.value;
 			data.avatarUrl = $scope.img;
 			console.log(data);
@@ -698,4 +716,66 @@ app.controller('editAdminCtrl',function($scope,$http){
 	    });
 	};
 
+});
+
+app.controller("orderCtrl",function($scope,$stateParams,$http){
+	var idxPage = $stateParams.orderID;
+
+	$scope.loadOrder = function() {
+	    $http({
+			method: 'GET',
+			url: 'http://localhost:3000/_api/v1/order/' + '?page=' + idxPage
+		}).then(function mySuccess(response){
+    		console.log(response);
+    		$scope.restored_data = response.data;
+            console.log('Get thanh cong');
+    	}, function myError(response) {
+    		console.log('Get loi');
+    	});
+	    $scope.currentPage = idxPage;
+	};
+
+	$scope.remove = function(item){ 
+        $http({
+			method: 'DELETE',
+			url: 'http://localhost:3000/_api/v1/order/' + item._id
+		}).then(function mySuccess(response){
+    		console.log(response);
+            console.log('Delete thanh cong');
+            window.location.reload();
+    	}, function myError(response) {
+    		console.log('Delete that bai');
+    	});   
+    };
+});
+
+app.controller("orderDetailCtrl",function($scope,$stateParams,$http){
+	var idxPage = $stateParams.orderDetailID;
+
+	$scope.loadOrderDetail = function() {
+	    $http({
+			method: 'GET',
+			url: 'http://localhost:3000/_api/v1/orderDetail/' + '?page=' + idxPage
+		}).then(function mySuccess(response){
+    		console.log(response.data);
+    		$scope.restored_data = response.data;
+            console.log('Get thanh cong');
+    	}, function myError(response) {
+    		console.log('Get loi');
+    	});
+	    $scope.currentPage = idxPage;
+	};
+
+	$scope.remove = function(item){ 
+        $http({
+			method: 'DELETE',
+			url: 'http://localhost:3000/_api/v1/orderDetail/' + item._id
+		}).then(function mySuccess(response){
+    		console.log(response);
+            console.log('Delete thanh cong');
+            window.location.reload();
+    	}, function myError(response) {
+    		console.log('Delete that bai');
+    	});   
+    };
 });
