@@ -1,0 +1,85 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+	<h1>
+		Quản lý sản phẩm
+		<small>Danh sách sản phẩm</small>
+		<!-- <select ng-init="selectProductType = ProductType[0]" class="form-control findProduct" ng-model="selectProductType" ng-options="option.name for option in ProductType">
+		<select ng-init="selectBrand = Brand[0]" class="form-control findProduct" ng-model="selectBrand" ng-options="option.name for option in Brand"></select> -->
+	</h1>
+
+</div>
+<div class="content" ng-init="loadProduct()">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">Danh sách sản phẩm</h3>
+				</div>
+				<!-- /.box-header -->          
+				<div class="box-body">
+					<div class="row">
+					    <div class="col-md-10">
+						    <table class="table table-condensed text-center">
+						        <thead>
+						            <tr>
+						                <th>#</th>
+						                <th>Ảnh</th>
+						                <th>Tên sản phẩm</th>
+						                <th>Loại </th>
+						                <th>Hãng </th>
+						                <th>&nbsp;</th>
+						            </tr>
+						        </thead>
+						        <tbody>
+						        	<div>
+							           <tr ng-repeat="product in restored_data.listProduct">
+								           	<form class="row">
+								                <td class="col-xs-2 col-md-1">{{$index + 1 + (currentPage-1)*10}}</td>
+								                <td class="col-xs-2 col-md-1"><img src="{{product.Picture1}}" class="img-responsive"></td>
+								                <td class="col-xs-2 col-md-3">{{product.ProductName}}</td>
+								                <td class="col-xs-2 col-md-3">{{product.ProductType}}</td>
+								                <td class="col-xs-2 col-md-3">{{product.Brand}}</td>
+								                <td class="col-xs-2 col-md-1">
+								                    <div class="dropdown">		                    	
+								                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tùy Chọn <span class="caret"></span></button>
+								                        <ul class="dropdown-menu">
+								                        	<li><a href="javascript:void(0)" ui-sref="EditProduct({productID: product._id})" ng-click="edit(product)">Chỉnh sửa </a></li>
+								                            <li><a href="javascript:void(0)" ng-click="remove(product)">Xóa</a></li>
+								                        </ul>                       
+								                    </div> 
+								                </td>
+								            </form>
+							            </tr>
+						        	</div>
+						        </tbody>
+						    </table>
+						</div>	
+					</div>
+				</div>
+				<!-- /.box-body -->
+				<div class="box-footer">                
+					<div class="col-md-6 col-md-offset-6">
+						<nav aria-label="Page navigation">
+							<ul uib-pagination 
+								boundary-links="true" 
+								total-items="restored_data.total" 
+								ng-model="currentPage" 
+								class="pagination-sm" 
+								previous-text="&lsaquo;" 
+								next-text="&rsaquo;" 
+								first-text="&laquo;" 
+								last-text="&raquo;"
+								ui-sref="Product({pageID:currentPage})">
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- /.box -->        
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /.content -->
+
