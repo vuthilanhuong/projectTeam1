@@ -26,30 +26,33 @@
 </head><!--/head-->
 
 <body>
+	<div id="loadAjax">
+		<img src="images/Dual Ring-0.8s-200px.gif" width="100">	
+	</div>
 	<header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i>+84948664870</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> hsang2899@gmail.com</a></li>
-							</ul>
+			<div class="header_top"><!--header_top-->
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="contactinfo">
+								<ul class="nav nav-pills">
+									<li><a href="#"><i class="fa fa-phone"></i>+84948664870</a></li>
+									<li><a href="#"><i class="fa fa-envelope"></i> eyeonic@gmail.com</a></li>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
+						<div class="col-sm-6">
+							<div class="social-icons pull-right">
+								<ul class="nav navbar-nav">
+									<li><a target="_blank" href="https://www.facebook.com/hoang.sang.99"><i class="fa fa-facebook"></i></a></li>
+									<li><a target="_blank" href="https://twitter.com/hsang2899"><i class="fa fa-twitter"></i></a></li>
+									<li><a target="_blank" href="https://plus.google.com/u/1/102194390505256204860"><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div><!--/header_top-->
+			</div><!--/header_top-->
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
@@ -60,10 +63,10 @@
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
+							<ul id="menu-bar" class="nav navbar-nav">
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i>Kiểm Tra Đơn Hàng</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
+								<li id="login"><a href="login.html"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
 							</ul>
 						</div>
 					</div>
@@ -86,7 +89,7 @@
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Trang Chủ</a></li>
 								<li><a href="product.html">Sản Phẩm</a></li>
-                                <li><a href="compare.html" class="active">So Sánh</a></li>
+                               <li><a class="active" href="compare.html">So Sánh</a></li>
                                 <li><a href="about-us.html">Giới Thiệu</a></li> 					
 								<li><a href="contact-us.html">Liên Hệ</a></li>
 							</ul>
@@ -99,7 +102,7 @@
 								    <input type="text" class="form-control" id="search" placeholder="Tìm kiếm">
 								    <div class="input-group-btn">
 								      <button class="btn btn-default" type="submit" id="submit">
-								        <i class="glyphicon glyphicon-search"></i>
+								        <i class="glyphicon glyphicon-search" id="glyphicon-search"></i>
 								      </button>
 								    </div>
 								</div>
@@ -160,7 +163,6 @@
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript" src="js/search.js"></script>
-    <script type="text/javascript" src="js/todoCompare.js"></script>
+    <script type="text/javascript" src="js/compare.js"></script>
 </body>
 </html>

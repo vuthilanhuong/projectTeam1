@@ -2,6 +2,9 @@ $(document).ready(function() {
     loadProduct();
 });
 
+var quantityProduct = 1;
+var dataProduct = {};
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -17,6 +20,13 @@ function formatPrice(price){
 	return result;
 };
 
+function addProductCart(){
+	dataProduct.quantity = $('#quantity').val();
+	if(dataProduct.quantity > 0){
+		addCart(dataProduct);
+	}
+};
+
 function loadProduct(){
 	var id = getParameterByName('id');
 	$.ajax({
@@ -25,6 +35,7 @@ function loadProduct(){
 		success: function(response){
 			console.log(response);
 			var content = '';
+			dataProduct = response;
 			content += '<div class="col-sm-5">';
 			content +=		'<div class="view-product">';
 			content +=			'<img id="img_01" src="'+response.Picture1+'" data-zoom-image="'+response.Picture1+'" alt="">';
@@ -45,8 +56,8 @@ function loadProduct(){
 			content +=				'<span>'+formatPrice(response.Price)+' VND</span>';
 			content +=			'</span>';
 			content +=			'<p><label>Số Lượng:</label>';
-			content +=			'<input type="text" value="1" style="width:60px;">';
-			content +=			'<button type="button" class="btn btn-fefault cart">';
+			content +=			'<input id="quantity" type="text" value="1" style="width:60px;">';
+			content +=			'<button type="button" onclick="addProductCart()" class="btn btn-fefault cart">';
 			content +=				'<i class="fa fa-shopping-cart"></i>';
 			content +=				' Cho vào giỏ';
 			content +=			'</button></p>';
@@ -84,6 +95,7 @@ function loadProduct(){
 			var contentItem2 = '';
 			var product = response.listProduct;
 			for (var i = 0; i < 3; i++) {
+				product[i].quantity = 1;
 				contentItem1 +=	'<div class="col-sm-4">';
 				contentItem1 +=		'<div class="product-image-wrapper">';
 				contentItem1 +=			'<div class="single-products">';
@@ -91,7 +103,7 @@ function loadProduct(){
 				contentItem1 +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><img src="'+product[i].Picture1+'" alt=""></a>';
 				contentItem1 +=						'<h2>'+formatPrice(product[i].Price)+' VNĐ</h2>';
 				contentItem1 +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><p>'+product[i].ProductName+'</p></a>';
-				contentItem1 +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+				contentItem1 +=						'<a href="javascript:void(0)" onclick=\'addCart('+JSON.stringify(product[i])+')\' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				contentItem1 +=					'</div>';
 				contentItem1 +=			'</div>';
 				contentItem1 +=			'<div class="choose">';
@@ -105,6 +117,7 @@ function loadProduct(){
 			$('.col-sm-9 .carousel-inner .item:first-child').html(contentItem1);
 
 			for (var i = 3; i < 6; i++) {
+				product[i].quantity = 1;
 				contentItem2 +=	'<div class="col-sm-4">';
 				contentItem2 +=		'<div class="product-image-wrapper">';
 				contentItem2 +=			'<div class="single-products">';
@@ -112,7 +125,7 @@ function loadProduct(){
 				contentItem2 +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><img src="'+product[i].Picture1+'" alt=""></a>';
 				contentItem2 +=						'<h2>'+formatPrice(product[i].Price)+' VNĐ</h2>';
 				contentItem2 +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><p>'+product[i].ProductName+'</p></a>';
-				contentItem2 +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+				contentItem2 +=						'<a href="javascript:void(0)" onclick=\'addCart('+JSON.stringify(product[i])+')\' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				contentItem2 +=					'</div>';
 				contentItem2 +=			'</div>';
 				contentItem2 +=			'<div class="choose">';

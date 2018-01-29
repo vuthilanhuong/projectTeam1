@@ -63,6 +63,8 @@ function loadProduct(){
 			var content = '';
 			var product = response.listProduct;
 			for (var i = 0; i < product.length; i++) {
+				console.log(response);
+				product[i].quantity = 1;
 				content +=	'<div class="col-sm-4">';
 				content +=		'<div class="product-image-wrapper">';
 				content +=			'<div class="single-products">';
@@ -70,7 +72,7 @@ function loadProduct(){
 				content +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><img src="'+product[i].Picture1+'" alt=""></a>';
 				content +=						'<h2>'+formatPrice(product[i].Price)+' VNĐ</h2>';
 				content +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><p>'+product[i].ProductName+'</p></a>';
-				content +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+				content +=						'<a href="javascript:void(0)" onclick=\'addCart('+JSON.stringify(product[i])+')\' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				content +=					'</div>';
 				content +=			'</div>';
 				content +=			'<div class="choose">';

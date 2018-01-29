@@ -1,10 +1,13 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
+<div class="content-header">
 	<h1>
 		Quản lý sản phẩm
 		<small>Danh sách sản phẩm</small>
+		<!-- <select ng-init="selectProductType = ProductType[0]" class="form-control findProduct" ng-model="selectProductType" ng-options="option.name for option in ProductType">
+		<select ng-init="selectBrand = Brand[0]" class="form-control findProduct" ng-model="selectBrand" ng-options="option.name for option in Brand"></select> -->
 	</h1>
-</section>
+
+</div>
 <div class="content" ng-init="loadProduct()">
 	<div class="row">
 		<div class="col-md-12">

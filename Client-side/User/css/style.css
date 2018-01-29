@@ -66,7 +66,7 @@ td.titleCompare{
 .ProductName{
 	width: 220px;
 	font-size: 15px;
-	padding-right: 20px
+	padding-right: 20px !important;
 }
 
 .fa-times{
@@ -97,6 +97,7 @@ td.titleCompare{
 }
 
 .discribe{
+	width: 220px;
 	text-align: justify;
 	text-indent: 20px;
 }
@@ -108,4 +109,112 @@ td.titleCompare{
 .choose-zoom{
 	border: 2px black solid;
     padding: 30px 1px;
+}
+
+h2.text-center{
+	margin-bottom: 30px;
+}
+
+.radioInput{
+	height: 13px !important;
+	width: 13px !important;
+	margin-left: 10px !important;
+	margin-right: 5px !important;
+}
+
+.radio label{
+	display: inline-block  !important;
+}
+
+.btn-primary.btn-file{
+	background-color: #428bca;
+	margin-top: 0px;
+}
+
+.btn-default[disabled]{
+	background-color: gray !important;
+	border-radius: 5px; 
+}
+
+
+#btnSubmit{
+	margin: 0px !important;
+}
+
+.user{
+	background: #FFFFFF;
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0;
+    padding-right: 0;
+    margin-top: 10px;
+}
+
+
+
+#loadAjax {
+	width: 120px;
+	height: 200px;
+    position:fixed;
+    top:30%;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    z-index: 1300;
+}
+
+.editQuantity{
+	width: 25px !important;
+}
+
+.cart_description h4 a{
+	font-size: 18px !important;
+}
+
+.cart_description{
+	width: 400px !important;
+}
+
+.cart_delete{
+	width: 33px !important;
+}
+
+.cart_price p {
+	font-size: 18px !important;
+}
+
+.cart_total p {
+	font-size: 18px !important;
+}
+
+#btnCheckout{
+	width: 130px;
+	background: #FE980F;
+    border: medium none;
+    border-radius: 0;
+    color: #FFFFFF;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    padding: 6px 25px;
+}
+
+.inputCheckout{
+	background: #F0F0E9;
+    border: 0 none;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    font-weight: 300;
+}
+
+#noteCheckout{
+	height: 193px !important;
+	font-size: 15px !important;
+}
+
+#totalCart span{
+	font-size: 22px !important;
 }

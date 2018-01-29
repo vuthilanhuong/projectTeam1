@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Product = require('../models/Product');
+var Product = require('../models/product');
 var mongoosePaginate = require('mongoose-paginate');
 
 exports.get_list = function(req, resp){

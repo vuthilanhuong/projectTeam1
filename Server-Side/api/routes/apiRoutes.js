@@ -1,7 +1,9 @@
 var memberController = require('../controllers/memberController');
 var adminController = require('../controllers/adminController');
 var productController = require('../controllers/productController');
-// var orderController = require('../controllers/orderController');
+var cartController = require('../controllers/cartController');
+var orderController = require('../controllers/orderController');
+var orderDetailController = require('../controllers/orderDetailController');
 
 module.exports = function(app){
 //member
@@ -12,13 +14,13 @@ module.exports = function(app){
 		.get(memberController.get_detail)
 		.put(memberController.update)
 		.delete(memberController.delete);
-	app.route('/_api/v1/login')
+	app.route('/_api/v1/members/login')
 		.post(memberController.login);
 	app.route('/_api/v1/getUser/:id')
 		.get(memberController.loginRequired, memberController.getUser);	
-	app.route('/_api/v1/checkEmail')
+	app.route('/_api/v1/members/checkEmail')
 		.post(memberController.checkEmail);
-	app.route('/_api/v1/checkUser')
+	app.route('/_api/v1/members/checkUser')
 		.post(memberController.checkUser);
 //admin
 	app.route('/_api/v1/admins')
@@ -44,11 +46,14 @@ module.exports = function(app){
 		.get(productController.get_detail)
 		.put(productController.update)
 		.delete(productController.delete);
-	// app.route('/_api/v1/order')
-	// 	.post(orderController.add)
-	// 	.get(orderController.get_list);
-	// app.route('/_api/v1/order/:id')
-	// 	.get(orderController.get_detail)
-	// 	.put(orderController.update)
-	// 	.delete(orderController.delete);
+	app.route('/_api/v1/cart')
+		.post(cartController.saveCart);
+	app.route('/_api/v1/order')
+		.get(orderController.get_list);
+	app.route('/_api/v1/order/:id')	
+		.delete(orderController.delete);
+	app.route('/_api/v1/orderDetail')
+		.get(orderDetailController.get_list);
+	app.route('/_api/v1/orderDetail/:id')
+		.delete(orderDetailController.delete);
 };

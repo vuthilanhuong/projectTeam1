@@ -4,6 +4,7 @@ $(document).ready(function() {
     loadProduct();
 });
 
+
 function formatPrice(price){
 	var result = price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
 	return result;
@@ -19,6 +20,7 @@ function loadProduct(){
 			var contentItem2 = '';
 			var product = response.listProduct;
 			for (var i = 0; i < product.length; i++) {
+				product[i].quantity = 1;
 				content +=	'<div class="col-sm-4">';
 				content +=		'<div class="product-image-wrapper">';
 				content +=			'<div class="single-products">';
@@ -26,7 +28,7 @@ function loadProduct(){
 				content +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><img src="'+product[i].Picture1+'" alt=""></a>';
 				content +=						'<h2>'+formatPrice(product[i].Price)+' VNĐ</h2>';
 				content +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><p>'+product[i].ProductName+'</p></a>';
-				content +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+				content +=						'<a href="javascript:void(0)" onclick=\'addCart('+JSON.stringify(product[i])+')\' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				content +=					'</div>';
 				content +=			'</div>';
 				content +=			'<div class="choose">';
@@ -40,6 +42,7 @@ function loadProduct(){
    			$('#features_items').html(content);
 
    			for (var i = 0; i < 3; i++) {
+   				product[i].quantity = 1;
 				contentItem1 +=	'<div class="col-sm-4">';
 				contentItem1 +=		'<div class="product-image-wrapper">';
 				contentItem1 +=			'<div class="single-products">';
@@ -47,12 +50,12 @@ function loadProduct(){
 				contentItem1 +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><img src="'+product[i].Picture1+'" alt=""></a>';
 				contentItem1 +=						'<h2>'+formatPrice(product[i].Price)+' VNĐ</h2>';
 				contentItem1 +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><p>'+product[i].ProductName+'</p></a>';
-				contentItem1 +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+				contentItem1 +=						'<a href="javascript:void(0)" onclick=\'addCart('+JSON.stringify(product[i])+')\' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				contentItem1 +=					'</div>';
 				contentItem1 +=			'</div>';
 				contentItem1 +=			'<div class="choose">';
 				contentItem1 +=				'<ul class="nav nav-pills nav-justified">';
-				contentItem1 +=					'<li><a href="#"><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
+				contentItem1 +=					'<li><a href="javascript:void(0)" onclick=\'compare('+JSON.stringify(product[i])+')\'><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
 				contentItem1 +=				'</ul>';
 				contentItem1 +=			'</div>';
 				contentItem1 +=		'</div>';
@@ -61,6 +64,7 @@ function loadProduct(){
 			$('.col-sm-9 .carousel-inner .item:first-child').html(contentItem1);
 
 			for (var i = 3; i < 6; i++) {
+				product[i].quantity = 1;
 				contentItem2 +=	'<div class="col-sm-4">';
 				contentItem2 +=		'<div class="product-image-wrapper">';
 				contentItem2 +=			'<div class="single-products">';
@@ -68,12 +72,12 @@ function loadProduct(){
 				contentItem2 +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><img src="'+product[i].Picture1+'" alt=""></a>';
 				contentItem2 +=						'<h2>'+formatPrice(product[i].Price)+' VNĐ</h2>';
 				contentItem2 +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><p>'+product[i].ProductName+'</p></a>';
-				contentItem2 +=						'<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+				contentItem2 +=						'<a href="javascript:void(0)" onclick=\'addCart('+JSON.stringify(product[i])+')\' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
 				contentItem2 +=					'</div>';
 				contentItem2 +=			'</div>';
 				contentItem2 +=			'<div class="choose">';
 				contentItem2 +=				'<ul class="nav nav-pills nav-justified">';
-				contentItem2 +=					'<li><a href="#"><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
+				contentItem2 +=					'<li><a href="javascript:void(0)" onclick=\'compare('+JSON.stringify(product[i])+')\'><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
 				contentItem2 +=				'</ul>';
 				contentItem2 +=			'</div>';
 				contentItem2 +=		'</div>';

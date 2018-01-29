@@ -25,30 +25,33 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 <body>
+	<div id="loadAjax">
+		<img src="images/Dual Ring-0.8s-200px.gif" width="100">	
+	</div>
 	<header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i>+84948664870</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> eyeonic@gmail.com</a></li>
-							</ul>
+			<div class="header_top"><!--header_top-->
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="contactinfo">
+								<ul class="nav nav-pills">
+									<li><a href="#"><i class="fa fa-phone"></i>+84948664870</a></li>
+									<li><a href="#"><i class="fa fa-envelope"></i> eyeonic@gmail.com</a></li>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
+						<div class="col-sm-6">
+							<div class="social-icons pull-right">
+								<ul class="nav navbar-nav">
+									<li><a target="_blank" href="https://www.facebook.com/hoang.sang.99"><i class="fa fa-facebook"></i></a></li>
+									<li><a target="_blank" href="https://twitter.com/hsang2899"><i class="fa fa-twitter"></i></a></li>
+									<li><a target="_blank" href="https://plus.google.com/u/1/102194390505256204860"><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div><!--/header_top-->
+			</div><!--/header_top-->
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
@@ -59,10 +62,10 @@
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
+							<ul id="menu-bar" class="nav navbar-nav">
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i>Kiểm Tra Đơn Hàng</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
+								<li id="login"><a href="login.html"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
 							</ul>
 						</div>
 					</div>
@@ -85,7 +88,7 @@
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html" class="active">Trang Chủ</a></li>
 								<li><a href="product.html">Sản Phẩm</a></li>
-                                <li><a href="compare.html">So Sánh</a></li>
+                               <li><a href="compare.html">So Sánh</a></li>
                                 <li><a href="about-us.html">Giới Thiệu</a></li> 					
 								<li><a href="contact-us.html">Liên Hệ</a></li>
 							</ul>
@@ -98,7 +101,7 @@
 								    <input type="text" class="form-control" id="search" placeholder="Tìm kiếm">
 								    <div class="input-group-btn">
 								      <button class="btn btn-default" type="submit" id="submit">
-								        <i class="glyphicon glyphicon-search"></i>
+								        <i class="glyphicon glyphicon-search" id="glyphicon-search"></i>
 								      </button>
 								    </div>
 								</div>
@@ -125,7 +128,7 @@
 									<h1><span>E</span>-EYEONIC</h1>
 									<!-- <h2>Free E-Commerce Template</h2> -->
 									<p>EYEONIC là hệ thống kính mắt chính hãng hàng đầu Việt Nam. Với nội thất sang trọng, trưng bày theo đúng tiêu chuẩn của hãng với hàng nghìn sản phẩm kính mát và gọng kính của gần 20 thương hiệu hàng đầu thế giới như Ray-Ban, Oakley, Dolce &amp; Gabbana, BVL, Miu Miu, Versace, Burberry, Prada, ...</p>
-									<button type="button" class="btn btn-default get">Mua Ngay</button>
+									<a href="product.html" class="btn btn-default get">Mua Ngay</a>
 								</div>
 								<div class="col-sm-6">
 									<img src="images/home/pic1.jpg" class="girl img-responsive" alt="">
@@ -136,7 +139,7 @@
 									<h1><span>E</span>-EYEONIC</h1>
 									<!-- <h2>100% Responsive Design</h2> -->
 									<p>EYEONIC cũng đầu tư những máy móc, trang thiết bị hiện đại của những thương hiệu hàng đầu Nhật Bản, cùng với đội ngũ nhân viên kỹ thuật cao trong ngành kính mắt và khúc xạ giàu kinh nghiệm để đảm bảo việc đo khám thị lực cũng như mài lắp kính ở trình độ cao nhất, tốt nhất đối với người tiêu dùng.</p>
-									<button type="button" class="btn btn-default get">Mua Ngay</button>
+									<a href="product.html" class="btn btn-default get">Mua Ngay</a>
 								</div>
 								<div class="col-sm-6">
 									<img src="images/home/pic2.jpg" class="girl img-responsive" alt="">
@@ -147,7 +150,7 @@
 									<h1><span>E</span>-EYEONIC</h1>
 									<!-- <h2>Free Ecommerce Template</h2> -->
 									<p>Đặc biệt Eyeonic là đại lý lớn nhất Việt Nam của thương hiệu kính mắt #Rayban với 3 không gian Kính mắt Rayban riêng biệt đầu tiên tại Việt Nam trưng bày hơn 1000 mẫu, bao gồm cả kính mát và gọng kính. </p>
-									<button type="button" class="btn btn-default get">Mua Ngay</button>
+									<a href="product.html" class="btn btn-default get">Mua Ngay</a>
 								</div>
 								<div class="col-sm-6">
 									<img src="images/home/pic3.jpg" class="girl img-responsive" alt="">
@@ -272,8 +275,7 @@
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
     <script src="js/index.js"></script>
-    <script type="text/javascript" src="js/compare.js"></script>
-    <script type="text/javascript" src="js/search.js"></script>
+    <script type="text/javascript" src="js/bootstrap-notify.min.js"></script>
 	
 </body>
 </html>
