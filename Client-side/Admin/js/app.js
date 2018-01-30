@@ -79,7 +79,7 @@ app.controller('indexCtrl',function($scope,$http){
 	};
 
 	$scope.logout = function () {
-    	if(confirm("Are you sure?")){
+    	if(confirm("Bạn có chắc chắn muốn đăng xuất?")){
             localStorage.removeItem("admin");
             window.location.href = "pages/auth/login.html";		
         }

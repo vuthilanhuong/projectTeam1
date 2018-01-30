@@ -1,4 +1,4 @@
-var checkName = false;
+ var checkName = false;
 var checkEmail = false;
 var checkUser = false;
 var checkPass = false;
