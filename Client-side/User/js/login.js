@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$( document ).ready(function() {	
     $('form#loginForm').submit(function(){
     	var data = {
     		"userName":$('#username').val(),
