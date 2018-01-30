@@ -55,8 +55,8 @@ function loadProduct(){
 			content +=			'<span>';
 			content +=				'<span>'+formatPrice(response.Price)+' VND</span>';
 			content +=			'</span>';
-			content +=			'<p><label>Số Lượng:</label>';
-			content +=			'<input id="quantity" type="text" value="1" style="width:60px;">';
+			content +=			'<p><label>Số Lượng:</label> &nbsp;';
+			content +=			'<input id="quantity" type="text" value="1" style="width:40px; text-align: center;">';
 			content +=			'<button type="button" onclick="addProductCart()" class="btn btn-fefault cart">';
 			content +=				'<i class="fa fa-shopping-cart"></i>';
 			content +=				' Cho vào giỏ';
@@ -66,9 +66,9 @@ function loadProduct(){
 			content +=			'<p><b>Hãng:</b> '+response.Brand+'</p>';
     		content +=			'<p><b>Kích Thước:</b> '+response.Size+'</p>';
 			content +=			'<p><b>Màu Sắc:</b> '+response.Color+'</p>';
-    		content +=			'<p><b>Mô Tả:</b> '+response.Discribe+'</p>';
 			content +=		'</div>';
 			content +=	'</div>';
+			content +=	'<div><p style="text-align: justify; line-height: 30px;"><b>Mô Tả:&nbsp;</b>'+response.Discribe+'</p></div>';
    			$('#product_details').html(content);
    			$("#img_01").elevateZoom();
    			$('#gallery a img').click(function(e){
