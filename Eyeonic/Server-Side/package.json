@@ -1,0 +1,32 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "simple test",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "sang beo",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0",
+    "jsonwebtoken": "^8.1.0",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.6",
+    "mongoose-paginate": "^5.0.3",
+    "mongoose-pagination": "^1.0.0",
+    "mongoose-transaction": "0.0.3",
+    "mongoose-transactions": "^1.1.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.5"
+  }
+}
