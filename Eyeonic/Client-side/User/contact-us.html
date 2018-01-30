@@ -26,33 +26,30 @@
 </head><!--/head-->
 
 <body>
-	<div id="loadAjax">
-		<img src="images/Dual Ring-0.8s-200px.gif" width="100">	
-	</div>
 	<header id="header"><!--header-->
-			<div class="header_top"><!--header_top-->
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="contactinfo">
-								<ul class="nav nav-pills">
-									<li><a href="#"><i class="fa fa-phone"></i>+84948664870</a></li>
-									<li><a href="#"><i class="fa fa-envelope"></i> eyeonic@gmail.com</a></li>
-								</ul>
-							</div>
+		<div class="header_top"><!--header_top-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="#"><i class="fa fa-phone"></i>+84948664870</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> hsang2899@gmail.com</a></li>
+							</ul>
 						</div>
-						<div class="col-sm-6">
-							<div class="social-icons pull-right">
-								<ul class="nav navbar-nav">
-									<li><a target="_blank" href="https://www.facebook.com/hoang.sang.99"><i class="fa fa-facebook"></i></a></li>
-									<li><a target="_blank" href="https://twitter.com/hsang2899"><i class="fa fa-twitter"></i></a></li>
-									<li><a target="_blank" href="https://plus.google.com/u/1/102194390505256204860"><i class="fa fa-google-plus"></i></a></li>
-								</ul>
-							</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-			</div><!--/header_top-->
+			</div>
+		</div><!--/header_top-->
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
@@ -63,10 +60,10 @@
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
-							<ul id="menu-bar" class="nav navbar-nav">
+							<ul class="nav navbar-nav">
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i>Kiểm Tra Đơn Hàng</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a></li>
-								<li id="login"><a href="login.html"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
+								<li><a href="login.html"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
 							</ul>
 						</div>
 					</div>
@@ -89,20 +86,20 @@
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Trang Chủ</a></li>
 								<li><a href="product.html">Sản Phẩm</a></li>
-                               <li><a href="compare.html">So Sánh</a></li>
+                                <li><a href="compare.html">So Sánh</a></li>
                                 <li><a href="about-us.html">Giới Thiệu</a></li> 					
-								<li><a class="active" href="contact-us.html">Liên Hệ</a></li>
+								<li><a href="contact-us.html" class="active">Liên Hệ</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<form  onsubmit="return false" id="searchItem">
+						<form  onsubmit="return false">
 							<div class=" pull-right">
 								<div class="input-group">
 								    <input type="text" class="form-control" id="search" placeholder="Tìm kiếm">
 								    <div class="input-group-btn">
 								      <button class="btn btn-default" type="submit" id="submit">
-								        <i class="glyphicon glyphicon-search" id="glyphicon-search"></i>
+								        <i class="glyphicon glyphicon-search"></i>
 								      </button>
 								    </div>
 								</div>
@@ -128,19 +125,22 @@
 	    				<div class="status alert alert-success" style="display: none"></div>
 				    	<form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
 				            <div class="form-group col-md-6">
-				                <input type="text" name="name" class="form-control" required="required" placeholder="Tên">
+				                <input type="text" name="name" id="username" class="form-control" required="required" placeholder="Tên" onkeyup="validateUser()">
+				                <p id="username-error"></p>
 				            </div>
 				            <div class="form-group col-md-6">
 				                <input type="email" name="email" class="form-control" required="required" placeholder="Email">
 				            </div>
 				            <div class="form-group col-md-12">
-				                <input type="text" name="subject" class="form-control" required="required" placeholder="Chủ đề">
+				                <input type="text" name="subject" id="title" class="form-control" required="required" placeholder="Chủ đề" onkeyup="validateTitle()">
+				                <p id="title-error"></p>
 				            </div>
 				            <div class="form-group col-md-12">
-				                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Nội dung tin nhắn"></textarea>
+				                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Nội dung tin nhắn" onkeyup="validateMessage()"></textarea>
+				                <p id="message-error"></p>
 				            </div>                        
 				            <div class="form-group col-md-12">
-				                <input type="submit" name="submit" class="btn btn-primary pull-right" value="Gửi">
+				                <button onclick="myFunction()" type="button" name="submit" class="btn btn-primary pull-right" >Gửi </button>
 				            </div>
 				        </form>
 	    			</div>
@@ -197,6 +197,7 @@
     <script src="js/jquery.scrollUp.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
-
+    <script src="js/contact-us.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
 </body>
 </html>
