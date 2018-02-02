@@ -84,7 +84,7 @@ document.getElementById('password').onkeyup = function () {
 	}
 	else if (password.value.length < 6) {
 		passError.style.color = "red";
-		passError.innerHTML = "*  Tài khoản phải dài hơn 6 và nhỏ hơn 18 ký tự";
+		passError.innerHTML = "*  Mật khẩu phải dài hơn 6 và nhỏ hơn 18 ký tự";
 		checkPass = false;
 	}
 	else {
