@@ -5,6 +5,10 @@ var ordersSchema =  new mongoose.Schema ({
     shipName:{
 		type: String
 	},
+	customerName:{
+		type: String,
+		require: true
+	},
 	customerId:{
 		type: String,
 		require: true

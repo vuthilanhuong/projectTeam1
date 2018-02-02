@@ -6,6 +6,10 @@ var order_detailSchema =  new mongoose.Schema ({
 		type: String,
 		require: true
 	},
+	productName:{
+		type: String,
+		require: true
+	},
 	orderId:{
 		type: String,
 		require: true

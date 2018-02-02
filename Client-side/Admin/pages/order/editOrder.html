@@ -1,0 +1,94 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Quản lý đơn hàng chi tiết
+		<small>Sửa đơn hàng chi tiết</small>
+	</h1>
+</section>
+<div class="content" ng-init="loadFix()">
+	<div class="row">
+		<form ng-submit="submitFix(detail_order)" class="form-horizontal col-xs-12">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">Sửa đơn hàng chi tiết</h3>
+				</div>
+				<!-- /.box-header -->          
+				<div class="box-body">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Mã đơn hàng</label>
+						<div class="col-sm-3">
+							<div class="text_up">{{detail_order._id}}</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Khách hàng:</label>
+						<div class="col-sm-3">
+							<div class="text_up">{{detail_order.customerName}}</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Mã khách hàng:</label>
+						<div class="col-sm-3">
+							<div class="text_up">{{detail_order.customerId}}</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Người nhận</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="detail_order.shipName" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Số điện thoại:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="detail_order.phone" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Địa chỉ</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" ng-model="detail_order.address" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Hạn vận chuyển</label>
+						<div class="col-sm-3">
+							<input type="date" class="form-control" ng-model="detail_order.timeShip">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Lưu ý</label>
+						<div class="col-sm-3">
+							<textarea class="form-control" ng-model="detail_order.note" name="message" placeholder="Nội dung chuyển hàng lưu ý." rows="8"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Ngày tạo</label>
+						<div class="col-sm-3">
+							<div class="text_up">{{ createAt | date : "dd/MM/y - h:mm:ss a" }}</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Tình trạng</label>
+						<div class="col-sm-3">
+				        	<select class="form-control" ng-model="detail_order.status" ng-options="option.name for option in status">
+							</select>
+				        </div>
+					</div>				
+				</div>
+				<!-- /.box-body -->
+				<div class="box-footer">
+					<div class="col-md-3 col-md-push-4">
+						<button type="submit" class="btn btn-success">Xong</button>
+						<a ui-sref="Order({pageID:1})" class="btn btn-default">Quay lại</a>    
+					</div>           
+				</div>
+			</div>
+			<!-- /.box -->        
+		</form>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /.content -->
+

@@ -8,7 +8,7 @@
 <div class="content" ng-controller="editAdminCtrl" ng-init="loadFix()">
 	<div class="row">
 		<div class="box">
-            <form class="form-horizontal" ng-submit="submitFix()" name="myForm" novalidate>
+            <form class="form-horizontal" ng-submit="submitFix(detail_admin)" name="myForm" novalidate>
     			<div class="box-header">
     				<h3 class="box-title">Chỉnh sửa Admin</h3>
     			</div>
@@ -81,7 +81,7 @@
                             <label class="col-sm-3 control-label">
                                 Giới Tính</label>
                             <div class="col-sm-3">
-                                <select ng-init="detail_admin.gender = gender[0]" ng-model="detail_admin.gender" ng-options="option.name for option in gender" class="form-control">
+                                <select ng-model="detail_admin.gender" ng-options="option.name for option in gender" class="form-control">
                                 </select>
                             </div>
                         </div>

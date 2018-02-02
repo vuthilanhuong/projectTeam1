@@ -8,7 +8,7 @@
 <div class="content" ng-controller="editUserCtrl" ng-init="loadFix()">
 	<div class="row">
 		<div class="box">
-            <form class="form-horizontal" ng-submit="submitFix()" name="myForm" novalidate>
+            <form class="form-horizontal" ng-submit="submitFix(detail_user)" name="myForm" novalidate>
     			<div class="box-header">
     				<h3 class="box-title">Chỉnh Sửa Khách Hàng</h3>
     			</div>
@@ -81,7 +81,7 @@
                             <label class="col-sm-3 control-label">
                                 Giới Tính</label>
                             <div class="col-sm-3">
-                                <select ng-init="detail_user.gender = gender[0]" ng-model="detail_user.gender" ng-options="option.name for option in gender" class="form-control">
+                                <select ng-model="detail_user.gender" ng-options="option.name for option in gender" class="form-control">
                                 </select>
                             </div>
                         </div>
@@ -116,8 +116,8 @@
     				<div class="col-sm-offset-3 col-sm-9">
                         <button type="submit" class="btn btn-success btn-sm" ng-disabled="myForm.user.$invalid || checkUser || myForm.email.$invalid || checkEmail || myForm.fullName.$invalid || myForm.password.$invalid || myForm.confirm.$invalid || checkConfirm || myForm.birthDay.$invalid|| checkBirthDay">
                             Hoàn Thành</button>
-                         <button type="reset" ng-click="resetForm()" class="btn btn-default btn-sm">
-                        Làm Lại</button>
+                        <button type="button" ui-sref="User({ pageID:1})" class="btn btn-default btn-sm">
+                        Quay Lại</button>
                     </div>             
     			</div>
             </form>

@@ -21,9 +21,10 @@
 						            <tr>
 						                <th>#</th>
 						                <th>Mã Đơn Hàng</th>
-						                <th>Mã Sản Phẩm</th>
+						                <th>Tên Sản Phẩm</th>
 						                <th>Số Lượng</th>
 						                <th>Đơn Giá</th>
+						                <th>Tình Trạng</th>
 						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
@@ -33,13 +34,15 @@
 								           	<form class="row">
 								                <td class="col-xs-1">{{$index + 1 + (currentPage-1)*10}}</td>
 								                <td class="col-xs-2 col-md-1">{{orderDetail.orderId}}</td>
-								                <td class="col-xs-2">{{orderDetail.productId}}</td>
-								                <td class="col-xs-2">{{orderDetail.quantity}}</td>
-								                <td class="col-xs-2">{{orderDetail.unitPrice}}</td>
+								                <td class="col-xs-2">{{orderDetail.productName}}</td>
+								                <td class="col-xs-1">{{orderDetail.quantity}}</td>
+								                <td class="col-xs-2">{{orderDetail.priceUnit}}</td>
+								                <td class="col-xs-2">{{orderDetail.Availability}}</td>
 								                <td class="col-xs-2 col-md-1"> 
 								                    <div class="dropdown">		                    	
 								                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tùy Chọn <span class="caret"></span></button>
 								                        <ul class="dropdown-menu">
+								                        	<li><a href="javascript:void(0)" ui-sref="EditOrderDetail({orderDetailID: orderDetail._id})" ng-click="edit(orderDetail)">Chỉnh sửa </a></li>
 								                            <li><a href="javascript:void(0)" ng-click="remove(orderDetail)">Xóa</a></li>
 								                        </ul>                       
 								                    </div>  

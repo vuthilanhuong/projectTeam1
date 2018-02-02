@@ -51,9 +51,11 @@ module.exports = function(app){
 	app.route('/_api/v1/order')
 		.get(orderController.get_list);
 	app.route('/_api/v1/order/:id')	
+		.put(orderController.update)
 		.delete(orderController.delete);
 	app.route('/_api/v1/orderDetail')
 		.get(orderDetailController.get_list);
 	app.route('/_api/v1/orderDetail/:id')
+		.put(orderDetailController.update)
 		.delete(orderDetailController.delete);
 };
