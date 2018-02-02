@@ -1,3 +1,22 @@
+
+$(document).ready(function(){
+	var checkUser = false;
+	var checkTitle = false;
+	var checkMessage = false;
+	$( "#btnSubmit" ).prop( "disabled", true );	
+		$( "form#btnSubmit" ).submit(function(){
+			alert("Bạn đã gửi mail thành công!");			
+	});	
+});
+
+function checkSubmit(){
+	if (checkUser !== undefined  && checkTitle !== undefined && checkMessage !== undefined ){
+		if (checkUser === true && checkTitle === true && checkMessage === true) {
+			$( "#btnSubmit" ).prop( "disabled", false );
+		};
+	};	
+};
+
 function validateUser(){
 	var user = document.getElementById("username");
 	var userError = document.getElementById("username-error");
@@ -10,8 +29,10 @@ function validateUser(){
 	}else{
 		userError.style.color = "green";
 		userError.innerHTML = "Tên hợp lệ";
-		var checkUser = true;
-	}
+		checkUser = true;
+		console.log(checkUser);
+	};
+	checkSubmit();
 };
 
 function validateTitle(){
@@ -20,12 +41,13 @@ function validateTitle(){
 	if(title.value.length == 0){
 		titleError.style.color = "red";
 		titleError.innerHTML = "Vui lòng nhập chủ đề";
-		var checkTitle = false;
 	}else{
 		titleError.style.color = "green";
 		titleError.innerHTML = "Hợp lệ";
-		var checkTitle = true;
-	}
+		checkTitle = true;
+		console.log(checkTitle);
+	};
+	checkSubmit();
 };	
 
 function validateMessage(){
@@ -33,25 +55,14 @@ function validateMessage(){
 	var messageError = document.getElementById("message-error");
 	if(message.value.length > 200) {
 		messageError.style.color = "red";
-		messageError.innerHTML = "Không nhập quá 200 kí tự";
-		var checkMessage = false;
+		messageError.innerHTML = "Không nhập quá 200 kí tự";		
 	}else {
-		var checkMessage = true;
-	}
+		checkMessage = true;
+		console.log(checkMessage);
+	};
+	checkSubmit();
 };
 
-function myFunction(){
-		alert("Bạn đã gửi mail thành công!");}
-
-
-$(document).ready(function(){
-
-		var checkUser = false;
-		var checkTitle = false;
-		var checkMessage = false;
-		$( "#btnSubmit" ).prop( "disabled", true );
-
-
-});
-
-
+function alertContactUs(){
+	alert("Bạn đã gửi mail thành công!");
+	}
