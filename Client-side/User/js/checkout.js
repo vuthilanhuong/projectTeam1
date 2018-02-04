@@ -33,7 +33,8 @@ function checkout(){
 				"timeShip": $('#timeShip').val(),
 				"note": $('#noteCheckout').val(),
 				"products": JSON.stringify(cart_details),
-				"customerID": member.userID
+				"customerID": member.userID,
+				"customerName": member.userName
 			};
 			$.ajax({
 				url: 'http://localhost:3000/_api/v1/cart',

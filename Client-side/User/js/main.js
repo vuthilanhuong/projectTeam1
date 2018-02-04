@@ -101,6 +101,7 @@ function checkLogin(){
 				$('#logOut').click(function(){
 			    	if(confirm("Bạn có chắc chắn đăng xuất?")){
 			            localStorage.removeItem("members");
+			            localStorage.removeItem("cart");
 			            window.location.reload();	
 			        }
 			    });

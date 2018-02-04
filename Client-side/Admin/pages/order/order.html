@@ -21,8 +21,9 @@
 						            <tr>
 						                <th>#</th>
 						                <th>Mã Đơn Hàng</th>
-						                <th>Mã Khách Hàng</th>
-						                <th>Tổng tiền</th>
+						                <th>Tên Khách Hàng</th>
+						                <th>Tổng Tiền</th>
+						                <th>Trạng Thái</th>
 						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
@@ -32,12 +33,15 @@
 								           	<form class="row">
 								                <td class="col-xs-1">{{$index + 1 + (currentPage-1)*10}}</td>
 								                <td class="col-xs-2 col-md-1">{{order._id}}</td>
-								                <td class="col-xs-2">{{order.customerId}}</td>
-								                <td class="col-xs-2">{{order.totalPrice}}</td>
+								                <td class="col-xs-2">{{order.customerName}}</td>
+								                <td class="col-xs-2">{{order.priceTotal}}</td>
+								                <td class="col-xs-2">{{order.Availability}}</td>
 								                <td class="col-xs-2 col-md-1"> 
 								                    <div class="dropdown">		                    	
 								                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tùy Chọn <span class="caret"></span></button>
 								                        <ul class="dropdown-menu">
+								                        	<li><a href="javascript:void(0)" ui-sref="OrderDetail({orderID: order._id,pageID:1})">Chi tiết </a></li>
+								                        	<li><a href="javascript:void(0)" ui-sref="EditOrder({orderID: order._id})" ng-click="edit(order)">Chỉnh sửa </a></li>
 								                            <li><a href="javascript:void(0)" ng-click="remove(order)">Xóa</a></li>
 								                        </ul>                       
 								                    </div>  
@@ -63,7 +67,7 @@
 								next-text="&rsaquo;" 
 								first-text="&laquo;" 
 								last-text="&raquo;"
-								ui-sref="Order({orderID:currentPage})">
+								ui-sref="Order({pageID:currentPage})">
 							</ul>
 						</nav>
 					</div>

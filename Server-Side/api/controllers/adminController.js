@@ -88,7 +88,7 @@ exports.login = function(req, resp){
 	console.log('i am login.');
 	if(req.body.userName){
 		if (req.body.password) {
-			Admin.find({"userName": req.body.userName}, function(err, result) {
+			Admin.find({"userName": req.body.userName,"status":1}, function(err, result) {
 			    if (!result[0]){
 			    	resp.status(500);
 			    	resp.send('User name does not exist')

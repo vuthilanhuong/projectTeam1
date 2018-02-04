@@ -86,15 +86,18 @@ exports.getUser = function(req, res, next) {
 
 exports.login = function(req, resp){
 	console.log('i am login.');
+	if (req.body.userName == "" || req.body.password == "") {
+		resp.status(500);
+	};
 	if(req.body.userName){
 		if (req.body.password) {
-			Member.find({"userName": req.body.userName}, function(err, result) {
+			Member.find({"userName": req.body.userName,"status":1}, function(err, result) {
 			    if (!result[0]){
 			    	resp.status(500);
 			    	resp.send('User name does not exist')
 			    } else {
 			    	if(bcrypt.compareSync(req.body.password, result[0].password)){
-				    	resp.json({userID:result[0]._id,token: jwt.sign({ email: result[0].email, fullName: result[0].fullName, _id: result[0]._id }, 'UserAPI', { expiresIn: 1440 })});
+				    	resp.json({userID:result[0]._id,userName:result[0].userName,token: jwt.sign({ email: result[0].email, fullName: result[0].fullName, _id: result[0]._id }, 'UserAPI', { expiresIn: 1440 })});
 				    }else{
 				    	resp.status(500);
 			    		resp.send('Wrong password')

@@ -29,6 +29,7 @@ exports.saveCart = function(req, resp){
 		var order = new Order({
 			_id: mongoose.Types.ObjectId(),
 			customerId: req.body.customerID,
+			customerName: req.body.customerName,
 			shipName: req.body.shipName,
 			phone: req.body.phone,
 			address: req.body.address,
@@ -42,6 +43,7 @@ exports.saveCart = function(req, resp){
 	    for (var i = 0; i < productResult.length; i++) {
 	     	var orderDetail = new OrderDetail({
 	     		orderId: order._id,
+	     		productName: productResult[i].ProductName,
 	     		productId: productResult[i]._id,
 	     		quantity: mapProduct[productResult[i]._id],
 	     		unitPrice: productResult[i].Price

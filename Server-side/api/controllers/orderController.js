@@ -21,6 +21,16 @@ exports.get_list = function(req, resp){
 	});
 };
 
+exports.update = function(req, resp){
+	console.log('i am updating product.');
+	Order.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
+    	if (err)
+      	  resp.send(err);
+    	resp.json(task);
+  	});
+};
+
+
 exports.delete = function(req, resp){
 	console.log('i am deleting order.');
 	Order.findOneAndUpdate({_id: req.params.id}, {"status": 0}, {new: true}, function(err, task) {
