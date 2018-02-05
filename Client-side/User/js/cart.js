@@ -68,12 +68,16 @@ function cart(){
 		$('#cartTable').html(content);
 		$('tbody tr:last-child').after(contentTotalPrice);
 		$('#cartTable').on('click', '.cart_quantity_delete', function() {
+			if (i > 1){
 			var idItem = $(this).parent().parent().children('.cart_description').children('.productID').text().replace('ID: ', '');
 			items = $.grep(items, function(e){ 
 		    	return e._id != idItem; 
 			});
 			localStorage.cart = JSON.stringify(items);
-			cart();
+			cart();}
+			else{localStorage.removeItem("cart");
+			window.location.href = 'file:///Users/user/Desktop/Project/Eyeonic/Client-side/User/cart.html'
+			}
 		});
 		$('#cartTable').on('mouseleave', 'input.cart_quantity_input', function() {
 			var priceProduct = $(this).parent().parent().parent().children('.cart_price').children('p').text().replace(' VNĐ', '');
