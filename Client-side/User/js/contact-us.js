@@ -4,7 +4,7 @@ $(document).ready(function(){
 	var checkTitle = false;
 	var checkMessage = false;
 	$( "#btnSubmit" ).prop( "disabled", true );	
-		$( "form#btnSubmit" ).submit(function(){
+		$( "form#main-contact-form" ).submit(function(){
 			alert("Bạn đã gửi mail thành công!");			
 	});	
 });
