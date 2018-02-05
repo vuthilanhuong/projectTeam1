@@ -132,10 +132,14 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<form>
-										<input type="text" id="shipName" class="inputCheckout" placeholder="Tên người nhận">
-										<input type="text" id="phone" class="inputCheckout" placeholder="Số Điện thoại">
-										<input type="text" id="address" class="inputCheckout" placeholder="Địa chỉ">
-										<input type="date" id="timeShip" class="inputCheckout">
+										<input type="text" id="shipName" class="inputCheckout" placeholder="Tên người nhận" onkeyup="validateshipName()">
+										<p id="shipName-error"></p>
+										<input type="text" id="phone" class="inputCheckout" placeholder="Số Điện thoại" onkeyup="validatephone()">
+										<p id="phone-error"></p>
+										<input type="text" id="address" class="inputCheckout" placeholder="Địa chỉ" onkeyup="validateaddress()">
+										<p id="address-error"></p>
+										<input type="date" id="timeShip" class="inputCheckout" onchange="validatetimeShip()">
+										<p id="timeShip-error"></p>
 									</form>
 								</div>
 								<div class="col-sm-6 order-message">
