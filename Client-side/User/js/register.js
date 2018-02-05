@@ -122,9 +122,13 @@ document.getElementById("email").onkeyup = function () {
 		emailError.style.color ="red";
 		emailError.innerHTML = "*  Email không được bỏ trống";
 		checkEmail = false;
-	}else if (email.value.length < 7) {
+	}else if (email.value.length < 25) {
 		emailError.style.color = "red";
-		emailError.innerHTML = "*  Tài khoản phải dài hơn 6 và nhỏ hơn 18 ký tự";
+		emailError.innerHTML = "*  Email phải dài hơn 6 và nhỏ hơn 25 ký tự";
+		checkEmail = false;
+	}else if (email.value.length > 25) {
+		emailError.style.color = "red";
+		emailError.innerHTML = "*  Email khoản phải dài hơn 6 và nhỏ hơn 25 ký tự";
 		checkEmail = false;
 	}else{
 		emailError.innerHTML = "";
