@@ -12,11 +12,12 @@ function cart(){
 	if (localStorage.cart === undefined || JSON.parse(localStorage.cart).length == 0) {
 		var content = '';
 			content +=  '<div class="text-center">';
-			content +=  '<h2>Lỗi!</h2>';
-			content +=  '<br>';
-			content +=  '<h4>Chưa có sản phẩm</h4>';
+			// content +=  '<h2>Thông báo</h2>';
+			// content +=  '<br>';
+			content +=  '<h4>Hiện chưa có sản phẩm trong giỏ hàng!</h4>';
 			content +=  '</div>';
     	$('#indexCart').html(content);
+    	$('#indexCheckout').html(content);
 	}else{
 		items = JSON.parse(localStorage.cart);
 		var totalPrice = 0;
