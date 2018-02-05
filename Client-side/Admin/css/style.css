@@ -62,5 +62,18 @@
 	float: left;
 }
 
+#date_range{
+	width: 200px;
+}
+
+#totalPrice{
+	display: inline-block;
+	margin-left: 150px;
+}
+
+#totalPrice b{
+	font-size: 17px;
+}
+
 
  

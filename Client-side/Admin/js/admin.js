@@ -6,7 +6,7 @@ app.controller("adminCtrl",function($scope,$stateParams,$http){
 	$scope.loadAdmin = function() {
 	    $http({
 			method: 'GET',
-			url: 'http://localhost:3000/_api/v1/admins/' + '?page=' + idxPage
+			url: 'http://localhost:3000/_api/v1/admins/' + '?page=' + idxPage 
 		}).then(function mySuccess(response){
     		console.log(response);
     		$scope.restored_data = response.data;

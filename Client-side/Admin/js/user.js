@@ -3,10 +3,21 @@
 app.controller("userCtrl",function($scope,$stateParams,$http){
 	var idxPage = $stateParams.pageID;
 
+	var query = "&search=error";
+
+	$scope.searchForm = function(){
+		if ($scope.searchInput != '') {
+			query = '&search='+$scope.searchInput;
+		}else{
+			query = '&search=error';
+		};
+		$scope.loadUser();
+	};
+
 	$scope.loadUser = function() {
 	    $http({
 			method: 'GET',
-			url: 'http://localhost:3000/_api/v1/members/' + '?page=' + idxPage
+			url: 'http://localhost:3000/_api/v1/members/' + '?page=' + idxPage + query
 		}).then(function mySuccess(response){
     		console.log(response);
     		$scope.restored_data = response.data;

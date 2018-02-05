@@ -52,6 +52,6 @@ var mongoosePaginate = require('mongoose-paginate');
 		default: 1
 	}
 });
-
+memberSchema.index({fullName: 'text'});
 memberSchema.plugin(mongoosePaginate);
 module.exports  = mongoose.model('member',memberSchema)
