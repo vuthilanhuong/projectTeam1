@@ -35,16 +35,18 @@ app.controller("orderCtrl",function($scope,$stateParams,$http){
     };
 
 	$scope.remove = function(item){ 
-        $http({
-			method: 'DELETE',
-			url: 'http://localhost:3000/_api/v1/order/' + item._id
-		}).then(function mySuccess(response){
-    		console.log(response);
-            console.log('Delete thanh cong');
-            window.location.reload();
-    	}, function myError(response) {
-    		console.log('Delete that bai');
-    	});   
+        if(confirm("Bạn có chắc chắn muốn hủy không?")){
+            $http({
+                method: 'DELETE',
+                url: 'http://localhost:3000/_api/v1/order/' + item._id
+            }).then(function mySuccess(response){
+                console.log(response);
+                console.log('Delete thanh cong');
+                window.location.reload();
+            }, function myError(response) {
+                console.log('Delete that bai');
+            });   
+        }
     };
 });
 
@@ -127,16 +129,18 @@ app.controller("orderDetailCtrl",function($scope,$stateParams,$http){
     };
 
 	$scope.remove = function(item){ 
-        $http({
-			method: 'DELETE',
-			url: 'http://localhost:3000/_api/v1/orderDetail/' + item._id
-		}).then(function mySuccess(response){
-    		console.log(response);
-            console.log('Delete thanh cong');
-            window.location.reload();
-    	}, function myError(response) {
-    		console.log('Delete that bai');
-    	});   
+        if(confirm("Bạn có chắc chắn muốn hủy không?")){
+            $http({
+                method: 'DELETE',
+                url: 'http://localhost:3000/_api/v1/orderDetail/' + item._id
+            }).then(function mySuccess(response){
+                console.log(response);
+                console.log('Delete thanh cong');
+                window.location.reload();
+            }, function myError(response) {
+                console.log('Delete that bai');
+            });   
+        }
     };
 });
 

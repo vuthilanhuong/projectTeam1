@@ -21,17 +21,19 @@ app.controller("userCtrl",function($scope,$stateParams,$http){
 		localStorage.editUser = JSON.stringify(item);
 	};
 
-	$scope.remove = function(item){ 
-        $http({
-			method: 'DELETE',
-			url: 'http://localhost:3000/_api/v1/members/' + item._id
-		}).then(function mySuccess(response){
-    		console.log(response);
-            console.log('Delete thanh cong');
-            window.location.reload();
-    	}, function myError(response) {
-    		console.log('Delete that bai');
-    	});   
+	$scope.remove = function(item){
+		if(confirm("Bạn có chắc chắn muốn xóa không?")){ 
+	        $http({
+				method: 'DELETE',
+				url: 'http://localhost:3000/_api/v1/members/' + item._id
+			}).then(function mySuccess(response){
+	    		console.log(response);
+	            console.log('Delete thanh cong');
+	            window.location.reload();
+	    	}, function myError(response) {
+	    		console.log('Delete that bai');
+	    	});   
+	    }
     };
 });
 

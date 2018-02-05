@@ -1,21 +1,37 @@
  app.controller('productCtrl',function($scope,$stateParams,$http){
 	$scope.ProductType = [
+		{name:"Tất Cả",type:""},
 		{name:"Kính Thể Thao",type:"&ProductType=kinh-the-thao"},
 		{name:"Kính Áp Tròng",type:"&ProductType=kinh-ap-trong"},
 		{name:"Kính Mát Nữ",type:"&ProductType=kinh-mat-nu"},
 		{name:"Kính Mát Nam",type:"&ProductType=kinh-mat-nam"},
 		{name:"Kính Trẻ Em",type:"&ProductType=kinh-mat-tre-em"}];
 	$scope.Brand = [
+		{name:"Tất Cả",type:""},
 		{name:"Ray-Ban",type:"&Brand=Ray-Ban"},
 		{name:"Oakley",type:"&Brand=Oakley"},
 		{name:"Dolce & Gabbana",type:"&Brand=Dolce-And-Gabbana"},
 		{name:"Burberry",type:"&Brand=Burberry"},
 		{name:"Versace",type:"&Brand=Versace"}];
 	var idxPage = $stateParams.pageID;
+	var query = "";
+	$scope.changeChoose = function() {
+		$scope.searchInput = "";
+		query = $scope.productType.type + $scope.brand.type;
+		$scope.loadProduct();
+	};
+
+	$scope.searchForm = function(){
+		if ($scope.searchInput != '') {
+			query = '&search='+$scope.searchInput;
+		};
+		$scope.loadProduct();
+	};
+
 	$scope.loadProduct = function() {
 	    $http({
 			method: 'GET',
-			url: 'http://localhost:3000/_api/v1/products' + '?page=' + idxPage + '&limit=10'
+			url: 'http://localhost:3000/_api/v1/products' + '?page=' + idxPage + '&limit=10' + query
 		}).then(function mySuccess(response){
     		console.log(response);
     		$scope.restored_data = response.data;
@@ -30,17 +46,20 @@
 		localStorage.editProduct = JSON.stringify(item);
 	};
 
-	$scope.remove = function(item){ 
-        $http({
-			method: 'DELETE',
-			url: 'http://localhost:3000/_api/v1/products/' + item._id
-		}).then(function mySuccess(response){
-    		console.log(response);
-            console.log('Delete thanh cong');
-            window.location.reload();
-    	}, function myError(response) {
-    		console.log('Delete fail');
-    	});   
+	$scope.remove = function(item){
+		if(confirm("Bạn có chắc chắn muốn xóa không?")){
+            $http({
+				method: 'DELETE',
+				url: 'http://localhost:3000/_api/v1/products/' + item._id
+			}).then(function mySuccess(res){
+	    		console.log(res);
+	            swal("Đã Xóa!", "", "success");
+	            window.location.reload();
+	    	}, function myError(res) {
+	    		console.log('Delete fail');
+	    	});	
+        }
+           
     };
 });
 
