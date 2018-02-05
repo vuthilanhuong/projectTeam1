@@ -10,7 +10,18 @@
 		<div class="col-xs-12">
 			<div class="box">
 				<div class="box-header">
-					<h3 class="box-title">Danh sách sản phẩm</h3>
+					<div class="input_inline">
+						<form ng-submit="searchForm()">
+							<div class="input-group">
+							    <input type="text" class="input_special" ng-model="searchInput" placeholder="Tìm kiếm">
+							    <div class="input-group-btn icon_input">
+							      <button class="btn btn-default" type="submit" id="submit">
+							        <i class="glyphicon glyphicon-search" id="glyphicon-search"></i>
+							      </button>
+							    </div>
+							</div>
+						</form>
+					</div>
 				</div>
 				<!-- /.box-header -->          
 				<div class="box-body">
