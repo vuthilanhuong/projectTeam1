@@ -2,7 +2,7 @@ $(document).ready(function() {
     checkout();
 });
 
-function checkout(){
+function checkout(){	
 	if (localStorage.members !== undefined) {
 		var member = JSON.parse(localStorage.members);
 	}else{
@@ -14,7 +14,7 @@ function checkout(){
 			contentCheckout +=  '</div>';
 		$('#indexCheckout').html(contentCheckout);
 	};
-	if (localStorage.cart === undefined) {
+	if (localStorage.cart === undefined || JSON.parse(localStorage.cart).length == 0) {
 		var content = '';
 			content +=  '<div class="text-center">';
 			content +=  '<h2>Lỗi!</h2>';
