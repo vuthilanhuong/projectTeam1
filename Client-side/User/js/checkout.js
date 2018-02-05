@@ -48,8 +48,9 @@ function checkout(){
 					  timer: 2000,
 		  			  buttons: false
 					}).then(function(){
-						localStorage.removeItem("cart");;
-					});;
+						localStorage.removeItem("cart");
+						window.location.href = 'index.html';
+					});
 				},
 				error: function(response, message){
 					swal({
