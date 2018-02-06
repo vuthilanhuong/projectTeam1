@@ -1052,6 +1052,10 @@ h2.title {
   padding-left: 0;
 }
 
+#recommended-item-carousel-seen .carousel-inner .item {
+  padding-left: 0;
+}
+
 .recommended-item-control {
   position: absolute;
   top: 41%;

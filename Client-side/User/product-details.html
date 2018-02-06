@@ -193,7 +193,7 @@
 						<h2 class="title text-center">Sản Phẩm Bán Chạy</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
+							<div class="carousel-inner" id = "hot_sale">
 								<div class="item"></div>
 								<div class="item active"></div>
 							</div>
@@ -205,7 +205,22 @@
 							  </a>			
 						</div>
 					</div><!--/recommended_items-->
-					
+					<!--/have seen -->					
+					<div id="productHaveSeen" class="recommended_items" hidden="">
+						<h2 class="title text-center">Sản Phẩm Bạn Đã Xem</h2>						
+						<div id="recommended-item-carousel-seen" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner" id="product_seen">
+								<div class="item active"></div>
+								<div class="item"></div>
+							</div>
+							 <a class="left recommended-item-control" href="#recommended-item-carousel-seen" data-slide="prev">
+								<i class="fa fa-angle-left"></i>
+							 </a>
+							 <a class="right recommended-item-control" href="#recommended-item-carousel-seen" data-slide="next">
+								<i class="fa fa-angle-right"></i>
+							 </a>			
+						</div>
+					</div><!--/have seen-->	
 				</div>
 			</div>
 		</div>
@@ -285,7 +300,8 @@
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript" src="js/product_details.js"></script>
+    <script type="text/javascript" src="js/product_details.js"></script><!-- 
+    <script type="text/javascript" src="js/index.js"></script> -->
     <script type="text/javascript" src="js/jquery.elevateZoom-3.0.8.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-notify.min.js"></script>
 </body>
