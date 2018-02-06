@@ -3,6 +3,7 @@
 $(document).ready(function(){
 	scroll();
 	checkLogin();
+	productSeen();
     $('form#searchItem').submit(function(){
     	var key = $('#search').val();
     	window.location.href = 'product.html?search='+key;
@@ -170,29 +171,103 @@ function addSeen(product){
 	var items = [];
 	var check = true;
 	if(localStorage.productSeen !== undefined)
-		items = JSON.parse(localStorage.productSeen);
+	items = JSON.parse(localStorage.productSeen);
 
 	//kiểm tra đã tồn tại chưa?
 	for (var i = 0; i < items.length; i++) {
-		if(items[i]._id == product._id){
-			localStorage.productSeen = JSON.stringify(items);			
+		if(items[i]._id == product._id){			
 			check = false;
 			break;
-		}
+		};	
 	};
 
-	//nếu chưa tồn tại thì push thêm vào, 
-	//độ dài tối đa là 6, vì vậy nếu đã có 6 sản phẩm rồi thì đẩy sản phẩm đầu tiên ra
 	if(check === true){
-		if(items.length == 6) {
-			for (var i = 0; i < 5; i++) {
-				items[i] = items[i+1]
-			};
-			items[5] = product;
-			localStorage.productSeen = JSON.stringify(items);
-		}else{
-			items.push(product);
-			localStorage.productSeen = JSON.stringify(items);
+		if(items[5]){
+			items = $.grep(items, function(e){
+		    	return e._id != items[0]._id; 
+			})
 		};
+		items.push(product);
+		console.log(items);
+		localStorage.productSeen = JSON.stringify(items);
 	};	
+};
+
+function productSeen() {
+	if(localStorage.productSeen !== undefined)
+		items = JSON.parse(localStorage.productSeen);
+    	var contentItem3 = '';
+		var contentItem4 = '';
+	   
+	    if(items.length == 0) {
+	    	$("#productHaveSeen").attr("hidden", true);
+	    } 
+	    else
+	    {
+	    	$("#productHaveSeen").attr("hidden", false);
+			console.log(items.length);
+		    console.log(items);
+
+	    	//thêm vào phần sản phẩm đã xem
+				//cục1-thêm vào phần sản phẩm đã xem
+				var min = 3;
+				if (items.length <3) {
+					min = items.length;
+				};		
+	   			for (var i = 0; i < min; i++) {  
+					contentItem3 +=	'<div class="col-sm-4">';
+					contentItem3 +=		'<div class="product-image-wrapper">';
+					contentItem3 +=			'<div class="single-products">';
+					contentItem3 +=					'<div class="productinfo text-center">';
+					contentItem3 +=						'<a href="product-details.html?id='+items[i]._id+'" title="'+items[i].ProductName+'"><img src="'+items[i].Picture1+'" alt=""></a>';
+					contentItem3 +=						'<h2>'+formatPrice(items[i].Price)+' VNĐ</h2>';
+					contentItem3 +=						'<a href="product-details.html?id='+items[i]._id+'" title="'+items[i].ProductName+'"><p>'+items[i].ProductName+'</p></a>';
+					contentItem3 +=						'<a href="javascript:void(0)" onclick=\'addCart('+JSON.stringify(items[i])+')\' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+					contentItem3 +=					'</div>';
+					contentItem3 +=			'</div>';
+					contentItem3 +=			'<div class="choose">';
+					contentItem3 +=				'<ul class="nav nav-pills nav-justified">';
+					contentItem3 +=					'<li><a href="javascript:void(0)" onclick=\'compare('+JSON.stringify(items[i])+')\'><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
+					contentItem3 +=				'</ul>';
+					contentItem3 +=			'</div>';
+					contentItem3 +=		'</div>';
+					contentItem3 +=	'</div>';
+				};
+				$('.col-sm-9 #product_seen .item:first-child').html(contentItem3);
+				if (items.length < 4) {
+					$('.col-sm-9 #product_seen .item:last-child').html(contentItem3);
+				};
+
+				// cục 2- thêm vào phần sản phẩm đã xem
+				if (items.length > 3) {
+					var min = 6;
+					if (items.length <6) {
+						min = items.length;
+					}; 				
+					for (var i = 3; i < min; i++) {
+						contentItem4 +=	'<div class="col-sm-4">';
+						contentItem4 +=		'<div class="product-image-wrapper">';
+						contentItem4 +=			'<div class="single-products">';
+						contentItem4 +=					'<div class="productinfo text-center">';
+						contentItem4 +=						'<a href="product-details.html?id='+items[i]._id+'" title="'+items[i].ProductName+'"><img src="'+items[i].Picture1+'" alt=""></a>';
+						contentItem4 +=						'<h2>'+formatPrice(items[i].Price)+' VNĐ</h2>';
+						contentItem4 +=						'<a href="product-details.html?id='+items[i]._id+'" title="'+items[i].ProductName+'"><p>'+items[i].ProductName+'</p></a>';
+						contentItem4 +=						'<a href="javascript:void(0)" onclick=\'addCart('+JSON.stringify(items[i])+')\' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';
+						contentItem4 +=					'</div>';
+						contentItem4 +=			'</div>';
+						contentItem4 +=			'<div class="choose">';
+						contentItem4 +=				'<ul class="nav nav-pills nav-justified">';
+						contentItem4 +=					'<li><a href="javascript:void(0)" onclick=\'compare('+JSON.stringify(items[i])+')\'><i class="fa fa-plus-square"></i>Thêm vào so sánh</a></li>';
+						contentItem4 +=				'</ul>';
+						contentItem4 +=			'</div>';
+						contentItem4 +=		'</div>';
+						contentItem4 +=	'</div>';
+					};
+					$('.col-sm-9 #product_seen .item:last-child').html(contentItem4);
+				}
+				
+	    	
+	    };
+	// };   
+
 };
