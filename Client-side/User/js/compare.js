@@ -13,9 +13,9 @@ function loadCompare(){
     if(productArray.length == 0){
 		var content = '';
 			content +=  '<div class="text-center">';
-			content +=  '<h2>Lỗi!</h2>';
-			content +=  '<br>';
-			content +=  '<h4>Chưa có sản phẩm</h4>';
+			// content +=  '<h2>Lỗi!</h2>';
+			// content +=  '<br>';
+			content +=  '<h4>Chưa có sản phẩm để so sánh!</h4>';
 			content +=  '</div>';
     	$('#tableCompare .row .col-md-10').html(content);
     }

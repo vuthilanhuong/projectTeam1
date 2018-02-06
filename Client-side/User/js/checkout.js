@@ -1,9 +1,16 @@
+//hàm chính
+$(document).ready(function(){
+	$( "#btnCheckout" ).prop( "disabled", true);
 	var checkshipName = false;
 	var checkaddress = false;
 	var checkphone = false;
-	var checktimeShip = false;	
+	var checktimeShip = false;
 
-function validateshipName(){
+	submit();
+});
+
+//hàm validate ship name
+function validateShipName(){
 	var shipName = document.getElementById("shipName");
 	var shipNameError = document.getElementById("shipName-error");
 	if(shipName.value.length == 0) {
@@ -21,7 +28,8 @@ function validateshipName(){
 	checkout();
 };
 
-function validatephone(){
+//validate phone
+function validatePhone(){
 	var phone = document.getElementById("phone");
 	var phoneError = document.getElementById("phone-error");
 	if(phone.value.length == 0){
@@ -42,7 +50,8 @@ function validatephone(){
 	checkout();
 };	
 
-function validateaddress(){
+//validateAddress
+function validateAddress(){
 	var address = document.getElementById("address");
 	var addressError = document.getElementById("address-error");
 	if(address.value.length == 0) {
@@ -63,7 +72,7 @@ function validateaddress(){
 	checkout();
 };
 
-function validatetimeShip() {
+function validateTimeShip() {
 	var timeShip = document.getElementById('timeShip');
 	var timeShipError = document.getElementById('timeShip-error');
 	var today = new Date();
@@ -71,12 +80,13 @@ function validatetimeShip() {
 	timeShip = new Date(timeShip.value);
 	if (timeShip < today) {
 		timeShipError.style.color = "red";
-		timeShipError.innerHTML = "Ngày giao hàng không hợp lệ";
+		timeShipError.innerHTML = "Ngày giao hàng không thể là ngày quá khứ.";
 		checkout();
 	
 	}else{
 		checktimeShip = true;
 		timeShipError.style.color = "green";
+		// timeShipError.style.fontsize = "10px";
 		timeShipError.innerHTML = "Hợp lệ";
 		console.log(checktimeShip);
 		checkout();
@@ -84,13 +94,8 @@ function validatetimeShip() {
 	
 };
 
-$(document).ready(function(){
-	$( "#btnCheckout" ).prop( "disabled", true );	
-});
-
 
 function checkout(){
-
  	if (checktimeShip === true && checkaddress === true && checkphone === true && checktimeShip === true) {
  		$('#btnCheckout').prop('disabled', false);
  	}else{
@@ -98,12 +103,7 @@ function checkout(){
  	};
  };
 
-
-
-$(document).ready(function() {
-    submit();
-});
-
+//hàm submit lưu thông tin đơn hàng vào database{
 function submit(){
 	if (localStorage.members !== undefined) {
 		var member = JSON.parse(localStorage.members);
@@ -120,9 +120,7 @@ function submit(){
 	if (localStorage.cart === undefined) {
 		var content = '';
 			content +=  '<div class="text-center">';
-			content +=  '<h2>Lỗi!</h2>';
-			content +=  '<br>';
-			content +=  '<h4>Chưa có sản phẩm</h4>';
+			content +=  '<h4>Hiện chưa có sản phẩm trong đơn hàng!</h4>';
 			content +=  '</div>';
     	$('#indexCheckout').html(content);
 	}else{
@@ -167,5 +165,5 @@ function submit(){
 			});
 
 		});
-	});
+	};
 };
