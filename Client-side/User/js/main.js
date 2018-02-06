@@ -185,7 +185,6 @@ function addSeen(product){
 	//độ dài tối đa là 6, vì vậy nếu đã có 6 sản phẩm rồi thì đẩy sản phẩm đầu tiên ra
 	if(check === true){
 		if(items.length == 6) {
-			alert("dai 6 san pham roi");
 			for (var i = 0; i < 5; i++) {
 				items[i] = items[i+1]
 			};
