@@ -13,7 +13,7 @@ exports.get_list = function(req, resp){
 	if (page==0){
 		page=1
 	};
-	if (Brand === undefined && search === undefined) {
+	if (Brand === undefined && search === undefined && ProductType !== undefined) {
 		query = {
 			status:1,
 			ProductType:ProductType
@@ -29,9 +29,9 @@ exports.get_list = function(req, resp){
 		} else if (ProductType == 'kinh-ap-trong'){
 			query.ProductType = 'Kính Áp Tròng'
 		}else{
-			query = {};
+			query = {status:1};
 		}
-	} else if (ProductType === undefined && search === undefined) {
+	} else if (ProductType === undefined && search === undefined && Brand !== undefined) {
 		query = {
 			status:1,
 			Brand:Brand
@@ -39,10 +39,29 @@ exports.get_list = function(req, resp){
 		if (Brand == 'Dolce-And-Gabbana')  {
 			query.Brand = 'Dolce & Gabbana'
 		}
-	} else if (ProductType === undefined && Brand === undefined) {
+	} else if (ProductType === undefined && Brand === undefined && search !== undefined) {
 		query = {$text:{$search:search}}
-	} else{
-		query = {};
+	} else if(ProductType === undefined && Brand === undefined && search === undefined){
+		query = {status:1};
+	}else{
+		query = {
+			status:1,
+			ProductType:ProductType,
+			Brand:Brand
+		};
+		if (ProductType =='kinh-the-thao') {
+			query.ProductType = 'Kính Thể Thao'
+		} else if (ProductType == 'kinh-mat-tre-em'){
+			query.ProductType = 'Kính Mát Trẻ Em'
+		} else if (ProductType == 'kinh-mat-nam'){
+			query.ProductType = 'Kính Mát Nam'
+		} else if (ProductType == 'kinh-mat-nu'){
+			query.ProductType = 'Kính Mát Nữ'
+		} else if (ProductType == 'kinh-ap-trong'){
+			query.ProductType = 'Kính Áp Tròng'
+		}else{
+			query = {status:1};
+		}
 	};
 	console.log(query);
 	Product.paginate(query, { page: page, limit: limit }, function(err, result) {

@@ -69,7 +69,7 @@ function loadProduct(){
 				content +=		'<div class="product-image-wrapper">';
 				content +=			'<div class="single-products">';
 				content +=					'<div class="productinfo text-center">';
-				content +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><img src="'+product[i].Picture1+'" alt=""></a>';
+				content +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><img onclick=\'addSeen('+JSON.stringify(product[i])+')\' src="'+product[i].Picture1+'" alt=""></a>';
 				content +=						'<h2>'+formatPrice(product[i].Price)+' VNĐ</h2>';
 				content +=						'<a href="product-details.html?id='+product[i]._id+'" title="'+product[i].ProductName+'"><p>'+product[i].ProductName+'</p></a>';
 				content +=						'<a href="javascript:void(0)" onclick=\'addCart('+JSON.stringify(product[i])+')\' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>';

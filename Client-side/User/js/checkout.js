@@ -88,6 +88,7 @@ $(document).ready(function(){
 	$( "#btnCheckout" ).prop( "disabled", true );	
 });
 
+
 function checkout(){
 
  	if (checktimeShip === true && checkaddress === true && checkphone === true && checktimeShip === true) {
@@ -104,18 +105,18 @@ $(document).ready(function() {
 });
 
 function submit(){
-
 	if (localStorage.members !== undefined) {
 		var member = JSON.parse(localStorage.members);
 	}else{
 		var contentCheckout = '';
 			contentCheckout +=  '<div class="text-center">';
-			contentCheckout +=  '<h2>Lỗi!</h2>';
+			contentCheckout +=  '<h2>Thông báo!</h2>';
 			contentCheckout +=  '<br>';
 			contentCheckout +=  '<h4>Bạn phải <a href="login.html">Đăng Nhập</a> để sử dụng chức năng này</h4>';
 			contentCheckout +=  '</div>';
 		$('#indexCheckout').html(contentCheckout);
 	};
+
 	if (localStorage.cart === undefined) {
 		var content = '';
 			content +=  '<div class="text-center">';
@@ -164,6 +165,7 @@ function submit(){
 					});
 				}
 			});
+
 		});
-	};
+	});
 };

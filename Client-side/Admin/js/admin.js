@@ -6,7 +6,7 @@ app.controller("adminCtrl",function($scope,$stateParams,$http){
 	$scope.loadAdmin = function() {
 	    $http({
 			method: 'GET',
-			url: 'http://localhost:3000/_api/v1/admins/' + '?page=' + idxPage
+			url: 'http://localhost:3000/_api/v1/admins/' + '?page=' + idxPage 
 		}).then(function mySuccess(response){
     		console.log(response);
     		$scope.restored_data = response.data;
@@ -32,16 +32,18 @@ app.controller("adminCtrl",function($scope,$stateParams,$http){
   			  	buttons: false
 			})
 		}else{
-			$http({
-				method: 'DELETE',
-				url: 'http://localhost:3000/_api/v1/admins/' + item._id
-			}).then(function mySuccess(response){
-	    		console.log(response);
-	            console.log('Delete thanh cong');
-	            window.location.reload();
-	    	}, function myError(response) {
-	    		console.log('Delete that bai');
-	    	});
+			if(confirm("Bạn có chắc chắn muốn xóa không?")){
+				$http({
+					method: 'DELETE',
+					url: 'http://localhost:3000/_api/v1/admins/' + item._id
+				}).then(function mySuccess(response){
+		    		console.log(response);
+		            console.log('Delete thanh cong');
+		            window.location.reload();
+		    	}, function myError(response) {
+		    		console.log('Delete that bai');
+		    	});
+			}
 		}   
     };
 });

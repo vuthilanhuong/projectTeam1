@@ -1,14 +1,28 @@
 
 app.controller("orderCtrl",function($scope,$stateParams,$http){
-	var idxPage = $stateParams.pageID;
+    var idxPage = $stateParams.pageID;
+    $('input[name="daterange"]').daterangepicker({
+            locale: {
+              format: 'YYYY/MM/DD'
+            },
+            startDate: '2018/01/01',
+            endDate: '2018/12/31'
+        });
+    $scope.dateChange = function(){
+        $scope.loadOrder();
+    };
 
-	$scope.loadOrder = function() {
-	    $http({
-			method: 'GET',
-			url: 'http://localhost:3000/_api/v1/order/' + '?page=' + idxPage
-		}).then(function mySuccess(response){
-    		console.log(response);
-    		$scope.restored_data = response.data;
+    $scope.loadOrder = function() {
+        var dateRange = document.getElementById('date_range').value;
+        var datePicked = "";
+        datePicked = '&startDate=' + dateRange.slice(0,10) + '&endDate=' + dateRange.slice(13,23);
+        console.log(datePicked);
+        $http({
+            method: 'GET',
+            url: 'http://localhost:3000/_api/v1/order/' + '?page=' + idxPage + datePicked
+        }).then(function mySuccess(response){
+            console.log(response);
+            $scope.restored_data = response.data;
             for (var i = 0; i < $scope.restored_data.listOrder.length; i++) {
                 if ($scope.restored_data.listOrder[i].status == 1) {
                     $scope.restored_data.listOrder[i].Availability = "Đã xong"
@@ -23,28 +37,31 @@ app.controller("orderCtrl",function($scope,$stateParams,$http){
             for (var i = 0; i < $scope.restored_data.listOrder.length; i++) {
                 $scope.restored_data.listOrder[i].priceTotal = formatPrice($scope.restored_data.listOrder[i].totalPrice) + " VNĐ"
             };
+            $scope.totalPrice = formatPrice($scope.restored_data.totalPrice);
             console.log('Get thanh cong');
-    	}, function myError(response) {
-    		console.log('Get loi');
-    	});
-	    $scope.currentPage = idxPage;
-	};
+        }, function myError(response) {
+            console.log('Get loi');
+        });
+        $scope.currentPage = idxPage;
+    };
 
     $scope.edit = function(item){
         localStorage.editOrder = JSON.stringify(item);
     };
 
 	$scope.remove = function(item){ 
-        $http({
-			method: 'DELETE',
-			url: 'http://localhost:3000/_api/v1/order/' + item._id
-		}).then(function mySuccess(response){
-    		console.log(response);
-            console.log('Delete thanh cong');
-            window.location.reload();
-    	}, function myError(response) {
-    		console.log('Delete that bai');
-    	});   
+        if(confirm("Bạn có chắc chắn muốn hủy không?")){
+            $http({
+                method: 'DELETE',
+                url: 'http://localhost:3000/_api/v1/order/' + item._id
+            }).then(function mySuccess(response){
+                console.log(response);
+                console.log('Delete thanh cong');
+                window.location.reload();
+            }, function myError(response) {
+                console.log('Delete that bai');
+            });   
+        }
     };
 });
 
@@ -127,16 +144,18 @@ app.controller("orderDetailCtrl",function($scope,$stateParams,$http){
     };
 
 	$scope.remove = function(item){ 
-        $http({
-			method: 'DELETE',
-			url: 'http://localhost:3000/_api/v1/orderDetail/' + item._id
-		}).then(function mySuccess(response){
-    		console.log(response);
-            console.log('Delete thanh cong');
-            window.location.reload();
-    	}, function myError(response) {
-    		console.log('Delete that bai');
-    	});   
+        if(confirm("Bạn có chắc chắn muốn hủy không?")){
+            $http({
+                method: 'DELETE',
+                url: 'http://localhost:3000/_api/v1/orderDetail/' + item._id
+            }).then(function mySuccess(response){
+                console.log(response);
+                console.log('Delete thanh cong');
+                window.location.reload();
+            }, function myError(response) {
+                console.log('Delete that bai');
+            });   
+        }
     };
 });
 

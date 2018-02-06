@@ -9,14 +9,15 @@ function formatPrice(price){
 //Hàm chính 
 function cart(){
 	var items = [];
-	if (localStorage.cart === undefined) {
+	if (localStorage.cart === undefined || JSON.parse(localStorage.cart).length == 0) {
 		var content = '';
 			content +=  '<div class="text-center">';
-			content +=  '<h2>Lỗi!</h2>';
-			content +=  '<br>';
-			content +=  '<h4>Chưa có sản phẩm</h4>';
+			// content +=  '<h2>Thông báo</h2>';
+			// content +=  '<br>';
+			content +=  '<h4>Hiện chưa có sản phẩm trong giỏ hàng!</h4>';
 			content +=  '</div>';
     	$('#indexCart').html(content);
+    	$('#indexCheckout').html(content);
 	}else{
 		items = JSON.parse(localStorage.cart);
 		var totalPrice = 0;
@@ -67,18 +68,15 @@ function cart(){
 		contentTotalPrice +=	'</tr>';
 		$('#cartTable').html(content);
 		$('tbody tr:last-child').after(contentTotalPrice);
-		$('#cartTable').on('click', '.cart_quantity_delete', function() {
-			if (i > 1){
-			var idItem = $(this).parent().parent().children('.cart_description').children('.productID').text().replace('ID: ', '');
-			items = $.grep(items, function(e){ 
-		    	return e._id != idItem; 
-			});
-			localStorage.cart = JSON.stringify(items);
-			cart();}
-			else{localStorage.removeItem("cart");
-			window.location.href = 'file:///Users/user/Desktop/Project/Eyeonic/Client-side/User/cart.html'
-			}
+		$('#cartTable').on('click', '.cart_quantity_delete', function() {					
+				var idItem = $(this).parent().parent().children('.cart_description').children('.productID').text().replace('ID: ', '');
+				items = $.grep(items, function(e){ 
+			    	return e._id != idItem; 
+				});
+				localStorage.cart = JSON.stringify(items);
+				cart();			
 		});
+
 		$('#cartTable').on('mouseleave', 'input.cart_quantity_input', function() {
 			var priceProduct = $(this).parent().parent().parent().children('.cart_price').children('p').text().replace(' VNĐ', '');
 				priceProduct = priceProduct.replace(/[.]/g, '');

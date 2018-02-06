@@ -42,7 +42,7 @@
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href="#"><i class="fa fa-phone"></i>+84948664870</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> eyeonic@gmail.com</a></li>
+								<li><a href="mailto:eyeonic@gmail.com?Subject=Hello"><i class="fa fa-envelope"></i> eyeonic@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -131,7 +131,7 @@
 	    			<div class="contact-form">
 	    				<h2 class="title text-center">Gửi yêu cầu </h2>
 	    				<div class="status alert alert-success" style="display: none"></div>
-				    	<form id="main-contact-form" class="contact-form row" name="contact-form">
+				    	<form onsubmit="return false" id="main-contact-form" class="contact-form row" name="contact-form">
 				            <div class="form-group col-md-6">
 				                <input type="text" name="name" id="username" class="form-control" required="required" placeholder="Tên" onkeyup="validateUser()">
 				                <p id="username-error"></p>
@@ -176,11 +176,67 @@
     	</div>	
     </div><!--/#contact-page-->
 	
-	<footer id="footer"><!--Footer-->
+	<footer id="footer">
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="single-widget">
+							<h2>Loại kính</h2>
+							<ul class="nav nav-pills nav-stacked">							
+									<li><a href="product.html?ProductType=kinh-mat-nam">Kính Mát Nam</a></li>
+									<li><a href="product.html?ProductType=kinh-mat-nu">Kính Mát Nữ</a></li>
+									<li><a href="product.html?ProductType=kinh-the-thao">Kính Thể Thao</a></li>
+									<li><a href="product.html?ProductType=kinh-ap-trong">Kính Áp Tròng</a></li>
+									<li><a href="product.html?ProductType=kinh-mat-tre-em">Kính Mát Trẻ Em</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Hãng</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="product.html?Brand=Ray-Ban">Ray-Ban</a></li>
+								<li><a href="product.html?Brand=Oakley">Oakley</a></li>
+								<li><a href="product.html?Brand=Dolce-And-Gabbana">Dolce &amp; Gabbana</a></li>
+								<li><a href="product.html?Brand=Burberry">Burberry</a></li>
+								<li><a href="product.html?Brand=Versace">Versace</a></li>								
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="single-widget">
+							<h2>Hệ thống cửa hàng</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Cơ Sở 1: EYEONIC HÀ NỘI</a></li>
+								<li><a href="#">Cơ Sở 2: EYEONIC ĐÀ NẴNG</a></li>
+								<li><a href="#">Cơ Sở 3: EYEONIC TP. HCM</a></li>
+							</ul>
+						</div>
+					</div>					
+					<div class="col-sm-3 col-sm-offset-1">
+						<div class="single-widget">
+							<h2>Liên hệ với chúng tôi</h2>
+							<img  width="190px"  src="images/logo.png" alt="">
+							<div class="social-icons">
+								<ul class="nav navbar-nav">
+									<li><a target="_blank" href="https://www.facebook.com/Eyeonic-1169447629854990/"><i class="fa fa-facebook"></i></a></li>
+									<li><a target="_blank" href="https://twitter.com/EYEONICPROJECT"><i class="fa fa-twitter"></i></a></li>
+									<li><a target="_blank" href="https://plus.google.com/114750952419600693846"><i class="fa fa-google-plus"></i></a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2018 Aptech-FPT.</p>
+					<p class="pull-left">Bản quyền © 2018 Aptech-FPT.</p>					
 				</div>
 			</div>
 		</div>

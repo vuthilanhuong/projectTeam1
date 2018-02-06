@@ -7,10 +7,20 @@ var mongoosePaginate = require('mongoose-paginate');
 exports.get_list = function(req, resp){
 	var page = Number(req.query.page);
 	var limit = 10;
+	var search = req.query.search;
+	var query = {};
 	if (page==0){
 		page=1
 	};
-  	Member.paginate({status:1}, { page: page, limit: limit }, function(err, result) {
+	console.log(search);
+	if (search != "error") {
+		query = {
+			$text:{$search:search}
+		};
+	}else{
+		query = {status:1};
+	};
+  	Member.paginate(query, { page: page, limit: limit }, function(err, result) {
 		if (err){
 			resp.send(err)
 		}else{

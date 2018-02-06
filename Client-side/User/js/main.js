@@ -18,6 +18,8 @@ $(document).ready(function(){
 	$('body section').css('min-height',height);
 });
 
+
+//hàm cuộn trang
 function scroll() {
 	$.scrollUp({
         scrollName: 'scrollUp', // Element ID
@@ -37,6 +39,7 @@ function scroll() {
 	});
 };
 
+//hàm thêm vào sản phẩm so sánh 
 function compare(product){
 	var item = [];
 	var check = true;
@@ -82,6 +85,7 @@ function compare(product){
 	}	
 };
 
+
 function checkLogin(){
 	if (localStorage.members !== undefined) {
 		var secret = JSON.parse(localStorage.members);
@@ -117,6 +121,7 @@ function checkLogin(){
 	}
 };
 
+//thêm vào giỏ hàng
 function addCart(product){
 	var items = [];
 	var check = true;
@@ -158,4 +163,37 @@ function addCart(product){
 			}
 		});
 	}	
+};
+
+//thêm vào đã xem
+function addSeen(product){
+	var items = [];
+	var check = true;
+	if(localStorage.productSeen !== undefined)
+		items = JSON.parse(localStorage.productSeen);
+
+	//kiểm tra đã tồn tại chưa?
+	for (var i = 0; i < items.length; i++) {
+		if(items[i]._id == product._id){
+			localStorage.productSeen = JSON.stringify(items);			
+			check = false;
+			break;
+		}
+	};
+
+	//nếu chưa tồn tại thì push thêm vào, 
+	//độ dài tối đa là 6, vì vậy nếu đã có 6 sản phẩm rồi thì đẩy sản phẩm đầu tiên ra
+	if(check === true){
+		if(items.length == 6) {
+			alert("dai 6 san pham roi");
+			for (var i = 0; i < 5; i++) {
+				items[i] = items[i+1]
+			};
+			items[5] = product;
+			localStorage.productSeen = JSON.stringify(items);
+		}else{
+			items.push(product);
+			localStorage.productSeen = JSON.stringify(items);
+		};
+	};	
 };

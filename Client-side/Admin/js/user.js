@@ -3,10 +3,21 @@
 app.controller("userCtrl",function($scope,$stateParams,$http){
 	var idxPage = $stateParams.pageID;
 
+	var query = "&search=error";
+
+	$scope.searchForm = function(){
+		if ($scope.searchInput != '') {
+			query = '&search='+$scope.searchInput;
+		}else{
+			query = '&search=error';
+		};
+		$scope.loadUser();
+	};
+
 	$scope.loadUser = function() {
 	    $http({
 			method: 'GET',
-			url: 'http://localhost:3000/_api/v1/members/' + '?page=' + idxPage
+			url: 'http://localhost:3000/_api/v1/members/' + '?page=' + idxPage + query
 		}).then(function mySuccess(response){
     		console.log(response);
     		$scope.restored_data = response.data;
@@ -21,17 +32,19 @@ app.controller("userCtrl",function($scope,$stateParams,$http){
 		localStorage.editUser = JSON.stringify(item);
 	};
 
-	$scope.remove = function(item){ 
-        $http({
-			method: 'DELETE',
-			url: 'http://localhost:3000/_api/v1/members/' + item._id
-		}).then(function mySuccess(response){
-    		console.log(response);
-            console.log('Delete thanh cong');
-            window.location.reload();
-    	}, function myError(response) {
-    		console.log('Delete that bai');
-    	});   
+	$scope.remove = function(item){
+		if(confirm("Bạn có chắc chắn muốn xóa không?")){ 
+	        $http({
+				method: 'DELETE',
+				url: 'http://localhost:3000/_api/v1/members/' + item._id
+			}).then(function mySuccess(response){
+	    		console.log(response);
+	            console.log('Delete thanh cong');
+	            window.location.reload();
+	    	}, function myError(response) {
+	    		console.log('Delete that bai');
+	    	});   
+	    }
     };
 });
 
