@@ -9,7 +9,7 @@ function formatPrice(price){
 
 function loadCompare(){
     var productArray = [];
-    if(localStorage.compare === undefined || localStorage.compare.length == 0){
+    if(localStorage.compare === undefined || JSON.parse(localStorage.compare).length == 0){
 		var content = '';
 			content +=  '<div class="text-center">';
 			// content +=  '<h2>Lỗi!</h2>';
@@ -18,6 +18,7 @@ function loadCompare(){
 			content +=  '</div>';
     	$('#tableCompare .row .col-md-10').html(content);
     }else{
+    	console.log(localStorage.compare.length);
     	productArray = JSON.parse(localStorage.compare);
     	var productImg ='<td class="titleCompare">Ảnh</td>';
 		var productName ='<th class="text-center">Tên Sản Phẩm</th>';
