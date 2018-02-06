@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	var checkUser = false;
 	var checkTitle = false;
@@ -63,6 +62,21 @@ function validateMessage(){
 	checkSubmit();
 };
 
-function alertContactUs(){
+$(document).ready(function(){
+	var checkUser = false;
+	var checkTitle = false;
+	var checkMessage = false;
+	$( "#btnSubmit" ).prop( "disabled", true );	
+});
+
+function checkSubmit(){
+	if (checkUser !== undefined  && checkTitle !== undefined && checkMessage !== undefined ){
+		if (checkUser === true && checkTitle === true && checkMessage === true) {
+			$( "#btnSubmit" ).prop( "disabled", false );
+		};
+	};	
+};
+
+$("#btnSubmit").click( function (){
 	alert("Bạn đã gửi mail thành công!");
-	}
+	})
