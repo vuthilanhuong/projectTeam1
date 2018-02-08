@@ -12,7 +12,6 @@ exports.get_list = function(req, resp){
 	if (page==0){
 		page=1
 	};
-	console.log(search);
 	if (search != "error") {
 		query = {
 			$text:{$search:search}
@@ -62,10 +61,16 @@ exports.get_detail = function(req, resp){
 
 exports.update = function(req, resp){
 	console.log('i am updating member.');
-	Member.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
-    	if (err)
-      	  resp.send(err);
-    	resp.json(task);
+	Member.findById(req.params.id, function(err, result) {
+    	if (result.status == 0){
+    		resp.status(500).send('Tài khoản này đã bị xóa');
+    	}else{
+    		Member.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(error, task) {
+		    	if (error)
+		      	  resp.send(error);
+		    	resp.json(task);
+		  	});
+    	}
   	});
 };
 

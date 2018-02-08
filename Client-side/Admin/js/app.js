@@ -7,9 +7,15 @@ app.config(appRouterConfig);
 function appRouterConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
 			.state('Product', {
-				url: '/product/page/:pageID',
+				url: '/product',
 				templateUrl: 'pages/product/listProduct.html',
-				controller: 'productCtrl'
+				controller: 'productCtrl',
+				params:{
+					pageID:{
+						value: 1,
+						dymanic: true
+					}
+				}	
 			})
 			.state('AddProduct', {
 				url: '/product/add',
@@ -63,7 +69,7 @@ function appRouterConfig($stateProvider, $urlRouterProvider) {
 				controller: 'editOrderDetailCtrl'
 			});
 	
-		$urlRouterProvider.otherwise('/product/page/1'); 
+		$urlRouterProvider.otherwise('/product'); 
 };
 
 app.controller('indexCtrl',function($scope,$http){

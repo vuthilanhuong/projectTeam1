@@ -110,11 +110,17 @@ exports.get_detail = function(req, resp){
 
 exports.update = function(req, resp){
 	console.log('i am updating product.');
-	Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
-    	if (err)
-      	  resp.send(err);
-    	resp.json(task);
-  	});
+	Product.findById(req.params.id, function(err, result) {
+    	if (result.status == 0){
+    		resp.status(500).send('Sản phẩm này đã bị xóa');
+    	}else{
+			Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
+		    	if (err)
+		      	  resp.send(err);
+		    	resp.json(task);
+		  	});
+		};
+	});
 };
 
 exports.delete = function(req, resp){

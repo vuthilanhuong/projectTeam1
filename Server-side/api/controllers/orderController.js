@@ -19,11 +19,10 @@ exports.get_list = function(req, resp){
     	for (var i = 0; i < task.length; i++) {
     		totalPrice += task[i].totalPrice;
     	};
-    	Order.paginate({status:{$in:[1,2,3]},CreatAt: {$gte:startDate,$lt: endDate}}, { page: page, limit: limit }, function(err, result) {
+    	Order.paginate({CreatAt: {$gte:startDate,$lt: endDate}}, { page: page, limit: limit }, function(err, result) {
 			if (err){
 				resp.send(err)
 			}else{
-				    	console.log(totalPrice);
 				var responseData = {
 					'listOrder': result.docs,
 					'total': result.total,
