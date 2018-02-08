@@ -51,12 +51,17 @@ exports.get_detail = function(req, resp){
 };
 
 exports.update = function(req, resp){
-	console.log('i am updating admin.');
-	Admin.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
-    	if (err)
-      	  resp.send(err);
-    	resp.json(task);
-  	});
+	Admin.findById(req.params.id, function(err, result) {
+    	if (result.status == 0){
+    		resp.status(500).send('Admin này đã bị xóa');
+    	}else{
+			Admin.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, task) {
+		    	if (err)
+		      	  resp.send(err);
+		    	resp.json(task);
+		  	});
+		};
+	});
 };
 
 exports.delete = function(req, resp){

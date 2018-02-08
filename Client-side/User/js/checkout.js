@@ -150,7 +150,7 @@ function submit(){
 		  			  buttons: false
 					}).then(function(){
 						localStorage.removeItem("cart");
-						window.location.href = 'file:///Users/user/Desktop/Project/Eyeonic/Client-side/User/index.html'
+						window.location.href = 'index.html'
 					});
 				},
 				error: function(response, message){

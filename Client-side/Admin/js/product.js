@@ -1,4 +1,4 @@
- app.controller('productCtrl',function($scope,$stateParams,$http){
+ app.controller('productCtrl',function($scope,$stateParams,$http,$state){
 	$scope.ProductType = [
 		{name:"Tất Cả",type:""},
 		{name:"Kính Thể Thao",type:"&ProductType=kinh-the-thao"},
@@ -15,7 +15,13 @@
 		{name:"Versace",type:"&Brand=Versace"}];
 	var idxPage = $stateParams.pageID;
 	var query = "";
+	$scope.changePage = function(){
+		idxPage = $scope.currentPage;
+		$scope.loadProduct();
+	};
+
 	$scope.changeChoose = function() {
+		idxPage = 1;
 		$scope.searchInput = "";
 		query = $scope.productType.type + $scope.brand.type;
 		$scope.loadProduct();
@@ -87,12 +93,14 @@ app.controller('editProductCtrl',function($scope,$http){
 			})
     	}, function myError(response) {
     		swal({
-			  title: "Thất Bại!",
-			  text: " ",
-			  icon: "error",
-			  timer: 1000,
-  			  buttons: false
-			})
+              title: "Thất Bại!",
+              text: response.data,
+              icon: "error",
+              timer: 2500,
+              buttons: false
+            }).then(function () {
+                window.location.href = "index.html#!/product/page/1";
+            });
     	});
 	};
 

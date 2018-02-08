@@ -200,7 +200,15 @@ app.controller('editAdminCtrl',function($scope,$http){
                 window.location.href = "index.html#!/admin/page/1";
             });
     	}, function myError(response) {
-    		console.log('Update loi');
+    		swal({
+              title: "Thất Bại!",
+              text: response.data,
+              icon: "error",
+              timer: 2500,
+              buttons: false
+            }).then(function () {
+                window.location.href = "index.html#!/admin/page/1";
+            });
     	});
 	};
 
