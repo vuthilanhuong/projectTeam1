@@ -12,14 +12,16 @@
   "dependencies": {
     "angular": "^1.6.4",
     "angular-route": "^1.6.4",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^2.0.1",
+    "body-parse": "^0.1.0",
     "body-parser": "^1.18.2",
+    "cloudinary": "^1.14.0",
     "cors": "^2.8.4",
-    "express": "^4.16.2",
+    "express": "^4.17.0",
     "express-fileupload": "^0.3.0",
     "jsonwebtoken": "^8.1.0",
     "mongodb": "^2.2.33",
-    "mongoose": "^4.13.6",
+    "mongoose": "^4.13.18",
     "mongoose-paginate": "^5.0.3",
     "mongoose-pagination": "^1.0.0",
     "mongoose-transaction": "0.0.3",
@@ -27,6 +29,6 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "nodemon": "^1.12.5"
+    "nodemon": "^1.19.0"
   }
 }

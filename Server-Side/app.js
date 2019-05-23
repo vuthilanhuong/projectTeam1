@@ -10,10 +10,18 @@ const fileupload = require('express-fileupload');
 var mongoose = require('mongoose');
 
 // var url = 'mongodb://localhost:27017/youtube_api';
-// var MongoClient = require('mongodb').MongoClient;
+var MongoClient = require('mongodb').MongoClient;
 // const http = require('http');
 
-mongoose.connect('mongodb://sangbeo:123456@ds127536.mlab.com:27536/eyeonic', { useMongoClient: true });
+// mongoose.connect('mongodb+srv://root:abcD1234@cluster0-wuil3.mongodb.net/test?retryWrites=true',
+// 	{ useNewUrlParser: true });
+
+// mongoose.connect('mongodb://sangbeo:123456@ds127536.mlab.com:27536/eyeonic',
+// 	{ useMongoClient: true });
+
+mongoose.connect('mongodb://huong:Abc123@ds135844.mlab.com:35844/marketcoders',
+	{ useMongoClient: true });
+
 mongoose.Promise = global.Promise;
 
 // app.use(path());
@@ -62,13 +70,13 @@ app.listen('3000',function(){
 // 	});
 // });
 
-// app.get('/_api/v1/students', function(req, resp){
-// 	MongoClient.connect(url, function(err, db) {
-// 		db.collection('students').find().toArray(function(err, result){
-// 			resp.json(result);
-// 		});	
-// 	});
-// });
+app.get('/_api/v1/students', function(req, resp){
+	MongoClient.connect(url, function(err, db) {
+		db.collection('students').find().toArray(function(err, result){
+			resp.json(result);
+		});
+	});
+});
 
 // app.post('/_api/v1/students',function(req, resp){
 // 	var studentAdd = req.body;

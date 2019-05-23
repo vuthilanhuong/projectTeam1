@@ -39,7 +39,7 @@ function loadProduct(){
 			dataProduct = response;
 			content += '<div class="col-sm-5">';
 			content +=		'<div class="view-product">';
-			content +=			'<img id="img_01" src="'+response.Picture1+'" data-zoom-image="'+response.Picture1+'" alt="">';
+			content +=			'<img onclick=\'addSeen('+JSON.stringify(product[i])+')\' id="img_01" src="'+response.Picture1+'" data-zoom-image="'+response.Picture1+'" alt="">';
 			content +=		'</div>';
 			content +=		'<div id="similar-product" class="carousel slide" data-ride="carousel">';
 			content +=		   '<div class="carousel">';
