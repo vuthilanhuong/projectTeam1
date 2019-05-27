@@ -1,3 +1,4 @@
+var API_URL ="https://dev20t1808m.herokuapp.com";
 var app = angular.module('myApp',['ui.router', 'ui.bootstrap']);
 function formatPrice(price){
 	var result = price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
@@ -85,7 +86,7 @@ app.controller('indexCtrl',function($scope,$http){
 			headers: {
 				"Authorization": secret.token
 			},
-			url: 'http://localhost:3000/_api/v1/getAdmin/' + secret.userID
+			url: API_URL + '/_api/getAdmin/' + secret.userID
 		}).then(function mySuccess(response){
     		if(response.data === null)
     		window.location.href = "pages/auth/login.html";

@@ -1,18 +1,24 @@
+var API_URL ="https://dev20t1808m.herokuapp.com";
+//1.Product controller chung
  app.controller('productCtrl',function($scope,$stateParams,$http,$state){
 	$scope.ProductType = [
-		{name:"Tất Cả",type:""},
-		{name:"Kính Thể Thao",type:"&ProductType=kinh-the-thao"},
-		{name:"Kính Áp Tròng",type:"&ProductType=kinh-ap-trong"},
-		{name:"Kính Mát Nữ",type:"&ProductType=kinh-mat-nu"},
-		{name:"Kính Mát Nam",type:"&ProductType=kinh-mat-nam"},
-		{name:"Kính Trẻ Em",type:"&ProductType=kinh-mat-tre-em"}];
+		{name:"Tất cả",type:""},
+		{name:"Thiết Kế Logo",type:"&ProductType=thiet-ke-logo"},
+		{name:"Danh Thiếp Văn Phòng Phẩm",type:"&ProductType=danh-thiep-van-phong-pham"},
+		{name:"Thiết Kế Brochure",type:"&ProductType=thiet-ke-brochure"},
+		{name:"Thiết Kế Web & Di Động",type:"&ProductType=thiet-ke-web-va-di-dong"},
+		{name:"Lập Trình Web",type:"&ProductType=lap-trinh-web"},
+		{name:"Ứng Dụng Di Động & Web",type:"&ProductType=ung-dung-di-dong-va-web"},
+		{name:"Xây Dựng Trang Web & CMS",type:"&ProductType=xay-dung-trang-web-va-cms"}];
 	$scope.Brand = [
-		{name:"Tất Cả",type:""},
-		{name:"Ray-Ban",type:"&Brand=Ray-Ban"},
-		{name:"Oakley",type:"&Brand=Oakley"},
-		{name:"Dolce & Gabbana",type:"&Brand=Dolce-And-Gabbana"},
-		{name:"Burberry",type:"&Brand=Burberry"},
-		{name:"Versace",type:"&Brand=Versace"}];
+		{name:"Tất cả",type:""},
+		{name:"Thiết Kế Đồ Họa",type:"&Brand=thiet-ke-do-hoa"},
+		{name:"Lập Trình Và Công Nghệ ",type:"&Brand=lap-trinh-va-cong-nghe"}];
+	$scope.Availability = [
+		{name:"Tất cả",type:""},
+		{name:"Còn hàng",type:"&Availability=con-hang"},
+		{name:"Hết hàng",type:"&Availability=het-hang"}];
+
 	var idxPage = $stateParams.pageID;
 	var query = "";
 	$scope.changePage = function(){
@@ -23,7 +29,7 @@
 	$scope.changeChoose = function() {
 		idxPage = 1;
 		$scope.searchInput = "";
-		query = $scope.productType.type + $scope.brand.type;
+		query = $scope.productType.type;
 		$scope.loadProduct();
 	};
 
@@ -37,7 +43,7 @@
 	$scope.loadProduct = function() {
 	    $http({
 			method: 'GET',
-			url: 'http://localhost:3000/_api/v1/products' + '?page=' + idxPage + '&limit=10' + query
+			url: API_URL + '/_api/products' + '?page=' + idxPage + '&limit=10' + query
 		}).then(function mySuccess(response){
     		console.log(response);
     		$scope.restored_data = response.data;
@@ -56,7 +62,7 @@
 		if(confirm("Bạn có chắc chắn muốn xóa không?")){
             $http({
 				method: 'DELETE',
-				url: 'http://localhost:3000/_api/v1/products/' + item._id
+				url: API_URL + '/_api/products/' + item._id
 			}).then(function mySuccess(res){
 	    		console.log(res);
 	            swal("Đã Xóa!", "", "success");
@@ -69,19 +75,21 @@
     };
 });
 
+
+//2.Sửa sản phẩm
 app.controller('editProductCtrl',function($scope,$http){
 
 	$scope.loadFix = function(){
 		$scope.detail_Product = JSON.parse(localStorage.editProduct);
-		$scope.ProductType = ["Kính Thể Thao","Kính Áp Tròng","Kính Mát Nữ","Kính Mát Nam","Kính Mát Trẻ Em"];
-		$scope.Brand = ["Ray-Ban","Oakley","Dolce & Gabbana","Burberry","Versace"];
+		$scope.ProductType = ["Thiết Kế Logo","Danh Thiếp Văn Phòng Phẩm","Thiết Kế Brochure","Thiết Kế Web & Di Động","Lập Trình Web","Ứng Dụng Di Động & Web","Xây Dựng Trang Web & CMS"];
+		$scope.Brand = ["Thiết Kế Đồ Họa","Lập Trình Và Công Nghệ"];
 		$scope.Availability = ["Có Sẵn Hàng","Hết Hàng"];
 	};
 
 	$scope.submitFix = function(data){
 		$http({
 			method: 'PUT',
-			url: 'http://localhost:3000/_api/v1/products/' + data._id,
+			url: API_URL + '/_api/products/' + data._id,
 			data: data
 		}).then(function mySuccess(response){
     		swal({
@@ -108,10 +116,10 @@ app.controller('editProductCtrl',function($scope,$http){
 		var fileUpload = document.getElementById("fileUpload1");
 		var fd = new FormData();
 			fd.append('file', fileUpload.files[0]);
-			fd.append('upload_preset','rk1gl1ni');
+			fd.append('upload_preset','ka4udhi4');
 		$http({
 			method: 'POST',
-			url: 'https://api.cloudinary.com/v1_1/sangbeo-aptech/image/upload',
+			url: 'https://api.cloudinary.com/v1_1/huongaptech/image/upload',
 			headers:{"Content-Type": undefined},
 			data: fd,
 			cache: false,
@@ -128,10 +136,10 @@ app.controller('editProductCtrl',function($scope,$http){
 		var fileUpload = document.getElementById("fileUpload2");
 		var fd = new FormData();
 			fd.append('file', fileUpload.files[0]);
-			fd.append('upload_preset','rk1gl1ni');
+			fd.append('upload_preset','ka4udhi4');
 		$http({
 			method: 'POST',
-			url: 'https://api.cloudinary.com/v1_1/sangbeo-aptech/image/upload',
+			url: 'https://api.cloudinary.com/v1_1/huongaptech/image/upload',
 			headers:{"Content-Type": undefined},
 			data: fd,
 			cache: false,
@@ -148,11 +156,11 @@ app.controller('editProductCtrl',function($scope,$http){
 	};
 });
 
-
+//3. Thêm sản phẩm
 app.controller('addProductCtrl',function($scope,$http){
 	var smallImg = [];
-	$scope.ProductType = ["Kính Thể Thao","Kính Áp Tròng","Kính Mát Nữ","Kính Mát Nam","Kính Mát Trẻ Em"];
-	$scope.Brand = ["Ray-Ban","Oakley","Dolce & Gabbana","Burberry","Versace"];
+	$scope.ProductType = ["Thiết Kế Logo","Danh Thiếp Văn Phòng Phẩm","Thiết Kế Brochure","Thiết Kế Web & Di Động","Lập Trình Web","Ứng Dụng Di Động & Web","Xây Dựng Trang Web & CMS"];
+	$scope.Brand = ["Thiết Kế Đồ Họa","Lập Trình Và Công Nghệ"];
 	$scope.Availability = ["Có Sẵn Hàng","Hết Hàng"];
 
 	//upload anh input
@@ -160,10 +168,10 @@ app.controller('addProductCtrl',function($scope,$http){
 		var fileUpload = document.getElementById("fileUpload1");
 		var fd = new FormData();
 			fd.append('file', fileUpload.files[0]);
-			fd.append('upload_preset','rk1gl1ni');
+			fd.append('upload_preset','ka4udhi4');
 		$http({
 			method: 'POST',
-			url: 'https://api.cloudinary.com/v1_1/sangbeo-aptech/image/upload',
+			url: 'https://api.cloudinary.com/v1_1/huongaptech/image/upload',
 			headers:{"Content-Type": undefined},
 			data: fd,
 			cache: false,
@@ -185,10 +193,10 @@ app.controller('addProductCtrl',function($scope,$http){
 		var fileUpload = document.getElementById("fileUpload2");
 		var fd = new FormData();
 			fd.append('file', fileUpload.files[0]);
-			fd.append('upload_preset','rk1gl1ni');
+			fd.append('upload_preset','ka4udhi4');
 		$http({
 			method: 'POST',
-			url: 'https://api.cloudinary.com/v1_1/sangbeo-aptech/image/upload',
+			url: 'https://api.cloudinary.com/v1_1/huongaptech/image/upload',
 			headers:{"Content-Type": undefined},
 			data: fd,
 			cache: false,
@@ -216,7 +224,7 @@ app.controller('addProductCtrl',function($scope,$http){
 		console.log($scope.data);
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/_api/v1/products',
+			url: API_URL + '/_api/products',
 			data: sendData
 		}).then(function mySuccess(response){
     		swal({
@@ -243,7 +251,7 @@ app.controller('addProductCtrl',function($scope,$http){
 	$scope.deleteImg = function(img){
 		var index=$scope.smallImg.indexOf(img);
         if(confirm("Bạn có chắc chắn xóa không?")){
-            $scope.smallImg.splice(index,1);  
+            $scope.smallImg.splice(index,1);  //nối với...
         }
 	};
 	//end delete img upload

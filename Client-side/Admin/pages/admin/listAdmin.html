@@ -1,8 +1,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 	<h1>
-		Quản lý sản phẩm
-		<small>Danh sách sản phẩm</small>
+		Quản lý Admin
+		<small>Danh sách Admin</small>
 	</h1>
 </section>
 <div class="content" ng-init="loadAdmin()">
@@ -21,7 +21,10 @@
 						            <tr>
 						                <th>#</th>
 						                <th>Ảnh</th>
-						                <th>Tên Admin</th>
+						                <th>Tên đầy đủ</th>
+										<th>Tên đăng nhập</th>
+										<th>Email</th>
+										<th>Tùy chỉnh</th>
 						                <th>&nbsp;</th>
 						            </tr>
 						        </thead>
@@ -32,6 +35,9 @@
 								                <td class="col-xs-1">{{$index + 1 + (currentPage-1)*10}}</td>
 								                <td class="col-xs-2 col-md-1"><img src="{{admin.avatarUrl}}" class="img-responsive"></td>
 								                <td class="col-xs-2">{{admin.fullName}}</td>
+												<td class="col-xs-2">{{admin.userName}}</td>
+												<td class="col-xs-2">{{admin.email}}</td>
+
 								                <td class="col-xs-2 col-md-1"> 
 								                    <div class="dropdown">		                    	
 								                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Tùy Chọn <span class="caret"></span></button>

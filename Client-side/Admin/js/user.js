@@ -1,5 +1,5 @@
 //                                 >>>>>>>>>>>>>>>>>>>User<<<<<<<<<<<<<<<<<<<   
-
+var API_URL ="https://dev20t1808m.herokuapp.com";
 app.controller("userCtrl",function($scope,$stateParams,$http){
 	var idxPage = $stateParams.pageID;
 
@@ -17,7 +17,7 @@ app.controller("userCtrl",function($scope,$stateParams,$http){
 	$scope.loadUser = function() {
 	    $http({
 			method: 'GET',
-			url: 'http://localhost:3000/_api/v1/members/' + '?page=' + idxPage + query
+			url: API_URL+ '/_api/members/' + '?page=' + idxPage + query
 		}).then(function mySuccess(response){
     		console.log(response);
     		$scope.restored_data = response.data;
@@ -36,7 +36,7 @@ app.controller("userCtrl",function($scope,$stateParams,$http){
 		if(confirm("Bạn có chắc chắn muốn xóa không?")){ 
 	        $http({
 				method: 'DELETE',
-				url: 'http://localhost:3000/_api/v1/members/' + item._id
+				url: API_URL+ '/_api/members/' + item._id
 			}).then(function mySuccess(response){
 	    		console.log(response);
 	            console.log('Delete thanh cong');
@@ -56,10 +56,10 @@ app.controller("addUserCtrl",function($scope,$http){
 		var fileUpload = document.getElementById("fileUpload");
 		var fd = new FormData();
 		fd.append('file', fileUpload.files[0]);
-		fd.append('upload_preset','rk1gl1ni');
+		fd.append('upload_preset','ka4udhi4');
 		$http({
 			method: 'POST',
-			url: 'https://api.cloudinary.com/v1_1/sangbeo-aptech/image/upload',
+			url: 'https://api.cloudinary.com/v1_1/huongaptech/image/upload',
 			headers:{"Content-Type": undefined},
 			data: fd,
 			cache: false,
@@ -84,7 +84,7 @@ app.controller("addUserCtrl",function($scope,$http){
 			console.log(data);
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/_api/v1/members',
+			url: API_URL+ '/_api/members',
 			data: data
 		}).then(function mySuccess(response){
     		swal({
@@ -113,7 +113,7 @@ app.controller("addUserCtrl",function($scope,$http){
 	$scope.userError = function(){
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/_api/v1/checkUser',
+			url: API_URL+ '/_api/checkUser',
 			data : $scope.sendData
 		}).then(function mySuccess(response){
 			console.log(response);
@@ -142,7 +142,7 @@ app.controller("addUserCtrl",function($scope,$http){
 	$scope.emailError = function(){
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/_api/v1/checkEmail',
+			url: API_URL+ '/_api/checkEmail',
 			data: $scope.sendData
 		}).then(function mySuccess(response){
 			console.log(response);
@@ -184,7 +184,7 @@ app.controller('editUserCtrl',function($scope,$http){
 		data.gender = data.gender.value;
 		$http({
 			method: 'PUT',
-			url: 'http://localhost:3000/_api/v1/members/' + data._id,
+			url: API_URL+ '/_api/members/' + data._id,
 			data: data
 		}).then(function mySuccess(response){
     		console.log(response);
@@ -214,10 +214,10 @@ app.controller('editUserCtrl',function($scope,$http){
 		var fileUpload = document.getElementById("fileUpload");
 		var fd = new FormData();
 		fd.append('file', fileUpload.files[0]);
-		fd.append('upload_preset','rk1gl1ni');
+		fd.append('upload_preset','ka4udhi4');
 		$http({
 			method: 'POST',
-			url: 'https://api.cloudinary.com/v1_1/sangbeo-aptech/image/upload',
+			url: 'https://api.cloudinary.com/v1_1/huongaptech/image/upload',
 			headers:{"Content-Type": undefined},
 			data: fd,
 			cache: false,

@@ -18,16 +18,16 @@ exports.get_list = function(req, resp){
 			status:1,
 			ProductType:ProductType
 		};
-		if (ProductType =='kinh-the-thao') {
-			query.ProductType = 'Kính Thể Thao'
-		} else if (ProductType == 'kinh-mat-tre-em'){
-			query.ProductType = 'Kính Mát Trẻ Em'
-		} else if (ProductType == 'kinh-mat-nam'){
-			query.ProductType = 'Kính Mát Nam'
-		} else if (ProductType == 'kinh-mat-nu'){
-			query.ProductType = 'Kính Mát Nữ'
-		} else if (ProductType == 'kinh-ap-trong'){
-			query.ProductType = 'Kính Áp Tròng'
+		if (ProductType =='thiet-ke-logo') {
+			query.ProductType = 'Thiết Kế Logo'
+		} else if (ProductType == 'danh-thiep-van-phong-pham'){
+			query.ProductType = 'Danh Thiếp Văn Phòng Phẩm'
+		} else if (ProductType == 'thiet-ke-brochure'){
+			query.ProductType = 'Thiết Kế Brochure'
+		} else if (ProductType == 'thiet-ke-poster'){
+			query.ProductType = 'Thiết Kế Poster'
+		} else if (ProductType == 'thiet-ke-web-va-di-dong'){
+			query.ProductType = 'Thiết Kế Web Và Di Động'
 		}else{
 			query = {status:1};
 		}
@@ -36,8 +36,8 @@ exports.get_list = function(req, resp){
 			status:1,
 			Brand:Brand
 		};
-		if (Brand == 'Dolce-And-Gabbana')  {
-			query.Brand = 'Dolce & Gabbana'
+		if (Brand == 'thiet-ke-do-hoa	')  {
+			query.Brand = 'Thiết Kế Đồ Họa'
 		}
 	} else if (ProductType === undefined && Brand === undefined && search !== undefined) {
 		query = {$text:{$search:search}}
@@ -49,16 +49,16 @@ exports.get_list = function(req, resp){
 			ProductType:ProductType,
 			Brand:Brand
 		};
-		if (ProductType =='kinh-the-thao') {
-			query.ProductType = 'Kính Thể Thao'
-		} else if (ProductType == 'kinh-mat-tre-em'){
-			query.ProductType = 'Kính Mát Trẻ Em'
-		} else if (ProductType == 'kinh-mat-nam'){
-			query.ProductType = 'Kính Mát Nam'
-		} else if (ProductType == 'kinh-mat-nu'){
-			query.ProductType = 'Kính Mát Nữ'
-		} else if (ProductType == 'kinh-ap-trong'){
-			query.ProductType = 'Kính Áp Tròng'
+		if (ProductType =='thiet-ke-logo') {
+			query.ProductType = 'Thiết Kế Logo'
+		} else if (ProductType == 'danh-thiep-van-phong-pham'){
+			query.ProductType = 'Danh Thiếp Văn Phòng Phẩm'
+		} else if (ProductType == 'thiet-ke-brochure'){
+			query.ProductType = 'Thiết Kế Brochure'
+		} else if (ProductType == 'thiet-ke-poster'){
+			query.ProductType = 'Thiết Kế Poster'
+		} else if (ProductType == 'thiet-ke-web-va-di-dong'){
+			query.ProductType = 'Thiết Kế Web Và Di Động'
 		}else{
 			query = {status:1};
 		}

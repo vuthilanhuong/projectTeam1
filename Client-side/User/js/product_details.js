@@ -1,7 +1,13 @@
+var API_URL ="https://dev20t1808m.herokuapp.com";
+
+//1. main function
 $(document).ready(function() {
     loadProduct();
-    productSeen()
+    productSeen();
+    productRecommended();
 });
+
+//2.
 
 var quantityProduct = 1;
 var dataProduct = {};
@@ -16,11 +22,13 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 };
 
+//4. Định dạng giá theo VND( tách số bằng dấu chấm)
 function formatPrice(price){
 	var result = price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
 	return result;
 };
 
+//5. Hàm thêm sản phẩm vào giỏ hàng
 function addProductCart(){
 	dataProduct.quantity = $('#quantity').val();
 	if(dataProduct.quantity > 0){
@@ -28,18 +36,26 @@ function addProductCart(){
 	}
 };
 
+//6. Hiện chi tiết 1 sản phẩm đang xem
 function loadProduct(){
 	var id = getParameterByName('id');
+
+	//6.1 load dữ liệu chi tiết của 1 sản phẩm
 	$.ajax({
-		url: "http://localhost:3000/_api/v1/products/"+id,
+		url: API_URL+ "/_api/products/"+id,
 		type: 'GET',				
 		success: function(response){
+			localStorage.productDetail = JSON.stringify(response);
+			console.log("this is my id:" + id);
+			console.log(response.Picture1);
+			console.log(JSON.stringify(response));
+
 			console.log(response);
 			var content = '';
 			dataProduct = response;
 			content += '<div class="col-sm-5">';
 			content +=		'<div class="view-product">';
-			content +=			'<img onclick=\'addSeen('+JSON.stringify(product[i])+')\' id="img_01" src="'+response.Picture1+'" data-zoom-image="'+response.Picture1+'" alt="">';
+			content +=			'<img onclick=\'addSeen('+ JSON.stringify(response) +')\' id="img_01" src="'+response.Picture1+'" data-zoom-image="'+response.Picture1+'" alt="">';
 			content +=		'</div>';
 			content +=		'<div id="similar-product" class="carousel slide" data-ride="carousel">';
 			content +=		   '<div class="carousel">';
@@ -63,10 +79,8 @@ function loadProduct(){
 			content +=				' Cho vào giỏ';
 			content +=			'</button></p>';
 			content +=			'<p><b>Trạng Thái:</b> '+response.Availability+'</p>';
-			content +=			'<p><b>Loại Kính:</b> '+response.ProductType+'</p>';
-			content +=			'<p><b>Hãng:</b> '+response.Brand+'</p>';
-    		content +=			'<p><b>Kích Thước:</b> '+response.Size+'</p>';
-			content +=			'<p><b>Màu Sắc:</b> '+response.Color+'</p>';
+			content +=			'<p><b>Loại:</b> '+response.ProductType+'</p>';
+			content +=			'<p><b>Danh mục:</b> '+response.Brand+'</p>';
 			content +=		'</div>';
 			content +=	'</div>';
 			content +=	'<div><p style="text-align: justify; line-height: 30px;"><b>Mô Tả:&nbsp;</b>'+response.Discribe+'</p></div>';
@@ -87,9 +101,24 @@ function loadProduct(){
 	});
 
 
+	//6.2 load dữ liệu của sản phẩm liên quan
+	var ProductDetail = JSON.parse(localStorage.productDetail);
 
+	//tạo thư viện
+	var dictionary = {
+		"Thiết Kế Logo" : "thiet-ke-logo",
+		"Danh Thiếp Văn Phòng Phẩm":"danh-thiep-van-phong-pham",
+		"Thiết Kế Brochure":"thiet-ke-brochure",
+		"Thiết Kế Web & Di Động":"thiet-ke-web-va-di-dong",
+		"Lập Trình Web":"lap-trinh-web",
+		"Ứng Dụng Di Động & Web":"ung-dung-di-dong-va-web",
+		"Xây Dựng Trang Web & CMS":"xay-dung-trang-web-va-cms",
+
+	};
+
+	console.log(dictionary[ProductDetail.ProductType]);
 	$.ajax({
-		url: "http://localhost:3000/_api/v1/products?page=1&limit=6",
+		url: API_URL + "/_api/products?ProductType="+ dictionary[ProductDetail.ProductType]+"?page=1&limit=6",
 		type: 'GET',				
 		success: function(response){
 			var contentItem1 = '';

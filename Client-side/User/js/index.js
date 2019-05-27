@@ -1,4 +1,5 @@
-var PRODUCT_API_URL = "http://localhost:3000/_api/v1/products/";
+var PRODUCT_API_URL = "http://localhost:3000/_api/products/";
+var API_URL ="https://dev20t1808m.herokuapp.com";
 
 $(document).ready(function() {
     loadProduct(); 
@@ -12,7 +13,7 @@ function formatPrice(price){
 
 function loadProduct(){
 	$.ajax({
-		url: "http://localhost:3000/_api/v1/products?page=1&limit=9",
+		url: API_URL+ "/_api/products?page=1&limit=9",
 		type: 'GET',				
 		success: function(response){
 			var content = '';

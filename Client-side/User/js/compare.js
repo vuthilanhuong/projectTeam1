@@ -23,8 +23,8 @@ function loadCompare(){
     	var productImg ='<td class="titleCompare">Ảnh</td>';
 		var productName ='<th class="text-center">Tên Sản Phẩm</th>';
 		var productPrice ='<td class="titleCompare">Giá</td>';
-		var productType = '<td class="titleCompare">Loại Kính</td>';
-		var productBrand = '<td class="titleCompare">Hãng</td>';
+		var productType = '<td class="titleCompare">Phân Loại sản phẩm</td>';
+		var productBrand = '<td class="titleCompare">Danh mục</td>';
 		var productSize ='<td class="titleCompare">Kích Thước</td>';
 		var productColor ='<td class="titleCompare">Màu Sắc</td>';
 		var productDiscribe = '<td class="titleCompare">Mô Tả</td>';

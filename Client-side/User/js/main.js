@@ -1,4 +1,5 @@
 /*scroll to top*/
+var API_URL ="https://dev20t1808m.herokuapp.com";
 
 $(document).ready(function(){
 	scroll();
@@ -92,7 +93,7 @@ function checkLogin(){
 		var secret = JSON.parse(localStorage.members);
         $("#loadAjax").css("display", "block");
 		$.ajax({
-			url: 'http://localhost:3000/_api/v1/getUser/'+secret.userID,
+			url: API_URL+ '/_api/getUser/'+secret.userID,
 			type: 'GET',
 			headers: {
 				"Authorization": secret.token
@@ -193,6 +194,7 @@ function addSeen(product){
 	};	
 };
 
+// Sản phẩm đã xem: lưu trong local-storage
 function productSeen() {
 	if(localStorage.productSeen !== undefined)
 		items = JSON.parse(localStorage.productSeen);
@@ -269,5 +271,13 @@ function productSeen() {
 	    	
 	    };
 	// };   
+
+};
+
+// Sản phẩm liên quan (gợi ý cho người dùng những sản phẩm cùng loại), chỉ lấy 6 sản phẩm đầu tiên thôi
+function productRecommended(){
+
+	items = JSON.parse(localStorage.productSeen);
+	console.log(localStorage.productDetail);
 
 };

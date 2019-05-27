@@ -1,3 +1,4 @@
+var API_URL ="https://dev20t1808m.herokuapp.com";
 
 app.controller("orderCtrl",function($scope,$stateParams,$http){
     var idxPage = $stateParams.pageID;
@@ -5,8 +6,8 @@ app.controller("orderCtrl",function($scope,$stateParams,$http){
             locale: {
               format: 'YYYY/MM/DD'
             },
-            startDate: '2018/01/01',
-            endDate: '2018/12/31'
+            startDate: '2019/01/01',
+            endDate: '2019/12/31'
         });
     $scope.dateChange = function(){
         $scope.loadOrder();
@@ -19,7 +20,7 @@ app.controller("orderCtrl",function($scope,$stateParams,$http){
         console.log(datePicked);
         $http({
             method: 'GET',
-            url: 'http://localhost:3000/_api/v1/order/' + '?page=' + idxPage + datePicked
+            url: API_URL + '/_api/order/' + '?page=' + idxPage + datePicked
         }).then(function mySuccess(response){
             console.log(response);
             $scope.restored_data = response.data;
@@ -53,7 +54,7 @@ app.controller("orderCtrl",function($scope,$stateParams,$http){
         if(confirm("Bạn có chắc chắn muốn hủy không?")){
             $http({
                 method: 'DELETE',
-                url: 'http://localhost:3000/_api/v1/order/' + item._id
+                url: API_URL + '/_api/order/' + item._id
             }).then(function mySuccess(response){
                 console.log(response);
                 console.log('Delete thanh cong');
@@ -87,7 +88,7 @@ app.controller('editOrderCtrl',function($scope,$http){
         data.status = data.status.value;
         $http({
             method: 'PUT',
-            url: 'http://localhost:3000/_api/v1/order/' + data._id,
+            url: API_URL + '/_api/order/' + data._id,
             data: data
         }).then(function mySuccess(response){
             console.log(response);
@@ -114,7 +115,7 @@ app.controller("orderDetailCtrl",function($scope,$stateParams,$http){
 	$scope.loadOrderDetail = function() {
 	    $http({
 			method: 'GET',
-			url: 'http://localhost:3000/_api/v1/orderDetail/' + '?page=' + idxPage + '&orderID='+orderID
+			url: API_URL + '/_api/orderDetail/' + '?page=' + idxPage + '&orderID='+orderID
 		}).then(function mySuccess(response){
     		console.log(response.data);
     		$scope.restored_data = response.data;

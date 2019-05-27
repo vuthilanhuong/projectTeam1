@@ -13,8 +13,11 @@
 		<div class="col-md-12">
 			<div class="box">
 				<div class="box-header">
+<!--					<select class="input_special" ng-init="brand = Brand[0]" ng-model="brand" ng-options="option.name for option in Brand" ng-change="changeChoose()"></select>-->
 					<select class="input_special" ng-init="productType = ProductType[0]" ng-model="productType" ng-options="option.name for option in ProductType" ng-change="changeChoose()"></select>
-					<select class="input_special" ng-init="brand = Brand[0]" ng-model="brand" ng-options="option.name for option in Brand" ng-change="changeChoose()"></select>
+
+<!--					<select class="input_special" ng-init="availability = Availability[0]" ng-model="availability" ng-options="option.name for option in Availability" ng-change="changeChoose()"></select>-->
+
 					<div class="input_inline">
 						<form ng-submit="searchForm()">
 							<div class="input-group">

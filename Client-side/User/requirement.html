@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Giới Thiệu | MarketCoders </title>
+    <title>Gửi yêu cầu | MarketCoders </title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -27,9 +27,9 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="images/faviconimages/favicon/favicon-16x16.png">
-	<link rel="manifest" href="images/favicon/manifest.json">
+	<link rel="manifest" href="images/favicon/manifest.json" crossorigin="use-credentials">
 	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png">
+	<meta name="msapplication-TileImage" content="images/favicon/ms-icon-144x144.png" crossorigin="use-credentials">
 	<meta name="theme-color" content="#ffffff">
 </head><!--/head-->
 <body>
@@ -181,26 +181,83 @@
 				</div>			
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Giới thiệu về Eyeonic</h2>
+						<h2 class="title text-center">Gửi yêu cầu</h2>
 						<div class="about-us">
-							<palign="middle"><img style="width: 80%" src="images/logo.png"></p>
-							<p style="text-align: justify">MarketCoders  </p>
-<!--							<p ><img style="height: 500px" src="images/about-us/10.jpg"></p>-->
-<!--							<p style="text-align: justify"> Eyeonic cũng là đại lý lớn nhất Việt Nam của hai thương hiệu kính mắt nổi tiếng Ray-Ban và Oakley là Showroom đầu tiên tại Việt Nam trưng bày và giới thiệu đầy đủ các mẫu kính Ray-Ban, và Oakley bao gồm cả kính mát và kính gọng, với tổng cộng hơn 800 mẫu. cũng chính vì vậy mà từ khi khai trương hai Showroom ở Hà Nội và TP. HCM, Eyeonic đã tạo ra một sự đột phá chưa từng có về doanh số của Ray-Ban và Oakley tại Việt Nam. </p>-->
-<!--							<p style="text-align: justify">Chiết lý kinh doanh của Eyeonic là chỉ kinh doanh hàng cao cấp chính hãng với giá quy định của nhà sản xuất cùng với chính sách hậu mãi, chăm sóc khách hàng tốt nhất.</p>-->
-<!--							<p style="text-align: justify">Song song với việc kinh doanh kính mát thời trang, Eyeonic cũng đầu tư những máy móc, trang thiết bị hiện đại cùng với đội ngũ nhân viên kỹ thuật cao trong ngành kính mắt và khúc xạ để đảm bảo việc đo khám thị lực cũng như mài lắp kính thuốc ở trình độ cao nhất, tốt nhất đối với người tiêu dùng.</p>-->
-<!--							<p>-->
-<!--								<a href="#"><img class="col-sm-5" src="images/about-us/1.png"></a>-->
-<!--								<a href="#"><img class="col-sm-5" src="images/about-us/2.png"></a>-->
-<!--							</p>-->
-<!--							<p>-->
-<!--								<a href="#"><img class="col-sm-5" src="images/about-us/3.png"></a>-->
-<!--								<a href="#"><img class="col-sm-5" src="images/about-us/4.png"></a>-->
-<!--							</p>-->
-<!--							<p>-->
-<!--								<a href="#"><img class="col-sm-5" src="images/about-us/5.png"></a>-->
-<!--								<a href="#"><img class="col-sm-5" src="images/about-us/6.png"></a>-->
-<!--							</p>-->
+<!--							form gửi yêu cầu-->
+							<div class="container">
+								<div class="row">
+									<div class="col-md-9" id="block">
+										<div class="panel panel-default">
+											<div class="panel-body">
+												<form class="form-horizontal" ng-submit="submitForm()" name="myForm" novalidate>
+<!--												tên yêu cầu-->
+													<div class="form-group">
+														<label class="col-sm-3 control-label">Tên Yêu cầu</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" ng-model="sendData.requireName" placeholder="Tên yêu cầu" required name="requireName" minlength="10">
+														</div>
+													</div>
+													<div class="form-group" ng-show="myForm.fullName.$invalid && myForm.fullName.$dirty">
+														<label class="col-sm-3 control-label">
+															&nbsp;</label>
+														<div class="col-sm-9">
+															<p class="msgError" ng-show="myForm.fullName.$error.minlength">Tên phải có 10 ký tự trở lên</p>
+															<p class="msgError" ng-show="myForm.fullName.$error.required">Dòng này không được bỏ trống</p>
+														</div>
+													</div>
+<!--												mô tả yêu cầu-->
+													<div class="form-group">
+														<label class="col-sm-3 control-label">Mô tả Yêu cầu</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" ng-model="sendData.requireName" placeholder="Tên yêu cầu" required name="fullName" minlength="4">
+														</div>
+													</div>
+													<div class="form-group" ng-show="myForm.fullName.$invalid && myForm.fullName.$dirty">
+														<label class="col-sm-3 control-label">
+															&nbsp;</label>
+														<div class="col-sm-9">
+															<p class="msgError" ng-show="myForm.fullName.$error.minlength">Tên phải có 4 ký tự trở lên</p>
+															<p class="msgError" ng-show="myForm.fullName.$error.required">Dòng này không được bỏ trống</p>
+														</div>
+													</div>
+
+<!--													Tài liệu liên quan-->
+													<div class="form-group">
+														<label class="col-sm-3 control-label">
+															Tài liệu liên quan</label>
+														<div class="col-sm-9">
+															<label class="btn btn-primary btn-file">
+																Tải file lên <input type="file" id="fileUpload" name="file" ng-model='fileUpload' onchange="angular.element(this).scope().uploading()" required style="display: none;">
+															</label>
+														</div>
+													</div>
+													<div class="form-group" ng-show="myForm.file.$invalid && myForm.file.$dirty || uploadErr">
+														<label class="col-sm-3 control-label">
+															&nbsp;</label>
+														<div class="col-sm-9" >
+															<p class="msgError" ng-show="uploadErr" >Không thể tải lên quá 1 ảnh</p>
+															<p class="msgError" ng-show="myForm.file.$error.required">Ảnh không được bỏ trống</p>
+														</div>
+													</div>
+
+													<div class="form-group last">
+														<div class="col-sm-offset-3 col-sm-9">
+															<button type="submit" class="btn btn-success btn-sm" ng-disabled="myForm.userName.$pristine && myForm.user.$invalid || checkUser || myForm.email.$pristine && myForm.email.$invalid || checkEmail || myForm.fullName.$invalid && myForm.fullName.$pristine || myForm.password.$invalid && myForm.password.$pristine || myForm.confirm.$invalid && myForm.confirm.$pristine || checkConfirm || myForm.birthDay.$invalid && myForm.birthDay.$pristine || checkBirthDay || previewShow">
+																Gửi yêu cầu</button>
+															<button type="reset" ng-click="resetForm()" class="btn btn-default btn-sm">
+																Làm Lại</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
 						</div>
 					</div>					
 				</div>

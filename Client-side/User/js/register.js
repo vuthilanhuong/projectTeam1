@@ -1,3 +1,4 @@
+var API_URL ="https://dev20t1808m.herokuapp.com";
 var checkName = false;
 var checkEmail = false;
 var checkUser = false;
@@ -56,7 +57,7 @@ document.getElementById('username').onblur = function () {
 	var name = document.getElementById('username');
 	var userError = document.getElementById('userError');
 	$.ajax({
-		url: 'http://localhost:3000/_api/members/checkUser',
+		url: API_URL +'/_api/members/checkUser',
 		type: 'POST',
 		data: {"userName":name.value},				
 		success: function(response){
@@ -141,7 +142,7 @@ document.getElementById('email').onblur = function () {
 	var email = document.getElementById('email');
 	var emailError = document.getElementById('emailError');
 	$.ajax({
-		url: 'http://localhost:3000/_api/members/checkEmail',
+		url: API_URL + '/_api/members/checkEmail',
 		type: 'POST',
 		data: {"email":email.value},				
 		success: function(response){
@@ -190,7 +191,6 @@ document.getElementById("avatar").onchange = function () {
 		//fd.append('upload_preset','rk1gl1ni');
 		fd.append('upload_preset','ka4udhi4');
 	    $.ajax({
-			// url: 'https://api.cloudinary.com/v1_1/sangbeo-aptech/image/upload',
 			url: 'https://api.cloudinary.com/v1_1/huongaptech/image/upload',
 			type: 'POST',
 			data: fd,
@@ -227,7 +227,7 @@ document.getElementById("avatar").onchange = function () {
 	};
 	console.log(data);
 	$.ajax({
-		url: 'http://localhost:3000/_api/members/login',
+		url: API_URL + '/_api/members/login',
 		type: 'POST',
 		data: data,				
 		success: function(response){
@@ -250,7 +250,7 @@ $('form#registerForm').submit(function(){
 	};
 	console.log(data);
 	$.ajax({
-		url: 'http://localhost:3000/_api/members',
+		url: API_URL + '/_api/members',
 		type: 'POST',
 		data: data,				
 		success: function(response){

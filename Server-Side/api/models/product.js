@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
 
 var productSchema =  new mongoose.Schema ({
-    ProductName:{
+    ProductName:{ //gioi thieu ngan ve sp
 		type: String,
 		require: true,
 		unique: true,
@@ -12,27 +12,39 @@ var productSchema =  new mongoose.Schema ({
 		type: Number,
 		require: true
 	},
-	Size:{
+	// quantity:{
+	// 	type: Number,
+	// 	require: true
+	// },
+	// Size:{
+	// 	type: String,
+	// 	require: true
+	// },
+	Availability:{ //sp con hay khong
 		type: String,
 		require: true
 	},
-	Availability:{
-		type: String,
-		require: true
+	AdminAccept:{
+    	type: Number,
+		require: true,
+		default: -1
+		//-1: admin chưa duyệt
+		//0: admin từ chối
+		//1: admin duyệt
 	},
-	Color:{
-		type: String,
-		require: true
-	},
+	// Color:{
+	// 	type: String,
+	// 	require: true
+	// },
 	Discribe:{
 		type: String,
 		require: true
 	},
-	Brand:{
+	Brand:{ // Thiet ke do hoa--- Lap trinh va cong nghe
 		type: String,
 		require: true
 	},
-	ProductType:{
+	ProductType:{ //chi tiet cac loai sp cua 2 nhanh tren
 		type: String,
 		require: true
 	},

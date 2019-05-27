@@ -1,4 +1,6 @@
-$( document ).ready(function() {	
+var API_URL ="https://dev20t1808m.herokuapp.com";
+
+$( document ).ready(function() {
     $('form#loginForm').submit(function(){
     	var data = {
     		"userName":$('#username').val(),
@@ -6,7 +8,7 @@ $( document ).ready(function() {
     	};
     	console.log(data);
     	$.ajax({
-			url: 'http://localhost:3000/_api/v1/members/login',
+			url: API_URL+'/_api/members/login',
 			type: 'POST',
 			data: data,				
 			success: function(response){

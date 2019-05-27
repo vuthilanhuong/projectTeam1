@@ -1,10 +1,12 @@
+var API_URL ="https://dev20t1808m.herokuapp.com";
+
 $(document).ready(function() {
     loadProduct();
 });
 
 function paging(total,page,query){
    $('#pagination-demo').twbsPagination({
-	    totalPages: Math.ceil(total/12),
+	    totalPages: Math.ceil(total/9),
 	    visiblePages: 4,
 	    startPage: page,
 	    initiateStartPageClick:false,
@@ -57,7 +59,7 @@ function loadProduct(){
 		query = ''
 	};
 	$.ajax({
-		url: "http://localhost:3000/_api/v1/products?page="+page+"&limit=12"+query,
+		url: API_URL + "/_api/products?page="+page+"&limit=9"+query,
 		type: 'GET',				
 		success: function(response){
 			var content = '';

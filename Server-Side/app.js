@@ -9,15 +9,11 @@ const fileupload = require('express-fileupload');
 // const fs = require('fs');
 var mongoose = require('mongoose');
 
-// var url = 'mongodb://localhost:27017/youtube_api';
 var MongoClient = require('mongodb').MongoClient;
 // const http = require('http');
 
 // mongoose.connect('mongodb+srv://root:abcD1234@cluster0-wuil3.mongodb.net/test?retryWrites=true',
 // 	{ useNewUrlParser: true });
-
-// mongoose.connect('mongodb://sangbeo:123456@ds127536.mlab.com:27536/eyeonic',
-// 	{ useMongoClient: true });
 
 mongoose.connect('mongodb://huong:Abc123@ds135844.mlab.com:35844/marketcoders',
 	{ useMongoClient: true });
@@ -57,50 +53,11 @@ app.use(function(req, res, next) {
 var allRoutes = require('./api/routes/apiRoutes');
 allRoutes(app);
 
-app.listen('3000',function(){
-	console.log('Start at port 3000');
+var port = 3000;
+app.listen(process.env.PORT || port ,function(){
+	console.log('Start at port ' + port);
 
 });
 
-// app.get('/', function(req, resp){
-// 	fs.readFile('index.html', function (err, html) {      
-//         resp.writeHeader(200, {"Content-Type": "text/html"});  
-//         resp.write(html);  
-//         resp.end();  
-// 	});
-// });
 
-app.get('/_api/v1/students', function(req, resp){
-	MongoClient.connect(url, function(err, db) {
-		db.collection('students').find().toArray(function(err, result){
-			resp.json(result);
-		});
-	});
-});
 
-// app.post('/_api/v1/students',function(req, resp){
-// 	var studentAdd = req.body;
-// 	MongoClient.connect(url, function(err, db) {
-// 		db.collection("students").insertOne(studentAdd, function(err, data) {
-// 		console.log("1 document inserted");
-// 		});
-// 	});
-// });
-
-// app.post('/_api/v1/students/fix',function(req, resp){
-// 	var studentAdd = req.body;
-// 	MongoClient.connect(url, function(err, db) {
-// 		db.collection("students").updateOne(studentAdd[0],{ $set:studentAdd[1]}, function(err, data) {
-// 		console.log("1 document update");
-// 		});
-// 	});
-// });
-
-// app.delete('/_api/v1/students',function(req, resp){
-// 	var studentDel = req.body;
-// 	MongoClient.connect(url, function(err, db) {
-// 		db.collection("students").deleteOne(studentDel, function(err, data) {
-// 		console.log("1 document deleted");
-// 		});
-// 	});
-// });

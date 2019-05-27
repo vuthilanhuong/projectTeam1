@@ -1,17 +1,19 @@
+var API_URL ="https://dev20t1808m.herokuapp.com";
 var app = angular.module("myApp",[]);
 
 app.controller("registerCtrl",function($scope,$http){
 	$scope.gender = [{name:"Nam",value:"1"},{name:"Nữ",value:"2"}];
 	$scope.previewShow = true;
 
+	//1.upload image
 	$scope.uploading = function(){
 		var fileUpload = document.getElementById("fileUpload");
 		var fd = new FormData();
 		fd.append('file', fileUpload.files[0]);
-		fd.append('upload_preset','rk1gl1ni');
+		fd.append('upload_preset','ka4udhi4');
 		$http({
 			method: 'POST',
-			url: 'https://api.cloudinary.com/v1_1/sangbeo-aptech/image/upload',
+			url: 'https://api.cloudinary.com/v1_1/huongaptech/image/upload',
 			headers:{"Content-Type": undefined},
 			data: fd,
 			cache: false,
@@ -30,10 +32,11 @@ app.controller("registerCtrl",function($scope,$http){
 
 	};
 
+
 	$scope.login = function(){
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/_api/v1/admin/login',
+			url: API_URL+ '/_api/admin/login',
 			data : $scope.sendData
 		}).then(function mySuccess(response){
 			console.log(response);
@@ -43,6 +46,7 @@ app.controller("registerCtrl",function($scope,$http){
 	    });
 	};
 
+	//2.post to database(include imgURL)
 	$scope.submitForm = function(){
 		var data = $scope.sendData;
 			data.gender = data.gender.value;
@@ -50,11 +54,11 @@ app.controller("registerCtrl",function($scope,$http){
 			console.log(data);
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/_api/v1/admins',
+			url: API_URL+ '/_api/admins',
 			data: data
 		}).then(function mySuccess(response){
     		console.log(response);
-    		$scope.login();
+    		$scope.login(); //Neu dang ky thanh cong thi tu dong login
     		swal({
 			  title: "Đăng Ký Thành Công!",
 			  icon: "success",
@@ -77,7 +81,7 @@ app.controller("registerCtrl",function($scope,$http){
 	$scope.userError = function(){
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/_api/v1/admin/checkUser',
+			url: API_URL+ '/_api/admin/checkUser',
 			data : $scope.sendData
 		}).then(function mySuccess(response){
 			console.log(response);
@@ -106,7 +110,7 @@ app.controller("registerCtrl",function($scope,$http){
 	$scope.emailError = function(){
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/_api/v1/admin/checkEmail',
+			url: API_URL+ '/_api/admin/checkEmail',
 			data: $scope.sendData
 		}).then(function mySuccess(response){
 			console.log(response);

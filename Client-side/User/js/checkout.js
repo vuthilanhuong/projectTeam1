@@ -1,3 +1,5 @@
+var API_URL ="https://dev20t1808m.herokuapp.com";
+
 //hàm chính
 $(document).ready(function(){
 	$( "#btnCheckout" ).prop( "disabled", true);
@@ -138,7 +140,7 @@ function submit(){
 				"customerName": member.userName
 			};
 			$.ajax({
-				url: 'http://localhost:3000/_api/v1/cart',
+				url: API_URL +'/_api/cart',
 				type: 'POST',
 				data: orderCheckout,	
 				success: function(response){
