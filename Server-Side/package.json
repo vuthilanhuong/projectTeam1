@@ -19,7 +19,7 @@
     "express-fileupload": "^0.3.0",
     "jsonwebtoken": "^8.1.0",
     "mongodb": "^2.2.33",
-    "mongoose": "^4.13.6",
+    "mongoose": "^5.7.5",
     "mongoose-paginate": "^5.0.3",
     "mongoose-pagination": "^1.0.0",
     "mongoose-transaction": "0.0.3",
